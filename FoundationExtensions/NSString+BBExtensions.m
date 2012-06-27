@@ -21,9 +21,13 @@
 
 #import "NSString+BBExtensions.h"
 
-#import "NSDate+RKExtensions.h"
+#import "NSData+BBExtensions.h"
 
 #import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
+#if TARGET_OS_IPHONE
+    #import <MobileCoreServices/UTType.h>
+#endif
 
 
 
@@ -125,9 +129,79 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return [hash lowercaseString];
 }
 
-- (NSString*)base64Encoding
+- (NSData*)HMACSHA1WithKey:(NSString*)key
 {
-    return nil;
+    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
+
+    CCHmacContext context;
+    CCHmacAlgorithm algorithm = kCCHmacAlgSHA1;
+    NSUInteger digestLength = CC_SHA1_DIGEST_LENGTH;
+
+    const char* keyCString = [key cStringUsingEncoding:NSASCIIStringEncoding];
+
+    CCHmacInit(&context, algorithm, keyCString, strlen(keyCString));
+    CCHmacUpdate(&context, [data bytes], [data length]);
+
+    unsigned char digestRaw[CC_SHA1_DIGEST_LENGTH];
+
+    CCHmacFinal(&context, digestRaw);
+
+    NSData* digestData = [NSData dataWithBytes:digestRaw length:digestLength];
+
+    return digestData;
+}
+
+- (NSString*)filenameMimeType
+{
+    NSString* ext = [self pathExtension];
+    if (ext == nil) {
+        return @"application/octet-stream";
+    }
+
+    NSString* mimeType = nil;
+#if __has_feature(objc_arc)
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
+                                                            (__bridge CFStringRef)ext, NULL);
+#else
+    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
+                                                            (CFStringRef)ext, NULL);
+#endif
+    if (!UTI) {
+        return nil;
+    }
+
+    CFStringRef registeredType = UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
+    if (!registeredType) {
+        // check for edge case
+        mimeType = @"application/octet-stream";
+    } else {
+#if __has_feature(objc_arc)
+        mimeType = (__bridge_transfer NSString*)registeredType;
+#else
+        mimeType = NSMakeCollectable(registeredType);
+#endif
+    }
+    CFRelease(UTI);
+
+    return mimeType;
+}
+
+- (NSString*)base64EncodedString
+{
+    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
+
+    return [data base64EncodedString];
+}
+
+- (NSString*)base64DecodedString
+{
+    NSData* data = [NSData decodeBase64String:self];
+    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+#if !__has_feature(objc_arc)
+    [string autorelease];
+#endif
+
+    return string;
 }
 
 @end

@@ -35,6 +35,9 @@
 - (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
 - (NSString*)sha1;
 - (NSString*)md5;
-- (NSString*)base64Encoding;
+- (NSData*)hmacSha1WithKey:(NSString*)key;
+- (NSString*)filenameMimeType;
+- (NSString*)base64EncodedString;
+- (NSString*)base64DecodedString;
 
 @end

@@ -19,9 +19,18 @@
 //  Copyright (c) 2012 BiasedBit. All rights reserved.
 //
 
-#pragma mark - Utility functions
+#pragma mark -
 
-extern NSString* BBAppVersion(void);
-extern NSString* BBGetUUID(void);
-extern NSString* BBPrettySize(double sizeInBytes);
-extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);
+@interface NSData (BBExtensions)
+
+
+#pragma mark Public static methods
+
++ (NSData*)decodeBase64String:(NSString*)string;
+
+
+#pragma mark Public methods
+
+- (NSString*)base64EncodedString;
+
+@end
