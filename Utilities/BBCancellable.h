@@ -21,25 +21,22 @@
 
 #pragma mark -
 
-@interface NSString (BBExtensions)
+@interface BBCancellable : NSObject
 
 
-#pragma mark Public static methods
+#pragma mark Public properties
 
-+ (NSString*)randomString;
-+ (NSString*)base62EncodingForNumber:(long long)number;
+@property(strong, nonatomic, readonly) NSString* name;
+
+
+#pragma mark Creation
+
+- (id)initWithName:(NSString*)name;
 
 
 #pragma mark Public methods
 
-- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
-- (NSString*)sha1;
-- (NSString*)md5;
-- (NSData*)hmacSha1WithKey:(NSString*)key;
-- (NSString*)base64EncodedString;
-- (NSString*)base64DecodedString;
-- (NSString*)filenameMimeType;
-- (BOOL)endsWithExtension:(NSString*)extension;
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
+- (BOOL)cancel;
+- (BOOL)isCancelled;
 
 @end

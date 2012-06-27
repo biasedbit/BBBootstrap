@@ -19,27 +19,66 @@
 //  Copyright (c) 2012 BiasedBit. All rights reserved.
 //
 
+#import "BBCancellable.h"
+
+
+
 #pragma mark -
 
-@interface NSString (BBExtensions)
+@implementation BBCancellable
+{
+    BOOL _cancelled;
+
+    __strong NSString* _name;
+}
 
 
-#pragma mark Public static methods
+#pragma mark Property synthesizers
 
-+ (NSString*)randomString;
-+ (NSString*)base62EncodingForNumber:(long long)number;
+@synthesize name = _name;
+
+
+#pragma mark Creation
+
+- (id)init
+{
+    return [self initWithName:@"anonymous"];
+}
+
+- (id)initWithName:(NSString*)name
+{
+    self = [super init];
+    if (self != nil) {
+        _name = name;
+    }
+
+    return self;
+}
 
 
 #pragma mark Public methods
 
-- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
-- (NSString*)sha1;
-- (NSString*)md5;
-- (NSData*)hmacSha1WithKey:(NSString*)key;
-- (NSString*)base64EncodedString;
-- (NSString*)base64DecodedString;
-- (NSString*)filenameMimeType;
-- (BOOL)endsWithExtension:(NSString*)extension;
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
+- (BOOL)cancel
+{
+    BOOL previous = _cancelled;
+    _cancelled = YES;
+
+    return previous != _cancelled;
+}
+
+- (BOOL)isCancelled
+{
+    return _cancelled;
+}
+
+
+#pragma mark Description
+
+- (NSString*)description
+{
+    return [NSString stringWithFormat:@"%@{name='%@', cancelled=%@}",
+            NSStringFromClass([self class]), _name, _cancelled ? @"YES" : @"NO"];
+}
 
 @end
+

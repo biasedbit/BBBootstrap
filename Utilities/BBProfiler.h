@@ -1,4 +1,4 @@
-//
+///
 // Copyright 2012 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,25 +21,13 @@
 
 #pragma mark -
 
-@interface NSString (BBExtensions)
+@interface BBProfiler : NSObject
 
 
 #pragma mark Public static methods
 
-+ (NSString*)randomString;
-+ (NSString*)base62EncodingForNumber:(long long)number;
-
-
-#pragma mark Public methods
-
-- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
-- (NSString*)sha1;
-- (NSString*)md5;
-- (NSData*)hmacSha1WithKey:(NSString*)key;
-- (NSString*)base64EncodedString;
-- (NSString*)base64DecodedString;
-- (NSString*)filenameMimeType;
-- (BOOL)endsWithExtension:(NSString*)extension;
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
++ (uint64_t)profileBlock:(void (^)())block;
++ (double)nanosToMilliseconds:(uint64_t)nanos;
++ (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block;
 
 @end

@@ -47,7 +47,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 + (NSString*)randomString
 {
     u_int32_t rand = arc4random();
-    u_int64_t now = [NSDate currentTimeMillis];
+    uint64_t now = [NSDate currentTimeMillis];
 
     NSString* hashSource = [NSString stringWithFormat:@"%u:%lld", rand, now];
     NSString* hashed = [hashSource sha1];
@@ -151,6 +151,24 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return digestData;
 }
 
+- (NSString*)base64EncodedString
+{
+    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
+
+    return [data base64EncodedString];
+}
+
+- (NSString*)base64DecodedString
+{
+    NSData* data = [NSData decodeBase64String:self];
+    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+#if !__has_feature(objc_arc)
+    [string autorelease];
+#endif
+
+    return string;
+}
+
 - (NSString*)filenameMimeType
 {
     NSString* ext = [self pathExtension];
@@ -186,22 +204,25 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return mimeType;
 }
 
-- (NSString*)base64EncodedString
+- (BOOL)endsWithExtension:(NSString*)extension
 {
-    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
-
-    return [data base64EncodedString];
+    return [self endsWithExtensionInSet:[NSSet setWithObject:extension]];
 }
 
-- (NSString*)base64DecodedString
+- (BOOL)endsWithExtensionInSet:(NSSet*)extensions
 {
-    NSData* data = [NSData decodeBase64String:self];
-    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
+    NSString* ext = [self pathExtension];
+    if ((ext == nil) || ([ext length] == 0)) {
+        return NO;
+    }
 
-    return string;
+    for (NSString* extension in extensions) {
+        if ([ext isEqualToString:extension]) {
+            return YES;
+        }
+    }
+
+    return NO;
 }
 
 @end
