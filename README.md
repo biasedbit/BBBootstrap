@@ -7,26 +7,46 @@ A set of Foundation and UIKit extensions that we all end up using somehow in eve
 
 1. Add the submodule: `$ git submodule add TODO leProject/External/BBBootstrap`
 2. Add the files to your Xcode project.
-3. ???
-4. Profit.
+3. Copy and paste the contents of `BBBootstrap-Prefix.pch` to your prefix file
+4. ???
+5. Profit.
 
 
-## NSString extensions
+## Foundation extensions
 
-TBD
-
-
-## NSData extensions
+### NSData
 
 TBD
 
 
-## NSDate extensions
+### NSDate
 
 TBD
 
 
-## NSDictionary extensions
+### NSDictionary
+
+TBD
+
+
+### NSString
+
+TBD
+
+
+## UIKit extensions
+
+### UIAlertView
+
+TBD
+
+
+### UITableView
+
+TBD
+
+
+### UIView
 
 TBD
 
