@@ -23,6 +23,7 @@
 
 #import "BBProfiler.h"
 #import "BBCancellable.h"
+#import "BBCountdownLatch.h"
 
 
 // Useful helpers
