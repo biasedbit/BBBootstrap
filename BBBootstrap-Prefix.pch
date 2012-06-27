@@ -1,5 +1,10 @@
 // ------ copypasta starts here; place this on your *-Prefix.h file ------
 
+// Global utility functions
+
+#import "BBGlobals.h"
+
+
 // Foundation extensions
 
 #import "NSDate+BBExtensions.h"
