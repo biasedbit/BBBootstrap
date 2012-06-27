@@ -25,33 +25,84 @@
 
 #pragma mark - Constants
 
-#ifndef kFallbackAppVersion
-    #define kFallbackAppVersion @"1.0.0";
+// You can define your own kBBFallbackAppVersion on the Prefix header, before importing BBGlobals.h
+#ifndef kBBFallbackAppVersion
+    #define kBBFallbackAppVersion @"1.0.0";
 #endif
 
 
 
 #pragma mark - Utility functions
 
-NSString* AppVersion()
+NSString* BBAppVersion()
 {
     static NSString* appVersion = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (appVersion == nil) {
-            appVersion = kFallbackAppVersion;
+            appVersion = kBBFallbackAppVersion;
         }
     });
 
     return appVersion;
 }
 
-NSString* GetUUID()
+NSString* BBGetUUID()
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
     CFStringRef string = CFUUIDCreateString(NULL, theUUID);
     CFRelease(theUUID);
 
     return CFBridgingRelease(string);
+}
+
+NSString* BBPrettySize(double sizeInBytes)
+{
+    if (sizeInBytes < 0) {
+        return @"n/a";
+    }
+
+    NSString* unit;
+    double sizeInUnits;
+    if (sizeInBytes < 1024.0) {
+        unit = @"B";
+        sizeInUnits = sizeInBytes;
+    } else if ((sizeInBytes >= 1024.0) && (sizeInBytes < 1048576.0)) {
+        unit = @"KB";
+        sizeInUnits = sizeInBytes / 1024.0;
+    } else if ((sizeInBytes >= 1048576.0) && (sizeInBytes < 1073741824.0)) {
+        unit = @"MB";
+        sizeInUnits = sizeInBytes / 1048576.0;
+    } else {
+        unit = @"GB";
+        sizeInUnits = sizeInBytes / 1073741824.0;
+    }
+
+    return [NSString stringWithFormat:@"%.1f%@", sizeInUnits, unit];
+}
+
+NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond)
+{
+    if (transferRateInBytesPerSecond < 0) {
+        return @"n/a";
+    }
+
+    NSString* unit;
+    double sizeInUnits;
+    if (transferRateInBytesPerSecond < 1024.0) {
+        unit = @"B";
+        sizeInUnits = transferRateInBytesPerSecond;
+    } else if ((transferRateInBytesPerSecond >= 1024.0) && (transferRateInBytesPerSecond < 1048576.0)) {
+        unit = @"KB";
+        sizeInUnits = transferRateInBytesPerSecond / 1024.0;
+    } else if ((transferRateInBytesPerSecond >= 1048576.0) && (transferRateInBytesPerSecond < 1073741824.0)) {
+        unit = @"MB";
+        sizeInUnits = transferRateInBytesPerSecond / 1048576.0;
+    } else {
+        unit = @"GB"; // jesus, that's fast!
+        sizeInUnits = transferRateInBytesPerSecond / 1073741824.0;
+    }
+
+    return [NSString stringWithFormat:@"%.1f%@/s", sizeInUnits, unit];
 }
