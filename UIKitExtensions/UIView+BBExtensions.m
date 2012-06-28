@@ -56,7 +56,9 @@
         [UIView animateWithDuration:duration animations:animations completion:completion];
     } else {
         animations();
-        completion(YES);
+        if (completion != nil) {
+            completion(YES);
+        }
     }
 }
 
@@ -67,7 +69,9 @@
         [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
     } else {
         animations();
-        completion(YES);
+        if (completion != nil) {
+            completion(YES);
+        }
     }
 }
 
