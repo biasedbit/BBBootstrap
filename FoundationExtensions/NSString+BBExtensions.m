@@ -39,7 +39,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 #pragma mark -
 
-@implementation NSString (RTExtensions)
+@implementation NSString (BBExtensions)
 
 
 #pragma mark Public static methods
@@ -129,7 +129,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return [hash lowercaseString];
 }
 
-- (NSData*)HMACSHA1WithKey:(NSString*)key
+- (NSData*)hmacSha1WithKey:(NSString*)key
 {
     NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
 
