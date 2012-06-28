@@ -30,6 +30,8 @@
 + (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration animations:(void (^)())animations;
 + (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration
         animations:(void (^)())animations completion:(void (^)(BOOL))completion;
++ (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
+        options:(UIViewAnimationOptions)options animations:(void (^)())animations completion:(void (^)(BOOL))completion;
 
 
 #pragma mark Public methods

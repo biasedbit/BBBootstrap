@@ -60,6 +60,17 @@
     }
 }
 
++ (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
+        options:(UIViewAnimationOptions)options animations:(void (^)())animations completion:(void (^)(BOOL))completion
+{
+    if (animated) {
+        [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
+    } else {
+        animations();
+        completion(YES);
+    }
+}
+
 
 #pragma mark Public methods
 
