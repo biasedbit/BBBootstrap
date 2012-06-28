@@ -11,6 +11,8 @@
 #import "NSDate+BBExtensions.h"
 #import "NSDictionary+BBExtensions.h"
 #import "NSString+BBExtensions.h"
+#import "NSUbiquitousKeyValueStore+BBExtensions.h"
+#import "NSUserDefaults+BBExtensions.h"
 
 
 // UIKit extensions
