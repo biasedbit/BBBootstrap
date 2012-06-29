@@ -18,6 +18,7 @@
 // UIKit extensions
 
 #import "UIAlertView+BBExtensions.h"
+#import "UIDevice+BBExtensions.h"
 #import "UITableView+BBExtensions.h"
 #import "UIView+BBExtensions.h"
 
