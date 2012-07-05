@@ -10,6 +10,7 @@
 #import "NSData+BBExtensions.h"
 #import "NSDate+BBExtensions.h"
 #import "NSDictionary+BBExtensions.h"
+#import "NSObject+BBExtensions.h"
 #import "NSString+BBExtensions.h"
 
 
