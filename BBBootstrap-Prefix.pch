@@ -12,11 +12,14 @@
 #import "NSDictionary+BBExtensions.h"
 #import "NSObject+BBExtensions.h"
 #import "NSString+BBExtensions.h"
+#import "NSUbiquitousKeyValueStore+BBExtensions.h"
+#import "NSUserDefaults+BBExtensions.h"
 
 
 // UIKit extensions
 
 #import "UIAlertView+BBExtensions.h"
+#import "UIDevice+BBExtensions.h"
 #import "UITableView+BBExtensions.h"
 #import "UIView+BBExtensions.h"
 
