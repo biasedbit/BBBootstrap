@@ -33,8 +33,10 @@ typedef void (^BBCountDownLatchBlock)();
 
 #pragma mark Public static methods
 
-+ (BBCountDownLatch*)latchWithId:(NSString*)identifier counter:(NSUInteger)counter
-                        andBlock:(BBCountDownLatchBlock)block;
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter
+                          andBlock:(BBCountDownLatchBlock)block;
++ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
+                 andBlock:(BBCountDownLatchBlock)block;
 
 
 #pragma mark Public methods

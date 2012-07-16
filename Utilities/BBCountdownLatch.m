@@ -18,6 +18,7 @@
     dispatch_queue_t _queue;
     NSUInteger _counter;
     BOOL _cancelled;
+    BOOL _releaseQueueWhenDone;
 
     __strong NSString* _name;
 }
@@ -49,16 +50,42 @@
 }
 
 
+#pragma mark Destruction
+
+- (void)dealloc
+{
+    if (_releaseQueueWhenDone && (_queue != NULL)) {
+        // If we were created with autoCleanup...
+        dispatch_release(_queue);
+    }
+}
+
+
 #pragma mark Public static methods
 
-+ (BBCountDownLatch*)latchWithId:(NSString*)identifier counter:(NSUInteger)counter
-                      andBlock:(BBCountDownLatchBlock)block
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter andBlock:(BBCountDownLatchBlock)block
 {
-    NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.CDLQueue-%@", identifier];
+    static dispatch_queue_t queue;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        queue = dispatch_queue_create([@"com.biasedbit.DefaultCDLQueue" UTF8String], DISPATCH_QUEUE_SERIAL);
+    });
+
+    BBCountDownLatch* latch = [[BBCountDownLatch alloc]
+                               initWithName:name queue:queue counter:counter andBlock:block];
+
+    return latch;
+}
+
++ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
+                                     andBlock:(BBCountDownLatchBlock)block
+{
+    NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.%@", name];
     dispatch_queue_t queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
 
     BBCountDownLatch* latch = [[BBCountDownLatch alloc]
-                               initWithName:identifier queue:queue counter:counter andBlock:block];
+                               initWithName:name queue:queue counter:counter andBlock:block];
+    [latch releaseQueueWhenDone];
 
     return latch;
 }
@@ -117,6 +144,14 @@
 - (void)resetRequestCounter:(NSUInteger)newCounterValue
 {
     _counter = newCounterValue;
+}
+
+
+#pragma mark Private helpers
+
+- (void)releaseQueueWhenDone
+{
+    _releaseQueueWhenDone = YES;
 }
 
 
