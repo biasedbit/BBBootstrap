@@ -15,12 +15,7 @@
 @implementation BBCountDownLatch
 {
     BBCountDownLatchBlock _block;
-    dispatch_queue_t _queue;
-    NSUInteger _counter;
-    BOOL _cancelled;
     BOOL _releaseQueueWhenDone;
-
-    __strong NSString* _name;
 }
 
 
