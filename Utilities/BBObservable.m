@@ -83,7 +83,17 @@
     return [_observers count];
 }
 
+- (void)notifyObserversAsynchronouslyInMainQueueWithBlock:(void (^)(id observer))block
+{
+    [self notifyObserversInAsynchronousQueue:dispatch_get_main_queue() withBlock:block];
+}
+
 - (void)notifyObserversWithBlock:(void (^)(id observer))block
+{
+    [self notifyObserversInAsynchronousQueue:NULL withBlock:block];
+}
+
+- (void)notifyObserversInAsynchronousQueue:(dispatch_queue_t)queue withBlock:(void (^)(id observer))block
 {
     dispatch_sync(_observableQueue, ^{
         for (BBWeakWrapper* wrapper in _observers) {
@@ -91,10 +101,16 @@
 
             // Cleanup dead observers
             if (observer == nil) {
-                DLOG(@"Found dead observer, cleaning...");
+                LogTrace(@"[%@] Found dead observer, cleaning...", [self logId]);
                 [_observers removeObject:wrapper];
             } else {
-                block(observer);
+                if (queue == NULL) {
+                    block(observer);
+                } else {
+                    dispatch_async(queue, ^{
+                        block(observer);
+                    });
+                }
             }
         }
     });

@@ -29,6 +29,8 @@
 - (void)addObserver:(id)observer;
 - (void)removeObserver:(id)observer;
 - (NSUInteger)observerCount;
+- (void)notifyObserversAsynchronouslyInMainQueueWithBlock:(void (^)(id observer))block;
 - (void)notifyObserversWithBlock:(void (^)(id observer))block;
+- (void)notifyObserversInAsynchronousQueue:(dispatch_queue_t)queue withBlock:(void (^)(id observer))block;
 
 @end
