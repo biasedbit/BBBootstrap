@@ -30,6 +30,14 @@
 @implementation NSUbiquitousKeyValueStore (BBExtensions)
 
 
+#pragma mark Public static methods
+
++ (BOOL)performChangeOnDefaultStoreAndSynchronizeWithFallback:(void (^)(id dataSource))change
+{
+    return [[NSUbiquitousKeyValueStore defaultStore] performChangeAndSynchronizeWithFallback:change];
+}
+
+
 #pragma mark Public methods
 
 - (NSDictionary*)dictionaryForKeyWithFallback:(NSString*)key
@@ -44,12 +52,32 @@
 
 - (NSArray*)arrayForKeyWithFallback:(NSString*)key
 {
-    NSArray* dictionary = [self arrayForKey:key];
-    if (dictionary == nil) {
-        dictionary = [[NSUserDefaults standardUserDefaults] arrayForKey:key];
+    NSArray* array = [self arrayForKey:key];
+    if (array == nil) {
+        array = [[NSUserDefaults standardUserDefaults] arrayForKey:key];
     }
 
-    return dictionary;
+    return array;
+}
+
+- (NSString*)stringForKeyWithFallback:(NSString*)key
+{
+    NSString* string = [self stringForKey:key];
+    if (string == nil) {
+        string = [[NSUserDefaults standardUserDefaults] stringForKey:key];
+    }
+
+    return string;
+}
+
+- (id)objectForKeyWithFallback:(NSString*)key
+{
+    id object = [self objectForKey:key];
+    if (object == nil) {
+        object = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+    }
+
+    return object;
 }
 
 - (BOOL)performChangeAndSynchronizeWithFallback:(void (^)(id dataSource))change

@@ -24,10 +24,17 @@
 @interface NSUbiquitousKeyValueStore (BBExtensions)
 
 
+#pragma mark Public static methods
+
++ (BOOL)performChangeOnDefaultStoreAndSynchronizeWithFallback:(void (^)(id dataSource))change;
+
+
 #pragma mark Public methods
 
 - (NSDictionary*)dictionaryForKeyWithFallback:(NSString*)key;
 - (NSArray*)arrayForKeyWithFallback:(NSString*)key;
+- (NSString*)stringForKeyWithFallback:(NSString*)key;
+- (id)objectForKeyWithFallback:(NSString*)key;
 - (BOOL)performChangeAndSynchronizeWithFallback:(void (^)(id dataSource))change;
 
 @end
