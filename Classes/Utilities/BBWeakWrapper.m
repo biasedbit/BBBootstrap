@@ -31,6 +31,11 @@
 }
 
 
+#pragma mark Property synthesizers
+
+@synthesize object = _object;
+
+
 #pragma mark Creation
 
 - (id)init
@@ -60,6 +65,11 @@
 
 
 #pragma mark Public methods
+
+- (BOOL)isEmpty
+{
+    return _object == nil;
+}
 
 - (BOOL)isEqualToWrapper:(BBWeakWrapper*)wrapper
 {

@@ -30,7 +30,7 @@
 @implementation BBProfiler
 
 
-#pragma mark Public static methods
+#pragma mark Profiling
 
 + (uint64_t)profileBlock:(void (^)())block
 {
@@ -53,15 +53,18 @@
     return elapsedTimeNano;
 }
 
-+ (double)nanosToMilliseconds:(uint64_t)nanos
-{
-    return nanos / 1000000.0;
-}
-
 + (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block
 {
     uint64_t nanos = [self profileBlock:block];
     LogDebug(@"[PROFILER] Took %.2fms to execute section '%@'", [self nanosToMilliseconds:nanos], description);
+}
+
+
+#pragma mark Unit conversion
+
++ (double)nanosToMilliseconds:(uint64_t)nanos
+{
+    return nanos / 1000000.0;
 }
 
 @end

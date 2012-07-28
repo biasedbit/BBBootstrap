@@ -62,9 +62,9 @@ typedef void (^BBCountDownLatchBlock)();
 @interface BBCountDownLatch : NSObject
 
 
-///--------------------------
-/// @name Latch state/details
-///--------------------------
+///------------------------
+/// @name State information
+///------------------------
 
 /**
  Name of the latch.
@@ -96,8 +96,8 @@ typedef void (^BBCountDownLatchBlock)();
 /**
  Creates a new latch.
  
- @warning By using this method you are responsible for providing a GCD queue and releasing that queue **only after** this latch
- has been properly terminated (cancelled or released by count down).
+ @warning By using this method you are responsible for providing a GCD queue and releasing that queue **only after**
+ this latch has been properly terminated (cancelled or released by count down).
  
  @param name Name of the latch. Make sure this is a somewhat unique string.
  @param queue The CGD queue to use. This queue **MUST** have been created with `DISPATCH_QUEUE_SERIAL` option.
@@ -113,6 +113,10 @@ typedef void (^BBCountDownLatchBlock)();
  Creates a new latch that will create an internal GCD queue and manage its lifecycle.
  
  When the instance created with this method is deallocated, the underlying GCD queue will be released.
+ 
+ @param name Name of the latch. Make sure this is a somewhat unique string.
+ @param counter Number of count downs required to trigger the completion block.
+ @param block The completion block, to execute when counter count downs have been performed.
  
  @see initWithName:queue:counter:andCompletionBlock:
  */

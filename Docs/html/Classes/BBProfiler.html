@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -57,10 +59,16 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Profiling">Profiling</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Unit conversion">Unit conversion</a></span></li>
 	
 </ul></li>
 
@@ -114,6 +122,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Utility class to help profile code sections programmatically.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -121,27 +137,35 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Profiling" name="task_Profiling"></a>
+						<h3 class="subsubtitle task-title">Profiling</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/profileBlock:">+&nbsp;profileBlock:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/nanosToMilliseconds:">+&nbsp;nanosToMilliseconds:</a></code>
-		
+		<span class="tooltip"><p>Profile a code section wrapped in <code>block</code> in nanoseconds.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/profileSectionWithDescription:inMillisecondsWithBlock:">+&nbsp;profileSectionWithDescription:inMillisecondsWithBlock:</a></code>
+		<span class="tooltip"><p>Profile a code section wrapped in <code>block</code> and print the duration to the console in milliseconds.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Unit conversion" name="task_Unit conversion"></a>
+						<h3 class="subsubtitle task-title">Unit conversion</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/nanosToMilliseconds:">+&nbsp;nanosToMilliseconds:</a></code>
 		
 	</span>
 	
@@ -173,11 +197,101 @@
 	<h3 class="subsubtitle method-title">profileBlock:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Profile a code section wrapped in <code>block</code> in nanoseconds.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (uint64_t)profileBlock:(void ( ^ ) ( ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Block of code to profile.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Nanoseconds elapsed during the execution of <code>block</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBProfiler.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/profileSectionWithDescription:inMillisecondsWithBlock:" title="profileSectionWithDescription:inMillisecondsWithBlock:"></a>
 	<h3 class="subsubtitle method-title">profileSectionWithDescription:inMillisecondsWithBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Profile a code section wrapped in <code>block</code> and print the duration to the console in milliseconds.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)profileSectionWithDescription:(NSString *)<em>description</em> inMillisecondsWithBlock:(void ( ^ ) ( ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>description</em></dt>
+			<dd><p>Description of of block section, to be printed out to console.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Block of code to profile.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is a utility method that combines <a href="#//api/name/profileBlock:"><code>profileBlock:</code></a> and <a href="#//api/name/nanosToMilliseconds:"><code>nanosToMilliseconds:</code></a> and prints the output to the console
+using the <code>LogDebug()</code> macro.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBProfiler.h</code><br />
+	</div>				
 	
 	
 </div>

@@ -36,6 +36,7 @@
 
 #pragma mark Public methods
 
+- (BOOL)isEmpty;
 - (BOOL)isEqualToWrapper:(BBWeakWrapper*)wrapper;
 
 @end

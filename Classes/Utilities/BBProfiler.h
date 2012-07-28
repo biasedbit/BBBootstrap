@@ -21,13 +21,41 @@
 
 #pragma mark -
 
+/**
+ Utility class to help profile code sections programmatically.
+ */
 @interface BBProfiler : NSObject
 
 
-#pragma mark Public static methods
+///----------------
+/// @name Profiling
+///----------------
 
+/**
+ Profile a code section wrapped in `block` in nanoseconds.
+ 
+ @param block Block of code to profile.
+
+ @return Nanoseconds elapsed during the execution of `block`.
+ */
 + (uint64_t)profileBlock:(void (^)())block;
-+ (double)nanosToMilliseconds:(uint64_t)nanos;
+
+/**
+ Profile a code section wrapped in `block` and print the duration to the console in milliseconds.
+ 
+ This is a utility method that combines `profileBlock:` and `nanosToMilliseconds:` and prints the output to the console
+ using the `LogDebug()` macro.
+
+ @param description Description of of block section, to be printed out to console.
+ @param block Block of code to profile.
+ */
 + (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block;
+
+
+///----------------------
+/// @name Unit conversion
+///----------------------
+
++ (double)nanosToMilliseconds:(uint64_t)nanos;
 
 @end

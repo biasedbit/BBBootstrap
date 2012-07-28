@@ -44,7 +44,9 @@
 @interface BBCancellable : NSObject
 
 
-#pragma mark Public properties
+///------------------------
+/// @name State information
+///------------------------
 
 /**
  Name of the cancellable.
@@ -55,6 +57,13 @@
  If a BBCancellable instance is created using init instead, its name will be "anonymous".
  */
 @property(strong, nonatomic, readonly) NSString* name;
+
+/**
+ Check whether an instance has been cancelled.
+
+ @return `YES` if instance is in cancelled state, `NO` otherwise.
+ */
+- (BOOL)isCancelled;
 
 
 ///---------------
@@ -88,12 +97,5 @@
  @return `YES` if cancellation succeeded, `NO` if cancellation wasn't possible or instance was already cancelled.
  */
 - (BOOL)cancel;
-
-/**
- Check whether an instance has been cancelled.
-
- @return `YES` if instance is in cancelled state, `NO` otherwise.
- */
-- (BOOL)isCancelled;
 
 @end

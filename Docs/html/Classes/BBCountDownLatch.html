@@ -86,7 +86,7 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Latch state/details">Latch state/details</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_State information">State information</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating latches">Creating latches</a></span></li>
 	
@@ -207,8 +207,8 @@ countdown, no matter the order in which they call it or how long each of them ta
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						<a title="Latch state/details" name="task_Latch state/details"></a>
-						<h3 class="subsubtitle task-title">Latch state/details</h3>
+						<a title="State information" name="task_State information"></a>
+						<h3 class="subsubtitle task-title">State information</h3>
 
 						<ul class="task-list">
 							<li>
@@ -480,6 +480,26 @@ after the UIViewController where it is used.</p>
 	<div class="method-subsection method-declaration"><code>+ (BBCountDownLatch *)autoCleanupLatchWithName:(NSString *)<em>name</em> counter:(NSUInteger)<em>counter</em> andCompletionBlock:(BBCountDownLatchBlock)<em>block</em></code></div>
 	
 	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Name of the latch. Make sure this is a somewhat unique string.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>counter</em></dt>
+			<dd><p>Number of count downs required to trigger the completion block.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The completion block, to execute when <a href="#//api/name/counter">counter</a> count downs have been performed.</p></dd>
+		</dl>
+		
+	</div>
+	
 	
 	
 	
@@ -727,8 +747,8 @@ This is especially useful for debugging, to figure out which workers have (or ha
 	
 	<div class="method-subsection discussion-section">
 		<h4 class="method-subtitle">Discussion</h4>
-		<div class="warning"><p>By using this method you are responsible for providing a GCD <a href="#//api/name/queue">queue</a> and releasing that <a href="#//api/name/queue">queue</a> <strong>only after</strong> this latch
-has been properly terminated (<a href="#//api/name/cancelled">cancelled</a> or released by count down).</p></div>
+		<div class="warning"><p>By using this method you are responsible for providing a GCD <a href="#//api/name/queue">queue</a> and releasing that <a href="#//api/name/queue">queue</a> <strong>only after</strong>
+this latch has been properly terminated (<a href="#//api/name/cancelled">cancelled</a> or released by count down).</p></div>
 	</div>
 	
 	

@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -63,10 +65,16 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing observers">Managing observers</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Triggering notifications">Triggering notifications</a></span></li>
 	
 </ul></li>
 
@@ -126,6 +134,51 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Implementation of the observer pattern.</p>
+
+<p>Cocoa lacks proper support for the observer pattern implementation and notification center is hardly an elegant
+alternative.</p>
+
+<p>This class uses a GCD serial queue and block-friendly API to ensure atomicity.</p>
+
+<h2>Observers and weak references</h2>
+
+<p>While it is always a good policy to unregister an observer from the observable when he is about to be <code>dealloc</code>&rsquo;d,
+this class is safe-by-design by wrapping the observers in a weak reference holder and storing that weak reference.</p>
+
+<p>While this wrapper (an instance of <a href="../Classes/BBWeakWrapper.html"><code>BBWeakWrapper</code></a>) is strongly retained, the observer within is not (a <code>__weak</code>
+modifier is used). This may lead to an incorrect report of the number of observers being returned by <a href="#//api/name/observerCount"><code>observerCount</code></a>.</p>
+
+<h3>Automatic purging of &ldquo;dead&rdquo; observers</h3>
+
+<p>When a notification is triggered and the list of observers (actually, the list of observer weak reference wrappers) is
+traversed, all the empty weak references will be automatically purged.</p>
+
+<h2>Triggering notifications</h2>
+
+<p>Subclasses should use one of the three notification alternatives (<a href="#//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:"><code>notifyObserversAsynchronouslyInMainQueueWithBlock:</code></a>,
+<a href="#//api/name/notifyObserversWithBlock:"><code>notifyObserversWithBlock:</code></a> or <a href="#//api/name/notifyObserversInAsynchronousQueue:withBlock:"><code>notifyObserversInAsynchronousQueue:withBlock:</code></a>) to trigger notifications to the
+observers. The reason why the observer set is not exposed os precisely to prevent subclasses to directly access it.</p>
+
+<p>Typically, you&rsquo;ll want to use <a href="#//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:"><code>notifyObserversAsynchronouslyInMainQueueWithBlock:</code></a>. The other two are for very specific
+behavior and you should only use them if you know exactly what you&rsquo;re doing.</p>
+
+<h2>Subclassing notes</h2>
+
+<p>You should only override the <a href="#//api/name/addObserver:"><code>addObserver:</code></a> and <a href="#//api/name/removeObserver:"><code>removeObserver:</code></a> methods in this class to ensure type safety.</p>
+
+<p>Example:</p>
+
+<pre><code> - (void)addObserver:(SomeClass*)observer;
+ - (void)removeObserver:(SomeClass*)observer;
+</code></pre>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -133,49 +186,57 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Managing observers" name="task_Managing observers"></a>
+						<h3 class="subsubtitle task-title">Managing observers</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/addObserver:">&ndash;&nbsp;addObserver:</a></code>
-		
+		<span class="tooltip"><p>Registers an instance of any class as an observer.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/removeObserver:">&ndash;&nbsp;removeObserver:</a></code>
-		
+		<span class="tooltip"><p>Unregisters an observer.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/observerCount">&ndash;&nbsp;observerCount</a></code>
-		
+		<span class="tooltip"><p>The number of observers currently registered.</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Triggering notifications" name="task_Triggering notifications"></a>
+						<h3 class="subsubtitle task-title">Triggering notifications</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:">&ndash;&nbsp;notifyObserversAsynchronouslyInMainQueueWithBlock:</a></code>
-		
+		<span class="tooltip"><p>Perform <code>block</code> asynchronously on the main queue, passing each observer as input param.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/notifyObserversWithBlock:">&ndash;&nbsp;notifyObserversWithBlock:</a></code>
-		
+		<span class="tooltip"><p>Perform <code>block</code> on current thread, passing each observer as input param.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/notifyObserversInAsynchronousQueue:withBlock:">&ndash;&nbsp;notifyObserversInAsynchronousQueue:withBlock:</a></code>
-		
+		<span class="tooltip"><p>This method wraps the <code>block</code> execution in an asynchronous GCD queue call.</p></span>
 	</span>
 	
 	
@@ -201,11 +262,100 @@
 	<h3 class="subsubtitle method-title">addObserver:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Registers an instance of any class as an observer.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)addObserver:(id)<em>observer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>observer</em></dt>
+			<dd><p>Observer to register.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method keeps a weak reference to the observer. Keeping a weak reference means that the object must be strongly
+retained elsewhere. This is a design decision to ensure that instances that are not properly unregistered as observers
+are not kept in memory.</p>
+
+<p>Override this method in your subclasses and add a type to the <code>observer</code> param in order to ensure type safety.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:" title="notifyObserversAsynchronouslyInMainQueueWithBlock:"></a>
 	<h3 class="subsubtitle method-title">notifyObserversAsynchronouslyInMainQueueWithBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform <code>block</code> asynchronously on the main queue, passing each observer as input param.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)notifyObserversAsynchronouslyInMainQueueWithBlock:(void ( ^ ) ( id observer ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Code block that will be called for each live (i.e. non-nil weak reference) observer.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method is a shortcut for <a href="#//api/name/notifyObserversInAsynchronousQueue:withBlock:"><code>notifyObserversInAsynchronousQueue:withBlock:</code></a>, passing in <code>dispatch_get_main_queue()</code>
+as parameter for <code>queue</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -215,11 +365,119 @@
 	<h3 class="subsubtitle method-title">notifyObserversInAsynchronousQueue:withBlock:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>This method wraps the <code>block</code> execution in an asynchronous GCD queue call.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)notifyObserversInAsynchronousQueue:(dispatch_queue_t)<em>queue</em> withBlock:(void ( ^ ) ( id observer ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queue</em></dt>
+			<dd><p>The queue in which the asynchronous notification will be performed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Code block that will be called for each live (i.e. non-nil weak reference) observer.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>The queue passed as parameter <strong>should</strong> be created with <code>DISPATCH_QUEUE_CONCURRENT</code> option.</p>
+
+<pre><code> dispatch_async(queue, ^{
+     block(observer);
+ });
+</code></pre>
+
+<p>There is no need to protect the <code>block</code> against a <code>nil</code> observer as this method ensures that a temporary strong reference
+is created for the observer (remember the observers are kept as weak references).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/notifyObserversWithBlock:" title="notifyObserversWithBlock:"></a>
 	<h3 class="subsubtitle method-title">notifyObserversWithBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform <code>block</code> on current thread, passing each observer as input param.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)notifyObserversWithBlock:(void ( ^ ) ( id observer ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Code block that will be called for each live (i.e. non-nil weak reference) observer.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This version executes <code>block</code> on the current thread. Since observer iteration is serialized, this block should be
+CPU bound and should be as short as possible. For long running blocks, use the
+<a href="#//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:"><code>notifyObserversAsynchronouslyInMainQueueWithBlock:</code></a> or <a href="#//api/name/notifyObserversInAsynchronousQueue:withBlock:"><code>notifyObserversInAsynchronousQueue:withBlock:</code></a> versio</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/notifyObserversAsynchronouslyInMainQueueWithBlock:">&ndash; notifyObserversAsynchronouslyInMainQueueWithBlock:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -229,11 +487,91 @@
 	<h3 class="subsubtitle method-title">observerCount</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>The number of observers currently registered.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSUInteger)observerCount</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Number of observers currently registered.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This may not be accurate given that it returns the number of weak reference wrappers to observers, and some of them may
+no longer contain observers.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/removeObserver:" title="removeObserver:"></a>
 	<h3 class="subsubtitle method-title">removeObserver:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Unregisters an observer.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)removeObserver:(id)<em>observer</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>observer</em></dt>
+			<dd><p>Observer to unregister.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Override this method in your subclasses and add a type to the <code>observer</code> param in order to ensure type safety.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBObservable.h</code><br />
+	</div>				
 	
 	
 </div>
