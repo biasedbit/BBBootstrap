@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -55,10 +57,14 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Device capabilities">Device capabilities</a></span></li>
 	
 </ul></li>
 
@@ -107,6 +113,14 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>iPhone4S device identifier</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -114,21 +128,21 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Device capabilities" name="task_Device capabilities"></a>
 						
-						
-
+<h3 class="subsubtitle task-title">Device capabilities</h3>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/platform">&ndash;&nbsp;platform</a></code>
-		
+		<span class="tooltip"><p>Query the device for its <a href="#//api/name/platform">platform</a> identifier.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/hasRetinaDisplay">&ndash;&nbsp;hasRetinaDisplay</a></code>
-		
+		<span class="tooltip"><p>Test if the device has a retina display.</p></span>
 	</span>
 	
 	
@@ -154,11 +168,83 @@
 	<h3 class="subsubtitle method-title">hasRetinaDisplay</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Test if the device has a retina display.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)hasRetinaDisplay</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if the current device has a retina display, <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIDevice+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/platform" title="platform"></a>
 	<h3 class="subsubtitle method-title">platform</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Query the device for its <a href="#//api/name/platform">platform</a> identifier.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)platform</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>String identifying this <a href="#//api/name/platform">platform</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Platform identifiers should be compared against these constants:
+&ndash; <code>kBBiPhone3GS</code>
+&ndash; <code>kBBiPhone4</code>
+&ndash; <code>kBBiPhone4S</code></p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIDevice+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

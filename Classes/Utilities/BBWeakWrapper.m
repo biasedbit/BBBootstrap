@@ -55,9 +55,6 @@
     return self;
 }
 
-
-#pragma mark Public static methods
-
 + (id)wrapperForObject:(id)object
 {
     return [[BBWeakWrapper alloc] initWithObject:object];

@@ -62,6 +62,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Shortcuts">Shortcuts</a></span></li>
+	
 </ul></li>
 
 
@@ -118,28 +120,28 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Shortcuts" name="task_Shortcuts"></a>
 						
-						
-
+<h3 class="subsubtitle task-title">Shortcuts</h3>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/updateWithBlock:">&ndash;&nbsp;updateWithBlock:</a></code>
-		
+		<span class="tooltip"><p>Perform a block of updates between calls to <code>beginUpdates</code> and <code>endUpdates</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/insertRowAtIndexPath:withRowAnimation:">&ndash;&nbsp;insertRowAtIndexPath:withRowAnimation:</a></code>
-		
+		<span class="tooltip"><p>Shortcut to insert a single row at a given index path.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/deleteRowAtIndexPath:withRowAnimation:">&ndash;&nbsp;deleteRowAtIndexPath:withRowAnimation:</a></code>
-		
+		<span class="tooltip"><p>Shortcut to remove a single row from a given index path.</p></span>
 	</span>
 	
 	
@@ -165,6 +167,48 @@
 	<h3 class="subsubtitle method-title">deleteRowAtIndexPath:withRowAnimation:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut to remove a single row from a given index path.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)deleteRowAtIndexPath:(NSIndexPath *)<em>indexPath</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>indexPath</em></dt>
+			<dd><p><code>NSIndexPath</code> for the row to be removed.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animation</em></dt>
+			<dd><p>Animation to use when removing the row.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UITableView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -172,11 +216,90 @@
 	<h3 class="subsubtitle method-title">insertRowAtIndexPath:withRowAnimation:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut to insert a single row at a given index path.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)insertRowAtIndexPath:(NSIndexPath *)<em>indexPath</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>indexPath</em></dt>
+			<dd><p><code>NSIndexPath</code> where the row should be inserted.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>animation</em></dt>
+			<dd><p>Animation to use when inserting the row.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UITableView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/updateWithBlock:" title="updateWithBlock:"></a>
 	<h3 class="subsubtitle method-title">updateWithBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform a block of updates between calls to <code>beginUpdates</code> and <code>endUpdates</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)updateWithBlock:(void ( ^ ) ( ))<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>Block of code that should contain the updates to perform on the <code>UITableView</code></p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UITableView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

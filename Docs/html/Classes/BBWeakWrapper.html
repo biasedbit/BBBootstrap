@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -52,6 +54,8 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/initWithObject:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithObject:</option>
+	
 	<option value="//api/name/isEmpty">&nbsp;&nbsp;&nbsp;&nbsp;- isEmpty</option>
 	
 	<option value="//api/name/isEqualToWrapper:">&nbsp;&nbsp;&nbsp;&nbsp;- isEqualToWrapper:</option>
@@ -65,10 +69,18 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creation">Creation</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Querying for the wrapped object">Querying for the wrapped object</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Test wrapper equality">Test wrapper equality</a></span></li>
 	
 </ul></li>
 
@@ -93,6 +105,8 @@
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithObject:">initWithObject:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/isEmpty">isEmpty</a></span></li>
 	
@@ -132,6 +146,16 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Instance that holds a weak reference for another instance.</p>
+
+<p>You can use these to store weak references on arrays, dictionaries, sets, etc.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -139,35 +163,58 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Creation" name="task_Creation"></a>
+						<h3 class="subsubtitle task-title">Creation</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithObject:">&ndash;&nbsp;initWithObject:</a></code>
+		<span class="tooltip"><p>Create a new instance keeping a weak reference for the input <a href="#//api/name/object"><code>object</code></a>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/wrapperForObject:">+&nbsp;wrapperForObject:</a></code>
+		<span class="tooltip"><p>Create a new instance keeping a weak reference for the input <a href="#//api/name/object"><code>object</code></a>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
 						
 						
+						<a title="Querying for the wrapped object" name="task_Querying for the wrapped object"></a>
+						<h3 class="subsubtitle task-title">Querying for the wrapped object</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/object">&nbsp;&nbsp;object</a></code>
-		
+		<span class="tooltip"><p>Object wrapped by this instance.</p></span>
 	</span>
 	<span class="task-item-suffix">property</span>
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/wrapperForObject:">+&nbsp;wrapperForObject:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/isEmpty">&ndash;&nbsp;isEmpty</a></code>
-		
+		<span class="tooltip"><p>Query the wrapper to figure whether the weak reference is still valid (not <code>nil</code>).</p></span>
 	</span>
 	
 	
-</li><li>
+</li>
+						</ul>
+						
+						
+						<a title="Test wrapper equality" name="task_Test wrapper equality"></a>
+						<h3 class="subsubtitle task-title">Test wrapper equality</h3>
+
+						<ul class="task-list">
+							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/isEqualToWrapper:">&ndash;&nbsp;isEqualToWrapper:</a></code>
-		
+		<span class="tooltip"><p>Compare this instance against another <a href="BBWeakWrapper.html"><code>BBWeakWrapper</code></a>.</p></span>
 	</span>
 	
 	
@@ -189,6 +236,38 @@
 	<h3 class="subsubtitle method-title">object</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Object wrapped by this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (weak, nonatomic) id object</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This is a weak reference, which means that at any time it may become <code>nil</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBWeakWrapper.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -204,6 +283,48 @@
 	<h3 class="subsubtitle method-title">wrapperForObject:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new instance keeping a weak reference for the input <a href="#//api/name/object"><code>object</code></a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (id)wrapperForObject:(id)<em>object</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>Instance to wrap.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A newly initialized <a href="BBWeakWrapper.html"><code>BBWeakWrapper</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBWeakWrapper.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -215,8 +336,89 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/initWithObject:" title="initWithObject:"></a>
+	<h3 class="subsubtitle method-title">initWithObject:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a new instance keeping a weak reference for the input <a href="#//api/name/object"><code>object</code></a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithObject:(id)<em>object</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>object</em></dt>
+			<dd><p>Instance to wrap.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A newly initialized <a href="BBWeakWrapper.html"><code>BBWeakWrapper</code></a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBWeakWrapper.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/isEmpty" title="isEmpty"></a>
 	<h3 class="subsubtitle method-title">isEmpty</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Query the wrapper to figure whether the weak reference is still valid (not <code>nil</code>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEmpty</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if the weak reference no longer points to a an <a href="#//api/name/object">object</a> (i.e. <a href="#//api/name/object"><code>object</code></a> is <code>nil</code>), <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBWeakWrapper.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -224,6 +426,53 @@
 						<div class="section-method">
 	<a name="//api/name/isEqualToWrapper:" title="isEqualToWrapper:"></a>
 	<h3 class="subsubtitle method-title">isEqualToWrapper:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Compare this instance against another <a href="BBWeakWrapper.html"><code>BBWeakWrapper</code></a>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)isEqualToWrapper:(BBWeakWrapper *)<em>wrapper</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>wrapper</em></dt>
+			<dd><p><a href="BBWeakWrapper.html"><code>BBWeakWrapper</code></a> instance against which this one will be compared.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if wrappers are equal (i.e. wrapped <a href="#//api/name/object">object</a> hashes are the same), <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Comparison is based on the hash of the wrapped <a href="#//api/name/object">object</a> (which is stored when the wrapper is initially created).</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBWeakWrapper.h</code><br />
+	</div>				
 	
 	
 </div>

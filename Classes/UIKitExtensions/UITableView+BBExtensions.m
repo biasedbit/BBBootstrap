@@ -25,10 +25,10 @@
 
 #pragma mark -
 
-@implementation UITableView (RTExtensions)
+@implementation UITableView (BBExtensions)
 
 
-#pragma mark Public methods
+#pragma mark Shortcuts
 
 - (void)updateWithBlock:(void (^)())block;
 {

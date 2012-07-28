@@ -24,8 +24,16 @@
 @interface UIAlertView (BBExtensions)
 
 
-#pragma mark Public static methods
+///----------------
+/// @name Shortcuts
+///----------------
 
+/**
+ Display a `UIAlertView` with a single button ("Dismiss").
+ 
+ @param message Message text.
+ @param title Title text.
+ */
 + (void)alertWithMessage:(NSString*)message andTitle:(NSString*)title;
 
 @end

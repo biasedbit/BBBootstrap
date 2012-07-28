@@ -59,7 +59,9 @@
 	
 	<option value="//api/name/moveTo:">&nbsp;&nbsp;&nbsp;&nbsp;- moveTo:</option>
 	
-	<option value="//api/name/moveToFrame:withDuration:bounceAmount:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveToFrame:withDuration:bounceAmount:andBounceDuration:</option>
+	<option value="//api/name/moveVertically:withDuration:bounceAmount:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveVertically:withDuration:bounceAmount:andBounceDuration:</option>
+	
+	<option value="//api/name/moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:</option>
 	
 	<option value="//api/name/rectCenteredInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- rectCenteredInRect:</option>
 	
@@ -76,6 +78,10 @@
 
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Animation shortcuts">Animation shortcuts</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Positioning, location and dimensions">Positioning, location and dimensions</a></span></li>
 	
 </ul></li>
 
@@ -107,7 +113,9 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveTo:">moveTo:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveToFrame:withDuration:bounceAmount:andBounceDuration:">moveToFrame:withDuration:bounceAmount:andBounceDuration:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveVertically:withDuration:bounceAmount:andBounceDuration:">moveVertically:withDuration:bounceAmount:andBounceDuration:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:">moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rectCenteredInRect:">rectCenteredInRect:</a></span></li>
 	
@@ -149,70 +157,87 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Animation shortcuts" name="task_Animation shortcuts"></a>
+						<h3 class="subsubtitle task-title">Animation shortcuts</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/center:inRect:">+&nbsp;center:inRect:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/animate:withDuration:animations:">+&nbsp;animate:withDuration:animations:</a></code>
-		
+		<span class="tooltip"><p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/animate:withDuration:animations:completion:">+&nbsp;animate:withDuration:animations:completion:</a></code>
-		
+		<span class="tooltip"><p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/animate:withDuration:delay:options:animations:completion:">+&nbsp;animate:withDuration:delay:options:animations:completion:</a></code>
-		
+		<span class="tooltip"><p>Shortcut for [UIView animateWithDuration:delay:options:animations:completion:], optionally performing the changes in
+<code>animations</code> block if <code>animated</code> is set to <code>YES</code>.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Positioning, location and dimensions" name="task_Positioning, location and dimensions"></a>
+						<h3 class="subsubtitle task-title">Positioning, location and dimensions</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/center:inRect:">+&nbsp;center:inRect:</a></code>
+		<span class="tooltip"><p>Calculate the rectangle resulting of centering <code>rect</code> in <code>outerRect</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/centerInRect:">&ndash;&nbsp;centerInRect:</a></code>
-		
+		<span class="tooltip"><p>Center current view in <code>rect</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/rectCenteredInRect:">&ndash;&nbsp;rectCenteredInRect:</a></code>
-		
+		<span class="tooltip"><p>Calculate the result of centering the current view&rsquo;s frame in a given rectangle.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/move:">&ndash;&nbsp;move:</a></code>
-		
+		<span class="tooltip"><p>Move the current view a given instance.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/moveTo:">&ndash;&nbsp;moveTo:</a></code>
-		
+		<span class="tooltip"><p>Move the current view to a given point.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/moveToFrame:withDuration:bounceAmount:andBounceDuration:">&ndash;&nbsp;moveToFrame:withDuration:bounceAmount:andBounceDuration:</a></code>
-		
+		<code><a href="#//api/name/moveVertically:withDuration:bounceAmount:andBounceDuration:">&ndash;&nbsp;moveVertically:withDuration:bounceAmount:andBounceDuration:</a></code>
+		<span class="tooltip"><p>Performs a vertical movement on the current view, optionally performing a small bounce animation at the end.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:">&ndash;&nbsp;moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:</a></code>
+		<span class="tooltip"><p>Performs a vertical movement on the current view, positioning it at the target <code>y</code> coordinate, optionally performing a
+small bounce animation at the end.</p></span>
 	</span>
 	
 	
@@ -236,11 +261,83 @@
 	<h3 class="subsubtitle method-title">animate:withDuration:animations:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> animations:(void ( ^ ) ( ))<em>animations</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/animate:withDuration:delay:options:animations:completion:">+ animate:withDuration:delay:options:animations:completion:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/animate:withDuration:animations:completion:" title="animate:withDuration:animations:completion:"></a>
 	<h3 class="subsubtitle method-title">animate:withDuration:animations:completion:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> animations:(void ( ^ ) ( ))<em>animations</em> completion:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/animate:withDuration:delay:options:animations:completion:">+ animate:withDuration:delay:options:animations:completion:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -250,11 +347,101 @@
 	<h3 class="subsubtitle method-title">animate:withDuration:delay:options:animations:completion:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Shortcut for [UIView animateWithDuration:delay:options:animations:completion:], optionally performing the changes in
+<code>animations</code> block if <code>animated</code> is set to <code>YES</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> delay:(NSTimeInterval)<em>delay</em> options:(UIViewAnimationOptions)<em>options</em> animations:(void ( ^ ) ( ))<em>animations</em> completion:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Avoids the following common animation pattern:</p>
+
+<pre><code> if (animate) {
+     // Branch one
+     [UIView animateWithDuration:... animations:animationBlock completion:completionBlock];
+ } else {
+     // Branch two
+     changeBlock();
+     completionBlock(YES);
+ }
+</code></pre>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/center:inRect:" title="center:inRect:"></a>
 	<h3 class="subsubtitle method-title">center:inRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Calculate the rectangle resulting of centering <code>rect</code> in <code>outerRect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> inRect:(CGRect)<em>outerRect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle to center.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>outerRect</em></dt>
+			<dd><p>Outter rectangle. <code>rect</code> will be centered relatively to this rectangle.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <code>CGRect</code> containing the result of the operation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -272,11 +459,96 @@
 	<h3 class="subsubtitle method-title">centerInRect:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Center current view in <code>rect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)centerInRect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle relative to which the current view&rsquo;s frame should be centered.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method <strong>will change</strong> the current view&rsquo;s frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/move:" title="move:"></a>
 	<h3 class="subsubtitle method-title">move:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Move the current view a given instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)move:(CGSize)<em>movement</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>movement</em></dt>
+			<dd><p>Amount of movement in <code>x</code> and <code>y</code> coordinates.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method changes the view&rsquo;s <code>frame.origin</code> by adding the input <code>movement</code> to the current <code>frame.origin</code>. You may
+use negative values to move the view up/left or positive values to move it down/right.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -286,11 +558,181 @@
 	<h3 class="subsubtitle method-title">moveTo:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Move the current view to a given point.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)moveTo:(CGPoint)<em>point</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>point</em></dt>
+			<dd><p>Target point.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method changes the view&rsquo;s <code>frame.origin</code> property.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/moveToFrame:withDuration:bounceAmount:andBounceDuration:" title="moveToFrame:withDuration:bounceAmount:andBounceDuration:"></a>
-	<h3 class="subsubtitle method-title">moveToFrame:withDuration:bounceAmount:andBounceDuration:</h3>
+	<a name="//api/name/moveVertically:withDuration:bounceAmount:andBounceDuration:" title="moveVertically:withDuration:bounceAmount:andBounceDuration:"></a>
+	<h3 class="subsubtitle method-title">moveVertically:withDuration:bounceAmount:andBounceDuration:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs a vertical movement on the current view, optionally performing a small bounce animation at the end.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)moveVertically:(CGFloat)<em>verticalMovement</em> withDuration:(NSTimeInterval)<em>duration</em> bounceAmount:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>verticalMovement</em></dt>
+			<dd><p>Vertical displacement.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>duration</em></dt>
+			<dd><p>Total duration of the animation. Use <code>0</code> to avoid animation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bounce</em></dt>
+			<dd><p>Bounce displacement.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bounceDuration</em></dt>
+			<dd><p>Bounce animation duration.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If you&rsquo;re moving a frame from above and bounce is positive, it will appear as if the object bounced off of some
+surface. If you use a negative bounce, it will appear as if the object slightly passes the landing mark and then
+snaps back into place. Try variations on these for optimum results.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:" title="moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:"></a>
+	<h3 class="subsubtitle method-title">moveVerticallyTo:withDuration:bounceAmount:andBounceDuration:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs a vertical movement on the current view, positioning it at the target <code>y</code> coordinate, optionally performing a
+small bounce animation at the end.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)moveVerticallyTo:(CGFloat)<em>originY</em> withDuration:(NSTimeInterval)<em>duration</em> bounceAmount:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>originY</em></dt>
+			<dd><p>Target <code>y</code> coordinate for the frame.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>duration</em></dt>
+			<dd><p>Total duration of the animation. Use <code>0</code> to avoid animation.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bounce</em></dt>
+			<dd><p>Bounce displacement.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>bounceDuration</em></dt>
+			<dd><p>Bounce animation duration.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/moveVertically:withDuration:bounceAmount:andBounceDuration:">&ndash; moveVertically:withDuration:bounceAmount:andBounceDuration:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -298,6 +740,53 @@
 						<div class="section-method">
 	<a name="//api/name/rectCenteredInRect:" title="rectCenteredInRect:"></a>
 	<h3 class="subsubtitle method-title">rectCenteredInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Calculate the result of centering the current view&rsquo;s frame in a given rectangle.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (CGRect)rectCenteredInRect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle relative to which the current view&rsquo;s frame should be centered.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <code>CGRect</code> containing the result of the operation.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method does <strong>not</strong> modify the current view&rsquo;s frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

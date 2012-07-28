@@ -21,8 +21,11 @@
 
 #pragma mark - Constants
 
+/** iPhone3GS device identifier */
 extern NSString* const kBBiPhone3GS;
+/** iPhone4 device identifier */
 extern NSString* const kBBiPhone4;
+/** iPhone4S device identifier */
 extern NSString* const kBBiPhone4S;
 
 
@@ -31,10 +34,27 @@ extern NSString* const kBBiPhone4S;
 
 @interface UIDevice (BBExtensions)
 
+///--------------------------
+/// @name Device capabilities
+///--------------------------
 
-#pragma mark Public methods
+/**
+ Query the device for its platform identifier.
+ 
+ Platform identifiers should be compared against these constants:
+ - `kBBiPhone3GS`
+ - `kBBiPhone4`
+ - `kBBiPhone4S`
 
+ @return String identifying this platform.
+ */
 - (NSString*)platform;
+
+/**
+ Test if the device has a retina display.
+
+ @return `YES` if the current device has a retina display, `NO` otherwise.
+ */
 - (BOOL)hasRetinaDisplay;
 
 @end
