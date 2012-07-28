@@ -118,33 +118,58 @@
 - (void)moveTo:(CGPoint)point;
 
 /**
- Performs a vertical movement on the current view, optionally performing a small bounce animation at the end.
+ Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
+
+ @see moveTo:withDuration:bounce:andBounceDuration:
+ */
+- (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
+                bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+
+/**
+ Move the current view to the target `y`, optionally performing a small bounce animation at the end.
+
+ @see moveTo:withDuration:bounce:andBounceDuration:
+ */
+- (void)moveVerticallyTo:(CGFloat)targetY withDuration:(NSTimeInterval)duration
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+
+/**
+ Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
+
+ @see moveTo:withDuration:bounce:andBounceDuration:
+ */
+- (void)moveHorizontally:(CGFloat)horizontalMovement withDuration:(NSTimeInterval)duration
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+
+/**
+ Move the current view to the target `x` coordinate, optionally performing a small bounce animation at the end.
+
+ @see moveTo:withDuration:bounce:andBounceDuration:
+ */
+- (void)moveHorizontallyTo:(CGFloat)targetX withDuration:(NSTimeInterval)duration
+                    bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+
+/**
+ Move the current view, optionally performing a small bounce animation at the end.
  
+ @see moveTo:withDuration:bounce:andBounceDuration:
+ */
+- (void)move:(CGSize)movement withDuration:(NSTimeInterval)duration
+      bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+
+/**
+ Moves the current view to target point, optionally performing a small bounce animation at the end.
+
  If you're moving a frame from above and bounce is positive, it will appear as if the object bounced off of some
  surface. If you use a negative bounce, it will appear as if the object slightly passes the landing mark and then
  snaps back into place. Try variations on these for optimum results.
- 
- @param verticalMovement Vertical displacement.
+
+ @param target Target point, where the view's origin will be after the animation ends.
  @param duration Total duration of the animation. Use `0` to avoid animation.
  @param bounce Bounce displacement.
  @param bounceDuration Bounce animation duration.
  */
-- (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
-         bounceAmount:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
-
-/**
- Performs a vertical movement on the current view, positioning it at the target `y` coordinate, optionally performing a
- small bounce animation at the end.
-
-
- @param originY Target `y` coordinate for the frame.
- @param duration Total duration of the animation. Use `0` to avoid animation.
- @param bounce Bounce displacement.
- @param bounceDuration Bounce animation duration.
- 
- @see moveVertically:withDuration:bounceAmount:andBounceDuration:
- */
-- (void)moveVerticallyTo:(CGFloat)originY withDuration:(NSTimeInterval)duration
-          bounceAmount:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+- (void)moveTo:(CGPoint)target withDuration:(NSTimeInterval)duration
+        bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
 
 @end

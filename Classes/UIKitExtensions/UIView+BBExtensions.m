@@ -107,13 +107,62 @@
 }
 
 - (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
-       bounceAmount:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+       bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+{
+    CGSize targetMovement = CGSizeMake(0, verticalMovement);
+    CGSize targetBounce = CGSizeMake(0, bounce);
+
+    [self move:targetMovement withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+}
+
+- (void)moveVerticallyTo:(CGFloat)targetY withDuration:(NSTimeInterval)duration
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+{
+    CGPoint target = self.frame.origin;
+    target.y = targetY;
+
+    CGSize targetBounce = CGSizeMake(0, bounce);
+
+    [self moveTo:target withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+}
+
+- (void)moveHorizontally:(CGFloat)horizontalMovement withDuration:(NSTimeInterval)duration
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+{
+    CGSize targetMovement = CGSizeMake(horizontalMovement, 0);
+    CGSize targetBounce = CGSizeMake(bounce, 0);
+
+    [self move:targetMovement withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+}
+
+- (void)moveHorizontallyTo:(CGFloat)targetX withDuration:(NSTimeInterval)duration
+                    bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+{
+    CGPoint target = self.frame.origin;
+    target.x = targetX;
+
+    CGSize targetBounce = CGSizeMake(bounce, 0);
+
+    [self moveTo:target withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+}
+
+- (void)move:(CGSize)movement withDuration:(NSTimeInterval)duration
+      bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+{
+    CGPoint currentOrigin = self.frame.origin;
+    CGPoint target = CGPointMake(currentOrigin.x + movement.width, currentOrigin.y + movement.height);
+
+    [self moveTo:target withDuration:duration bounce:bounce andBounceDuration:bounceDuration];
+}
+
+- (void)moveTo:(CGPoint)target withDuration:(NSTimeInterval)duration
+        bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
 {
     CGRect targetFrame = self.frame;
-    targetFrame.origin.y += verticalMovement;
+    targetFrame.origin = target;
 
     CGRect frameWithBounce = targetFrame;
-    frameWithBounce.origin.y += bounce;
+    frameWithBounce.origin = CGPointMake(target.x + bounce.width, target.y + bounce.height);
 
     [UIView animateWithDuration:duration delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^{
         self.frame = frameWithBounce;
@@ -126,13 +175,6 @@
             self.frame = targetFrame;
         } completion:nil];
     }];
-}
-
-- (void)moveVerticallyTo:(CGFloat)originY withDuration:(NSTimeInterval)duration
-            bounceAmount:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
-{
-    CGFloat verticalDelta = originY - self.frame.origin.y;
-    [self moveVertically:verticalDelta withDuration:duration bounceAmount:bounce andBounceDuration:bounceDuration];
 }
 
 @end
