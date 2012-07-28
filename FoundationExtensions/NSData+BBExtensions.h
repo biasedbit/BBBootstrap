@@ -31,6 +31,8 @@
 
 #pragma mark Public methods
 
+- (NSString*)sha1;
+- (NSString*)md5;
 - (NSString*)base64EncodedString;
 
 @end

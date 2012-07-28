@@ -21,6 +21,9 @@
 
 #import "NSData+BBExtensions.h"
 
+#import <CommonCrypto/CommonDigest.h>
+#import <CommonCrypto/CommonHMAC.h>
+
 
 
 #pragma mark - Constants
@@ -143,6 +146,33 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 
 
 #pragma mark Public methods
+
+
+- (NSString*)sha1
+{
+    unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1([self bytes], (CC_LONG)[self length], digest);
+    NSMutableString* hash = [NSMutableString string];
+
+    for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02X", digest[i]];
+    }
+
+    return [hash lowercaseString];
+}
+
+- (NSString*)md5
+{
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_MD5([self bytes], (CC_LONG)[self length], digest);
+    NSMutableString* hash = [NSMutableString string];
+
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02X", digest[i]];
+    }
+
+    return [hash lowercaseString];
+}
 
 /*
  Ported from PHP Core, originally written by Jim Winstead <jimw@php.net>, under version 3.01 of the PHP license

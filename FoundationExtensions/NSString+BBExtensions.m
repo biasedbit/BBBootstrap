@@ -116,14 +116,14 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 - (NSString*)md5
 {
-    const char* cStr = [self UTF8String];
-    unsigned char result[16];
-    CC_LONG len = (CC_LONG)strlen(cStr);
-    CC_MD5(cStr, len, result );
+    const char* str = [self UTF8String];
+    unsigned char digest[CC_MD5_DIGEST_LENGTH];
+    CC_LONG len = (CC_LONG)strlen(str);
+    CC_MD5(str, len, digest);
     NSMutableString* hash = [NSMutableString string];
 
-    for (int i = 0; i < 16; i++) {
-        [hash appendFormat:@"%02X", result[i]];
+    for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
+        [hash appendFormat:@"%02X", digest[i]];
     }
 
     return [hash lowercaseString];
