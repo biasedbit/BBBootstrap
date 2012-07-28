@@ -27,7 +27,7 @@
 
 // You can define your own kBBFallbackAppVersion on the Prefix header, before importing BBGlobals.h
 #ifndef kBBFallbackAppVersion
-    #define kBBFallbackAppVersion @"1.0.0";
+    #define kBBFallbackAppVersion @"1.0.0"
 #endif
 
 

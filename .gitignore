@@ -13,3 +13,5 @@ build/*
 xcuserdata
 profile
 *.moved-aside
+Docs/docset
+Docs/publish

@@ -21,7 +21,37 @@
 
 #pragma mark - Utility functions
 
+/**
+ Grabs the app's current version from the main bundle.
+ 
+ In the highly unlikely event that it fails, fallback reads value from a constant named `kBBFallbackAppVersion`.
+ If you wish to override the value in this constant (`1.0.0`), make sure you define it on your project's prefix file.
+ 
+ @return Application version as defined in the main bundle.
+ */
 extern NSString* BBAppVersion(void);
+
+/**
+ Creates a unique string.
+
+ @return Unique string
+ */
 extern NSString* BBGetUUID(void);
+
+/**
+ Converts an input value in bytes into a human readable string.
+
+ @param sizeInBytes value in bytes to convert to human readable string.
+
+ @return Human readable string, like 32.1MB
+ */
 extern NSString* BBPrettySize(double sizeInBytes);
+
+/**
+ Converts an input value in bytes per second into a human readable string.
+
+ @param sizeInBytes value in bytes to convert to human readable string.
+
+ @return Human readable string, like 32.1MB/s
+ */
 extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);

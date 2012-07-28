@@ -1,0 +1,907 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>BBCountDownLatch Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 737)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">BBBootstrap </a></h1>
+				<a id="developerHome" href="../index.html">BiasedBit</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">BBCountDownLatch Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	<option value="overview">Overview</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/cancelled">&nbsp;&nbsp;&nbsp;&nbsp;cancelled</option>
+	
+	<option value="//api/name/counter">&nbsp;&nbsp;&nbsp;&nbsp;counter</option>
+	
+	<option value="//api/name/name">&nbsp;&nbsp;&nbsp;&nbsp;name</option>
+	
+	<option value="//api/name/queue">&nbsp;&nbsp;&nbsp;&nbsp;queue</option>
+	
+	
+	
+	
+	<option value="class_methods">Class Methods</option>
+	
+	<option value="//api/name/autoCleanupLatchWithName:counter:andCompletionBlock:">&nbsp;&nbsp;&nbsp;&nbsp;+ autoCleanupLatchWithName:counter:andCompletionBlock:</option>
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/cancel">&nbsp;&nbsp;&nbsp;&nbsp;- cancel</option>
+	
+	<option value="//api/name/countDown">&nbsp;&nbsp;&nbsp;&nbsp;- countDown</option>
+	
+	<option value="//api/name/countDownWithCallerId:">&nbsp;&nbsp;&nbsp;&nbsp;- countDownWithCallerId:</option>
+	
+	<option value="//api/name/initWithName:queue:counter:andCompletionBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:queue:counter:andCompletionBlock:</option>
+	
+	<option value="//api/name/resetRequestCounter:">&nbsp;&nbsp;&nbsp;&nbsp;- resetRequestCounter:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Latch state/details">Latch state/details</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Creating latches">Creating latches</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Managing state">Managing state</a></span></li>
+	
+</ul></li>
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancelled">cancelled</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/counter">counter</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/name">name</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queue">queue</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/autoCleanupLatchWithName:counter:andCompletionBlock:">autoCleanupLatchWithName:counter:andCompletionBlock:</a></span></li>
+	
+</ul></li>
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/cancel">cancel</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countDown">countDown</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/countDownWithCallerId:">countDownWithCallerId:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:queue:counter:andCompletionBlock:">initWithName:queue:counter:andCompletionBlock:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/resetRequestCounter:">resetRequestCounter:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="BBCountDownLatch Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">BBCountDownLatch Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value">NSObject</td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">BBCountDownLatch.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>A synchronization aid that allows one or more threads to wait until a set of operations being performed in other
+threads completes.</p>
+
+<p>This class was largely inspired by
+<a href="http://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CountDownLatch.html">Java&rsquo;s CountDownLatch</a>,
+built using GCD and a block-friendly API.</p>
+
+<p>It is an extremely useful class when you have multiple things happening at the same time and you need to make sure a
+piece of code doesn&rsquo;t run until all of them are finished. It can either be waiting for multiple worker threads to
+finish off some parallel computation or multiple UI animations that have arbitrary durations and need to properly
+finish before starting some other animation (synchronized chaining).</p>
+
+<h2>Using a count down latch</h2>
+
+<pre><code> BBCountDownLatch* latch = [BBCountDownLatch autoCleanupLatchWithName:@"test" counter:2 andCompletionBlock:^{
+     NSLog(@"Released!");
+ }];
+
+ // On worker thread #1
+ [latch countDownWithCalledId:@"worker #1"];
+
+ // On worker thread #2
+ [latch countDownWithCalledId:@"worker #2"];
+</code></pre>
+
+<p>The above code will always result in a log statement being printed out to the console after both workers perform the
+countdown, no matter the order in which they call it or how long each of them takes.</p>
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						<a title="Latch state/details" name="task_Latch state/details"></a>
+						<h3 class="subsubtitle task-title">Latch state/details</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/name">&nbsp;&nbsp;name</a></code>
+		<span class="tooltip"><p>Name of the latch.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/queue">&nbsp;&nbsp;queue</a></code>
+		<span class="tooltip"><p>GCD <a href="#//api/name/queue">queue</a> used by the instance</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/counter">&nbsp;&nbsp;counter</a></code>
+		<span class="tooltip"><p>Number of count downs required to trigger the completion block</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancelled">&nbsp;&nbsp;cancelled</a></code>
+		<span class="tooltip"><p>Cancel flag for this instance.</p></span>
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li>
+						</ul>
+						
+						
+						<a title="Creating latches" name="task_Creating latches"></a>
+						<h3 class="subsubtitle task-title">Creating latches</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/initWithName:queue:counter:andCompletionBlock:">&ndash;&nbsp;initWithName:queue:counter:andCompletionBlock:</a></code>
+		<span class="tooltip"><p>Creates a new latch.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/autoCleanupLatchWithName:counter:andCompletionBlock:">+&nbsp;autoCleanupLatchWithName:counter:andCompletionBlock:</a></code>
+		<span class="tooltip"><p>Creates a new latch that will create an internal GCD <a href="#//api/name/queue">queue</a> and manage its lifecycle.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Managing state" name="task_Managing state"></a>
+						<h3 class="subsubtitle task-title">Managing state</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/cancel">&ndash;&nbsp;cancel</a></code>
+		<span class="tooltip"><p>Cancel a latch and prevent the execution of the completion block.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countDown">&ndash;&nbsp;countDown</a></code>
+		<span class="tooltip"><p>Perform an anonymous count down.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/countDownWithCallerId:">&ndash;&nbsp;countDownWithCallerId:</a></code>
+		<span class="tooltip"><p>Perform a named count down.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/resetRequestCounter:">&ndash;&nbsp;resetRequestCounter:</a></code>
+		<span class="tooltip"><p>Change the number of calls required to release the latch and call the completion block.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancelled" title="cancelled"></a>
+	<h3 class="subsubtitle method-title">cancelled</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel flag for this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic, readonly) BOOL cancelled</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If a latch has been <a href="#//api/name/cancelled">cancelled</a> by calling <a href="#//api/name/cancel">cancel</a>, this will return <code>YES</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/counter" title="counter"></a>
+	<h3 class="subsubtitle method-title">counter</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Number of count downs required to trigger the completion block</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic, readonly) NSUInteger counter</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/name" title="name"></a>
+	<h3 class="subsubtitle method-title">name</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Name of the latch.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (strong, nonatomic, readonly) NSString *name</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>For debugging purposes (and we all know how hard multithreaded debugging is…) no two latch that coexist at the same
+time should share the same <a href="#//api/name/name">name</a>. This doesn&rsquo;t need to be absolutely unique but a good policy is to <a href="#//api/name/name">name</a> this latch
+after the UIViewController where it is used.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/queue" title="queue"></a>
+	<h3 class="subsubtitle method-title">queue</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>GCD <a href="#//api/name/queue">queue</a> used by the instance</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>@property (assign, nonatomic, readonly) dispatch_queue_t queue</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Class Methods" name="class_methods"></a>
+						<h2 class="subtitle subtitle-methods">Class Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/autoCleanupLatchWithName:counter:andCompletionBlock:" title="autoCleanupLatchWithName:counter:andCompletionBlock:"></a>
+	<h3 class="subsubtitle method-title">autoCleanupLatchWithName:counter:andCompletionBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new latch that will create an internal GCD <a href="#//api/name/queue">queue</a> and manage its lifecycle.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BBCountDownLatch *)autoCleanupLatchWithName:(NSString *)<em>name</em> counter:(NSUInteger)<em>counter</em> andCompletionBlock:(BBCountDownLatchBlock)<em>block</em></code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>When the instance created with this method is deallocated, the underlying GCD <a href="#//api/name/queue">queue</a> will be released.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/initWithName:queue:counter:andCompletionBlock:">&ndash; initWithName:queue:counter:andCompletionBlock:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/cancel" title="cancel"></a>
+	<h3 class="subsubtitle method-title">cancel</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Cancel a latch and prevent the execution of the completion block.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)cancel</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if latch switched to <a href="#//api/name/cancelled">cancelled</a> state, <code>NO</code> otherwise (already <a href="#//api/name/cancelled">cancelled</a>).</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Calling this method prior to the completion block trigger will cause the completion block to never be called.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countDown" title="countDown"></a>
+	<h3 class="subsubtitle method-title">countDown</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform an anonymous count down.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)countDown</code></div>
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Produces the same side effects as calling <a href="#//api/name/countDownWithCallerId:">countDownWithCallerId:</a> passing &ldquo;anonymous&rdquo; as caller id.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/countDownWithCallerId:">&ndash; countDownWithCallerId:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/countDownWithCallerId:" title="countDownWithCallerId:"></a>
+	<h3 class="subsubtitle method-title">countDownWithCallerId:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Perform a named count down.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)countDownWithCallerId:(NSString *)<em>callerId</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>callerId</em></dt>
+			<dd><p>Identifier for the worker that triggered a count down.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if count down was successful, <code>NO</code> if completion block was already triggered or latch was <a href="#//api/name/cancelled">cancelled</a>.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>When <a href="#//api/name/counter">counter</a> count downs are performed, the completion block passed to the instance during creation is executed <strong>on
+the main <a href="#//api/name/queue">queue</a></strong>.</p>
+
+<p>This execution is thread safe and serialized, i.e. a single thread will be able to perform the logic in this method at
+once. This guarantees that exactly <a href="#//api/name/counter">counter</a> count downs are required to trigger the completion block.</p>
+
+<p>If logging macros are set and enabled, passing a <code>callerId</code> when performing a count down will log the id of the caller.
+This is especially useful for debugging, to figure out which workers have (or have not) performed the count down.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/initWithName:queue:counter:andCompletionBlock:" title="initWithName:queue:counter:andCompletionBlock:"></a>
+	<h3 class="subsubtitle method-title">initWithName:queue:counter:andCompletionBlock:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Creates a new latch.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> queue:(dispatch_queue_t)<em>queue</em> counter:(NSUInteger)<em>counter</em> andCompletionBlock:(BBCountDownLatchBlock)<em>block</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>name</em></dt>
+			<dd><p>Name of the latch. Make sure this is a somewhat unique string.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>queue</em></dt>
+			<dd><p>The CGD <a href="#//api/name/queue">queue</a> to use. This <a href="#//api/name/queue">queue</a> <strong>MUST</strong> have been created with <code>DISPATCH_QUEUE_SERIAL</code> option.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>counter</em></dt>
+			<dd><p>Number of count downs required to trigger the completion block.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>block</em></dt>
+			<dd><p>The completion block, to execute when <a href="#//api/name/counter">counter</a> count downs have been performed.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A newly initialized <a href="BBCountDownLatch.html"><code>BBCountDownLatch</code></a></p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<div class="warning"><p>By using this method you are responsible for providing a GCD <a href="#//api/name/queue">queue</a> and releasing that <a href="#//api/name/queue">queue</a> <strong>only after</strong> this latch
+has been properly terminated (<a href="#//api/name/cancelled">cancelled</a> or released by count down).</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/resetRequestCounter:" title="resetRequestCounter:"></a>
+	<h3 class="subsubtitle method-title">resetRequestCounter:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Change the number of calls required to release the latch and call the completion block.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)resetRequestCounter:(NSUInteger)<em>newCounterValue</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>newCounterValue</em></dt>
+			<dd><p>Number of count downs required to trigger the completion block, will override value of <a href="#//api/name/counter">counter</a>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>Useful if the number of block executions is not known at the time of creation of the latch, such as when you need to
+pass the latch to an arbitrary number of workers.</p><div class="warning"><p>Caution, here be dragons.</p>
+
+<p>Resetting a latch after operations with it have already begun will likely lead to
+inconsistent behavior, causing the block to be released earlier than expected or not released at all! Make sure you
+<strong>know exactly what you&rsquo;re doing</strong> when calling this method.</p></div>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">BBCountDownLatch.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-07-28)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 737)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+		</script>
+	</body>
+</html>

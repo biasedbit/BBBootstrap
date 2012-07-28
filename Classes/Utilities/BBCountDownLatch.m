@@ -40,10 +40,21 @@
 @synthesize cancelled = _cancelled;
 
 
-#pragma mark Creation
+#pragma mark Destruction
+
+- (void)dealloc
+{
+    if (_releaseQueueWhenDone && (_queue != NULL)) {
+        // If we were created with autoCleanup...
+        dispatch_release(_queue);
+    }
+}
+
+
+#pragma mark Creating latches
 
 - (id)initWithName:(NSString*)name queue:(dispatch_queue_t)queue counter:(NSUInteger)counter
-          andBlock:(BBCountDownLatchBlock)block
+          andCompletionBlock:(BBCountDownLatchBlock)block
 {
     self = [super init];
     if (self != nil) {
@@ -57,49 +68,21 @@
     return self;
 }
 
-
-#pragma mark Destruction
-
-- (void)dealloc
-{
-    if (_releaseQueueWhenDone && (_queue != NULL)) {
-        // If we were created with autoCleanup...
-        dispatch_release(_queue);
-    }
-}
-
-
-#pragma mark Public static methods
-
-+ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter andBlock:(BBCountDownLatchBlock)block
-{
-    static dispatch_queue_t queue;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        queue = dispatch_queue_create([@"com.biasedbit.DefaultCDLQueue" UTF8String], DISPATCH_QUEUE_SERIAL);
-    });
-
-    BBCountDownLatch* latch = [[BBCountDownLatch alloc]
-                               initWithName:name queue:queue counter:counter andBlock:block];
-
-    return latch;
-}
-
 + (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
-                                     andBlock:(BBCountDownLatchBlock)block
+                                     andCompletionBlock:(BBCountDownLatchBlock)block
 {
-    NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.%@", name];
+    NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.CDLQueue-%@", name];
     dispatch_queue_t queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
 
     BBCountDownLatch* latch = [[BBCountDownLatch alloc]
-                               initWithName:name queue:queue counter:counter andBlock:block];
+                               initWithName:name queue:queue counter:counter andCompletionBlock:block];
     [latch releaseQueueWhenDone];
 
     return latch;
 }
 
 
-#pragma mark Public methods
+#pragma mark Managing state
 
 - (BOOL)cancel
 {
@@ -112,12 +95,12 @@
     return YES;
 }
 
-- (BOOL)executeBlock
+- (BOOL)countDown
 {
-    return [self executeBlockWithCallerId:@"anonymous"];
+    return [self countDownWithCallerId:@"anonymous"];
 }
 
-- (BOOL)executeBlockWithCallerId:(NSString*)callerId
+- (BOOL)countDownWithCallerId:(NSString*)callerId
 {
     __block BOOL output;
     dispatch_sync(_queue, ^{
@@ -138,7 +121,7 @@
         _counter -= 1;
         if (_counter == 0) {
             LogTrace(@"[LATCH-%@] Triggered and released by '%@'.", _name, callerId);
-            _block();
+            dispatch_async(dispatch_get_main_queue(), _block);
         } else {
             LogTrace(@"[LATCH-%@] Triggered by '%@'; current count: %d.", _name, callerId, _counter);
         }
@@ -148,7 +131,6 @@
     return output;
 }
 
-// Here be dragons; handle with care!
 - (void)resetRequestCounter:(NSUInteger)newCounterValue
 {
     _counter = newCounterValue;
