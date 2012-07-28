@@ -71,6 +71,10 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Writing with fallback to local user defaults">Writing with fallback to local user defaults</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Reading with fallback to user defaults">Reading with fallback to user defaults</a></span></li>
+	
 </ul></li>
 
 
@@ -137,49 +141,58 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Writing with fallback to local user defaults" name="task_Writing with fallback to local user defaults"></a>
+						<h3 class="subsubtitle task-title">Writing with fallback to local user defaults</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performChangeOnDefaultStoreAndSynchronizeWithFallback:">+&nbsp;performChangeOnDefaultStoreAndSynchronizeWithFallback:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dictionaryForKeyWithFallback:">&ndash;&nbsp;dictionaryForKeyWithFallback:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/arrayForKeyWithFallback:">&ndash;&nbsp;arrayForKeyWithFallback:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/stringForKeyWithFallback:">&ndash;&nbsp;stringForKeyWithFallback:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/objectForKeyWithFallback:">&ndash;&nbsp;objectForKeyWithFallback:</a></code>
-		
+		<span class="tooltip"><p>Performs changes in <code>change</code> block and makes a call to <code>synchronize</code> after the block completes, using the default
+<code>NSUbiquitousKeyValueStore</code>.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/performChangeAndSynchronizeWithFallback:">&ndash;&nbsp;performChangeAndSynchronizeWithFallback:</a></code>
-		
+		<span class="tooltip"><p>Performs changes in <code>change</code> block and makes a call to <code>synchronize</code> after the block completes.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Reading with fallback to user defaults" name="task_Reading with fallback to user defaults"></a>
+						<h3 class="subsubtitle task-title">Reading with fallback to user defaults</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/dictionaryForKeyWithFallback:">&ndash;&nbsp;dictionaryForKeyWithFallback:</a></code>
+		<span class="tooltip"><p>Retrieve a dictionary from iCloud (if available) or from user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/arrayForKeyWithFallback:">&ndash;&nbsp;arrayForKeyWithFallback:</a></code>
+		<span class="tooltip"><p>Retrieve an array from iCloud (if available) or from user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/stringForKeyWithFallback:">&ndash;&nbsp;stringForKeyWithFallback:</a></code>
+		<span class="tooltip"><p>Retrieve a string from iCloud (if available) or from user defaults.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/objectForKeyWithFallback:">&ndash;&nbsp;objectForKeyWithFallback:</a></code>
+		<span class="tooltip"><p>Retrieve an object from iCloud (if available) or from user defaults.</p></span>
 	</span>
 	
 	
@@ -203,6 +216,59 @@
 	<h3 class="subsubtitle method-title">performChangeOnDefaultStoreAndSynchronizeWithFallback:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs changes in <code>change</code> block and makes a call to <code>synchronize</code> after the block completes, using the default
+<code>NSUbiquitousKeyValueStore</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (BOOL)performChangeOnDefaultStoreAndSynchronizeWithFallback:(void ( ^ ) ( id dataSource ))<em>change</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>change</em></dt>
+			<dd><p>Block of changes to perform. This block receives <code>dataSource</code> as input parameter, which will be either
+<code>[NSUbiquitousKeyValueStore defaultStore]</code> or <code>[NSUserDefaults standardUserDefaults]</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if change was successfully synchronized either to iCloud or local settings, <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection see-also-section">
+		<h4 class="method-subtitle">See Also</h4>
+		<ul>
+			
+			<li><code><p><a href="#//api/name/performChangeAndSynchronizeWithFallback:">&ndash; performChangeAndSynchronizeWithFallback:</a></p></code></li>
+			
+		</ul>
+	</div>
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -218,11 +284,95 @@
 	<h3 class="subsubtitle method-title">arrayForKeyWithFallback:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve an array from iCloud (if available) or from user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSArray *)arrayForKeyWithFallback:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key for the object to read.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>NSDictionary</code> for input <code>key</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/dictionaryForKeyWithFallback:" title="dictionaryForKeyWithFallback:"></a>
 	<h3 class="subsubtitle method-title">dictionaryForKeyWithFallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve a dictionary from iCloud (if available) or from user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSDictionary *)dictionaryForKeyWithFallback:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key for the object to read.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>NSDictionary</code> for input <code>key</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -232,6 +382,48 @@
 	<h3 class="subsubtitle method-title">objectForKeyWithFallback:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve an object from iCloud (if available) or from user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (id)objectForKeyWithFallback:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key for the object to read.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>object for input <code>key</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -239,11 +431,108 @@
 	<h3 class="subsubtitle method-title">performChangeAndSynchronizeWithFallback:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Performs changes in <code>change</code> block and makes a call to <code>synchronize</code> after the block completes.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)performChangeAndSynchronizeWithFallback:(void ( ^ ) ( id dataSource ))<em>change</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>change</em></dt>
+			<dd><p>Block of changes to perform. This block receives <code>dataSource</code> as input parameter, which will be either
+this instance or <code>[NSUserDefaults standardUserDefaults]</code>.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if change was successfully synchronized either to iCloud or local settings, <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>If iCloud is not available (i.e. not possible to write values to the <code>NSUbiquitousKeyValueStore</code>),</p>
+
+<p>Example:</p>
+
+<p>[NSUbiquitousKeyValueStore performChangeOnDefaultStoreAndSynchronizeWithFallback:^(id dataSource) {
+[dataSource setObject:objectOne forKey:keyOne];
+[dataSource setObject:objectTwo forKey:keyTwo];
+}];</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/stringForKeyWithFallback:" title="stringForKeyWithFallback:"></a>
 	<h3 class="subsubtitle method-title">stringForKeyWithFallback:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Retrieve a string from iCloud (if available) or from user defaults.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)stringForKeyWithFallback:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key for the object to read.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>NSString</code> for input <code>key</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUbiquitousKeyValueStore+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

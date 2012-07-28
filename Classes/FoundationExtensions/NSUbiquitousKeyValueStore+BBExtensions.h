@@ -24,17 +24,81 @@
 @interface NSUbiquitousKeyValueStore (BBExtensions)
 
 
-#pragma mark Public static methods
+///---------------------------------------------------
+/// @name Writing with fallback to local user defaults
+///---------------------------------------------------
 
+/**
+ Performs changes in `change` block and makes a call to `synchronize` after the block completes, using the default
+ `NSUbiquitousKeyValueStore`.
+
+ @param change Block of changes to perform. This block receives `dataSource` as input parameter, which will be either
+ `[NSUbiquitousKeyValueStore defaultStore]` or `[NSUserDefaults standardUserDefaults]`.
+
+ @return `YES` if change was successfully synchronized either to iCloud or local settings, `NO` otherwise.
+ 
+ @see performChangeAndSynchronizeWithFallback:
+ */
 + (BOOL)performChangeOnDefaultStoreAndSynchronizeWithFallback:(void (^)(id dataSource))change;
 
+/**
+ Performs changes in `change` block and makes a call to `synchronize` after the block completes.
 
-#pragma mark Public methods
+ If iCloud is not available (i.e. not possible to write values to the `NSUbiquitousKeyValueStore`),
 
-- (NSDictionary*)dictionaryForKeyWithFallback:(NSString*)key;
-- (NSArray*)arrayForKeyWithFallback:(NSString*)key;
-- (NSString*)stringForKeyWithFallback:(NSString*)key;
-- (id)objectForKeyWithFallback:(NSString*)key;
+ Example:
+
+ [NSUbiquitousKeyValueStore performChangeOnDefaultStoreAndSynchronizeWithFallback:^(id dataSource) {
+ [dataSource setObject:objectOne forKey:keyOne];
+ [dataSource setObject:objectTwo forKey:keyTwo];
+ }];
+
+ @param change Block of changes to perform. This block receives `dataSource` as input parameter, which will be either
+ this instance or `[NSUserDefaults standardUserDefaults]`.
+
+ @return `YES` if change was successfully synchronized either to iCloud or local settings, `NO` otherwise.
+ */
 - (BOOL)performChangeAndSynchronizeWithFallback:(void (^)(id dataSource))change;
+
+
+///---------------------------------------------
+/// @name Reading with fallback to user defaults
+///---------------------------------------------
+
+/**
+ Retrieve a dictionary from iCloud (if available) or from user defaults.
+ 
+ @param key Key for the object to read.
+ 
+ @return `NSDictionary` for input `key`.
+ */
+- (NSDictionary*)dictionaryForKeyWithFallback:(NSString*)key;
+
+/**
+ Retrieve an array from iCloud (if available) or from user defaults.
+
+ @param key Key for the object to read.
+
+ @return `NSDictionary` for input `key`.
+ */
+- (NSArray*)arrayForKeyWithFallback:(NSString*)key;
+
+/**
+ Retrieve a string from iCloud (if available) or from user defaults.
+
+ @param key Key for the object to read.
+
+ @return `NSString` for input `key`.
+ */
+- (NSString*)stringForKeyWithFallback:(NSString*)key;
+
+/**
+ Retrieve an object from iCloud (if available) or from user defaults.
+
+ @param key Key for the object to read.
+
+ @return object for input `key`.
+ */
+- (id)objectForKeyWithFallback:(NSString*)key;
 
 @end

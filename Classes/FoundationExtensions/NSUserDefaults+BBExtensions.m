@@ -28,7 +28,7 @@
 @implementation NSUserDefaults (BBExtensions)
 
 
-#pragma mark Public methods
+#pragma mark Shortcuts to store values
 
 - (void)setString:(NSString*)string forKey:(NSString*)key
 {

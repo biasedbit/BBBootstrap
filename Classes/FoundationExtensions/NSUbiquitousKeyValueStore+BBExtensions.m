@@ -30,15 +30,32 @@
 @implementation NSUbiquitousKeyValueStore (BBExtensions)
 
 
-#pragma mark Public static methods
+#pragma mark Writing with fallback to local user defaults
 
 + (BOOL)performChangeOnDefaultStoreAndSynchronizeWithFallback:(void (^)(id dataSource))change
 {
     return [[NSUbiquitousKeyValueStore defaultStore] performChangeAndSynchronizeWithFallback:change];
 }
 
+- (BOOL)performChangeAndSynchronizeWithFallback:(void (^)(id dataSource))change
+{
+    // First, perform the change on iCloud
+    change(self);
 
-#pragma mark Public methods
+    // Now, synchronize....
+    if ([self synchronize]) {
+        return YES;
+    }
+
+    // If iCloud sync fails, we fallback to user defaults
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    change(defaults);
+
+    return [defaults synchronize];
+}
+
+
+#pragma mark Reading with fallback to user defaults
 
 - (NSDictionary*)dictionaryForKeyWithFallback:(NSString*)key
 {
@@ -78,23 +95,6 @@
     }
 
     return object;
-}
-
-- (BOOL)performChangeAndSynchronizeWithFallback:(void (^)(id dataSource))change
-{
-    // First, perform the change on iCloud
-    change(self);
-
-    // Now, synchronize....
-    if ([self synchronize]) {
-        return YES;
-    }
-
-    // If iCloud sync fails, we fallback to user defaults
-    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
-    change(defaults);
-
-    return [defaults synchronize];
 }
 
 @end

@@ -24,22 +24,110 @@
 @interface NSString (BBExtensions)
 
 
-#pragma mark Public static methods
+///-----------------------------
+/// @name Base encoding/decoding
+///-----------------------------
 
-+ (NSString*)randomString;
+/**
+ Encode a number into a string, using the base 62 alphabet (`0-9A-Za-z`).
+ 
+ @param number Number to encode.
+ 
+ @return String representing a base 62 encoding for the input.
+ */
 + (NSString*)base62EncodingForNumber:(long long)number;
 
-
-#pragma mark Public methods
-
-- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
-- (NSString*)sha1;
-- (NSString*)md5;
-- (NSData*)hmacSha1WithKey:(NSString*)key;
+/**
+ Create a base 64 encoded string from the current instance.
+ 
+ @return Base 64 encoded string.
+ */
 - (NSString*)base64EncodedString;
+
+/**
+ Create a base 64 decoded string from the current instance.
+ 
+ @return Base 64 decoded string.
+ */
 - (NSString*)base64DecodedString;
+
+
+///--------------
+/// @name Hashing
+///--------------
+
+/**
+ Return a SHA1 hash of this instance.
+
+ @return SHA1 string.
+ */
+- (NSString*)sha1;
+
+/**
+ Return a MD5 hash of this instance.
+
+ @return MD5 string.
+ */
+- (NSString*)md5;
+
+/**
+ Return an HMAC-SHA1 hash for this instance and an input key.
+ 
+ @param key Key to use when generating the hash.
+ 
+ @return `NSData` instance containing the bytes of the HMAC-SHA1 hash for this instance with the input key.
+ */
+- (NSData*)hmacSha1WithKey:(NSString*)key;
+
+
+///---------------------
+/// @name File utilities
+///---------------------
+
+/**
+ Infer file mime-type based on its extension.
+ 
+ @return File mime-type.
+ */
 - (NSString*)filenameMimeType;
+
+/**
+ Test whether a string representing a file path ends with a given extension.
+ 
+ @param extension Extension to test.
+
+ @return `YES` if file ends with input `extension`, `NO` otherwise.
+ */
 - (BOOL)endsWithExtension:(NSString*)extension;
+
+/**
+ Test whether a string representing a file path ends with any of the extensions in the input set.
+ 
+ @param extensions Set of extensions to test.
+
+ @return `YES` if file ends with one of the extensions in the input set, `NO` otherwise.
+ */
 - (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
+
+
+///-----------
+/// @name Misc
+///-----------
+
+/**
+ Produces a random 8 character string, using the base 62 alphabet (`0-9A-Za-z`).
+ 
+ @return Random string.
+ */
++ (NSString*)randomString;
+
+/**
+ URL encode a string.
+
+ @param encoding The encoding to use.
+
+ @return URL encoded string
+ */
+- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding;
 
 @end

@@ -21,19 +21,92 @@
 
 #pragma mark -
 
-@interface NSDictionary (RTExtensions)
+@interface NSDictionary (BBExtensions)
 
 
-#pragma mark Public methods
+///----------------
+/// @name Shortcuts
+///----------------
 
+/**
+ Returns `key`'s value as a `BOOL`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `BOOL` value for `key`
+ */
 - (BOOL)boolForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `NSInteger`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `NSInteger` value for `key`
+ */
 - (NSInteger)integerForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `NSUInteger`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `NSUInteger` value for `key`
+ */
 - (NSUInteger)unsignedIntegerForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `long`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `long` value for `key`
+ */
 - (long)longForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `unsigned long`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `unsigned long` value for `key`
+ */
 - (unsigned long)unsignedLongForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `long long`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `long long` value for `key`
+ */
 - (long long)longLongForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `unsigned long long`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `unsigned long long` value for `key`
+ */
 - (unsigned long long)unsignedLongLongForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `float`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `float` value for `key`
+ */
 - (float)floatForKey:(id)key;
+
+/**
+ Returns `key`'s value as a `double`, if it exists.
+ 
+ @param key Key of the property to retrieve.
+
+ @return `double` value for `key`
+ */
 - (double)doubleForKey:(id)key;
 
 @end

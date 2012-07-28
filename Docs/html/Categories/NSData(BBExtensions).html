@@ -67,6 +67,10 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Base64 encoding/decoding">Base64 encoding/decoding</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Hashing">Hashing</a></span></li>
+	
 </ul></li>
 
 
@@ -129,35 +133,43 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Base64 encoding/decoding" name="task_Base64 encoding/decoding"></a>
+						<h3 class="subsubtitle task-title">Base64 encoding/decoding</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/decodeBase64String:">+&nbsp;decodeBase64String:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sha1">&ndash;&nbsp;sha1</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/md5">&ndash;&nbsp;md5</a></code>
-		
+		<span class="tooltip"><p>Decode a base 64 <code>NSString</code> instance into a <code>NSData</code> instance.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/base64EncodedString">&ndash;&nbsp;base64EncodedString</a></code>
-		
+		<span class="tooltip"><p>Encode this instance into a base 64 string.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Hashing" name="task_Hashing"></a>
+						<h3 class="subsubtitle task-title">Hashing</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sha1">&ndash;&nbsp;sha1</a></code>
+		<span class="tooltip"><p>Return a SHA1 hash of the bytes wrapped by this instance.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/md5">&ndash;&nbsp;md5</a></code>
+		<span class="tooltip"><p>Return a MD5 hash of the bytes wrapped by this instance.</p></span>
 	</span>
 	
 	
@@ -181,6 +193,48 @@
 	<h3 class="subsubtitle method-title">decodeBase64String:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Decode a base 64 <code>NSString</code> instance into a <code>NSData</code> instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSData *)decodeBase64String:(NSString *)<em>string</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>Base 64 encoded string.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Decoded byte array for the input base 64 string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSData+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 					</div>
@@ -196,6 +250,38 @@
 	<h3 class="subsubtitle method-title">base64EncodedString</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Encode this instance into a base 64 string.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)base64EncodedString</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Base 64 encoded string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSData+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -203,11 +289,75 @@
 	<h3 class="subsubtitle method-title">md5</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a MD5 hash of the bytes wrapped by this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)md5</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>MD5 string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSData+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/sha1" title="sha1"></a>
 	<h3 class="subsubtitle method-title">sha1</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a SHA1 hash of the bytes wrapped by this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)sha1</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>SHA1 string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSData+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

@@ -42,31 +42,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 @implementation NSString (BBExtensions)
 
 
-#pragma mark Public static methods
-
-+ (NSString*)randomString
-{
-    u_int32_t rand = arc4random();
-    uint64_t now = [NSDate currentTimeMillis];
-
-    NSString* hashSource = [NSString stringWithFormat:@"%u:%lld", rand, now];
-    NSString* hashed = [hashSource sha1];
-
-    // If we use up all the 40 characters of the sha1 hash, we generate such a large number that strtoll will end up
-    // returning the highest long long number possible and thus always generating the same password. Since 12 chars of
-    // the sha1 hash are enough to produce such a large number that a base62 conversion of that number always returns
-    // over 8 characters, we trim down the hash length to 12 before converting it into a number (base 16 conversion).
-    hashed = [hashed substringToIndex:12];
-
-    long long number = strtoll([hashed UTF8String], NULL, 16);
-    NSString* randomString = [self base62EncodingForNumber:number];
-
-    if ([randomString length] > 8) {
-        return [randomString substringToIndex:8];
-    }
-
-    return randomString;
-}
+#pragma mark Base encoding/decoding
 
 + (NSString*)base62EncodingForNumber:(long long)number
 {
@@ -86,18 +62,25 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return result;
 }
 
-
-#pragma mark Public methods
-
-- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding
+- (NSString*)base64EncodedString
 {
-    return (__bridge_transfer NSString*)
-           CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                   (__bridge CFStringRef)self,
-                                                   NULL,
-                                                   (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
-                                                   CFStringConvertNSStringEncodingToEncoding(encoding));
+    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
+
+    return [data base64EncodedString];
 }
+
+- (NSString*)base64DecodedString
+{
+    NSData* data = [NSData decodeBase64String:self];
+    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+#if !__has_feature(objc_arc)
+    [string autorelease];
+#endif
+
+    return string;
+}
+
+#pragma mark Hashing
 
 - (NSString*)sha1
 {
@@ -151,23 +134,8 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     return digestData;
 }
 
-- (NSString*)base64EncodedString
-{
-    NSData* data = [self dataUsingEncoding:NSUTF8StringEncoding];
 
-    return [data base64EncodedString];
-}
-
-- (NSString*)base64DecodedString
-{
-    NSData* data = [NSData decodeBase64String:self];
-    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
-
-    return string;
-}
+#pragma mark File utilities
 
 - (NSString*)filenameMimeType
 {
@@ -221,8 +189,45 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
             return YES;
         }
     }
-
+    
     return NO;
+}
+
+
+#pragma mark Misc
+
++ (NSString*)randomString
+{
+    u_int32_t rand = arc4random();
+    uint64_t now = [NSDate currentTimeMillis];
+
+    NSString* hashSource = [NSString stringWithFormat:@"%u:%lld", rand, now];
+    NSString* hashed = [hashSource sha1];
+
+    // If we use up all the 40 characters of the sha1 hash, we generate such a large number that strtoll will end up
+    // returning the highest long long number possible and thus always generating the same password. Since 12 chars of
+    // the sha1 hash are enough to produce such a large number that a base62 conversion of that number always returns
+    // over 8 characters, we trim down the hash length to 12 before converting it into a number (base 16 conversion).
+    hashed = [hashed substringToIndex:12];
+
+    long long number = strtoll([hashed UTF8String], NULL, 16);
+    NSString* randomString = [self base62EncodingForNumber:number];
+
+    if ([randomString length] > 8) {
+        return [randomString substringToIndex:8];
+    }
+
+    return randomString;
+}
+
+- (NSString*)urlEncodeUsingEncoding:(NSStringEncoding)encoding
+{
+    return (__bridge_transfer NSString*)
+           CFURLCreateStringByAddingPercentEscapes(NULL,
+                                                   (__bridge CFStringRef)self,
+                                                   NULL,
+                                                   (CFStringRef)@"!*'\"();:@&=+$,/?%#[]% ",
+                                                   CFStringConvertNSStringEncodingToEncoding(encoding));
 }
 
 @end

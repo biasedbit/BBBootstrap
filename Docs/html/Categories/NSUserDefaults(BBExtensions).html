@@ -66,6 +66,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Shortcuts to store values">Shortcuts to store values</a></span></li>
+	
 </ul></li>
 
 
@@ -126,42 +128,42 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Shortcuts to store values" name="task_Shortcuts to store values"></a>
 						
-						
-
+<h3 class="subsubtitle task-title">Shortcuts to store values</h3>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setString:forKey:">&ndash;&nbsp;setString:forKey:</a></code>
-		
+		<span class="tooltip"><p>Store an <code>NSString</code> instance under a given key.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setData:forKey:">&ndash;&nbsp;setData:forKey:</a></code>
-		
+		<span class="tooltip"><p>Store an <code>NSData</code> instance under a given key.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setArray:forKey:">&ndash;&nbsp;setArray:forKey:</a></code>
-		
+		<span class="tooltip"><p>Store an <code>NSArray</code> instance under a given key.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setDictionary:forKey:">&ndash;&nbsp;setDictionary:forKey:</a></code>
-		
+		<span class="tooltip"><p>Store an <code>NSDictionary</code> instance under a given key.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/setLongLong:forKey:">&ndash;&nbsp;setLongLong:forKey:</a></code>
-		
+		<span class="tooltip"><p>Store an <code>long long</code> under a given key.</p></span>
 	</span>
 	
 	
@@ -187,11 +189,95 @@
 	<h3 class="subsubtitle method-title">setArray:forKey:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Store an <code>NSArray</code> instance under a given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setArray:(NSArray *)<em>array</em> forKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>array</em></dt>
+			<dd><p>Array to store.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key under which the array will be stored.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUserDefaults+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/setData:forKey:" title="setData:forKey:"></a>
 	<h3 class="subsubtitle method-title">setData:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Store an <code>NSData</code> instance under a given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setData:(NSData *)<em>data</em> forKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>data</em></dt>
+			<dd><p>Data to store.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key under which the data will be stored.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUserDefaults+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -201,6 +287,48 @@
 	<h3 class="subsubtitle method-title">setDictionary:forKey:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Store an <code>NSDictionary</code> instance under a given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setDictionary:(NSDictionary *)<em>dictionary</em> forKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>dictionary</em></dt>
+			<dd><p>Dictionary to store.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key under which the dictionary will be stored.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUserDefaults+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -208,11 +336,95 @@
 	<h3 class="subsubtitle method-title">setLongLong:forKey:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Store an <code>long long</code> under a given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setLongLong:(long long)<em>value</em> forKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>value</em></dt>
+			<dd><p>Value to store</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key under which the value will be stored.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUserDefaults+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/setString:forKey:" title="setString:forKey:"></a>
 	<h3 class="subsubtitle method-title">setString:forKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Store an <code>NSString</code> instance under a given key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)setString:(NSString *)<em>string</em> forKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>string</em></dt>
+			<dd><p>String to store.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key under which the string will be stored.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSUserDefaults+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

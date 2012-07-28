@@ -24,8 +24,18 @@
 @interface NSObject (BBExtensions)
 
 
-#pragma mark Debug
+///------------
+/// @name Debug
+///------------
 
+/**
+ Print out a human-friendly description for the instance.
+ 
+ You should override this if your classes include more information that you'd like to use as an identifier for logging.
+ Default implementation is simply `NSStringFromClass([self class])`.
+ 
+ @return Identifier for the instance, to be used mostly in logging.
+ */
 - (NSString*)logId;
 
 @end

@@ -23,16 +23,43 @@
 
 @interface NSData (BBExtensions)
 
+///-------------------------------
+/// @name Base64 encoding/decoding
+///-------------------------------
 
-#pragma mark Public static methods
+/**
+ Decode a base 64 `NSString` instance into a `NSData` instance.
+ 
+ @param string Base 64 encoded string.
 
+ @return Decoded byte array for the input base 64 string.
+ */
 + (NSData*)decodeBase64String:(NSString*)string;
 
-
-#pragma mark Public methods
-
-- (NSString*)sha1;
-- (NSString*)md5;
+/**
+ Encode this instance into a base 64 string.
+ 
+ @return Base 64 encoded string.
+ */
 - (NSString*)base64EncodedString;
+
+
+///--------------
+/// @name Hashing
+///--------------
+
+/**
+ Return a SHA1 hash of the bytes wrapped by this instance.
+ 
+ @return SHA1 string.
+ */
+- (NSString*)sha1;
+
+/**
+ Return a MD5 hash of the bytes wrapped by this instance.
+
+ @return MD5 string.
+ */
+- (NSString*)md5;
 
 @end

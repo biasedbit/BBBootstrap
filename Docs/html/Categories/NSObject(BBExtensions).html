@@ -58,6 +58,8 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Debug">Debug</a></span></li>
+	
 </ul></li>
 
 
@@ -110,14 +112,14 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Debug" name="task_Debug"></a>
 						
-						
-
+<h3 class="subsubtitle task-title">Debug</h3>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
 		<code><a href="#//api/name/logId">&ndash;&nbsp;logId</a></code>
-		
+		<span class="tooltip"><p>Print out a human-friendly description for the instance.</p></span>
 	</span>
 	
 	
@@ -141,6 +143,44 @@
 						<div class="section-method">
 	<a name="//api/name/logId" title="logId"></a>
 	<h3 class="subsubtitle method-title">logId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Print out a human-friendly description for the instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)logId</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Identifier for the instance, to be used mostly in logging.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You should override this if your classes include more information that you&rsquo;d like to use as an identifier for logging.
+Default implementation is simply <code>NSStringFromClass([self class])</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSObject+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>

@@ -28,7 +28,7 @@
 @implementation NSDictionary (BBExtensions)
 
 
-#pragma mark Public methods
+#pragma mark Shortcuts
 
 - (BOOL)boolForKey:(id)key
 {

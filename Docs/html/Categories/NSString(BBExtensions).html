@@ -81,6 +81,14 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Base encoding/decoding">Base encoding/decoding</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Hashing">Hashing</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_File utilities">File utilities</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Misc">Misc</a></span></li>
+	
 </ul></li>
 
 
@@ -157,84 +165,108 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
-						
-						
+						<a title="Base encoding/decoding" name="task_Base encoding/decoding"></a>
+						<h3 class="subsubtitle task-title">Base encoding/decoding</h3>
 
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/randomString">+&nbsp;randomString</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
 		<code><a href="#//api/name/base62EncodingForNumber:">+&nbsp;base62EncodingForNumber:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/urlEncodeUsingEncoding:">&ndash;&nbsp;urlEncodeUsingEncoding:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/sha1">&ndash;&nbsp;sha1</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/md5">&ndash;&nbsp;md5</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/hmacSha1WithKey:">&ndash;&nbsp;hmacSha1WithKey:</a></code>
-		
+		<span class="tooltip"><p>Encode a number into a string, using the base 62 alphabet (<code>0-9A-Za-z</code>).</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/base64EncodedString">&ndash;&nbsp;base64EncodedString</a></code>
-		
+		<span class="tooltip"><p>Create a base 64 encoded string from the current instance.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/base64DecodedString">&ndash;&nbsp;base64DecodedString</a></code>
-		
+		<span class="tooltip"><p>Create a base 64 decoded string from the current instance.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Hashing" name="task_Hashing"></a>
+						<h3 class="subsubtitle task-title">Hashing</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/sha1">&ndash;&nbsp;sha1</a></code>
+		<span class="tooltip"><p>Return a SHA1 hash of this instance.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/md5">&ndash;&nbsp;md5</a></code>
+		<span class="tooltip"><p>Return a MD5 hash of this instance.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/hmacSha1WithKey:">&ndash;&nbsp;hmacSha1WithKey:</a></code>
+		<span class="tooltip"><p>Return an HMAC-SHA1 hash for this instance and an input key.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="File utilities" name="task_File utilities"></a>
+						<h3 class="subsubtitle task-title">File utilities</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
 		<code><a href="#//api/name/filenameMimeType">&ndash;&nbsp;filenameMimeType</a></code>
-		
+		<span class="tooltip"><p>Infer file mime-type based on its extension.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endsWithExtension:">&ndash;&nbsp;endsWithExtension:</a></code>
-		
+		<span class="tooltip"><p>Test whether a string representing a file path ends with a given extension.</p></span>
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/endsWithExtensionInSet:">&ndash;&nbsp;endsWithExtensionInSet:</a></code>
-		
+		<span class="tooltip"><p>Test whether a string representing a file path ends with any of the extensions in the input set.</p></span>
+	</span>
+	
+	
+</li>
+						</ul>
+						
+						
+						<a title="Misc" name="task_Misc"></a>
+						<h3 class="subsubtitle task-title">Misc</h3>
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/randomString">+&nbsp;randomString</a></code>
+		<span class="tooltip"><p>Produces a random 8 character string, using the base 62 alphabet (<code>0-9A-Za-z</code>).</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/urlEncodeUsingEncoding:">&ndash;&nbsp;urlEncodeUsingEncoding:</a></code>
+		<span class="tooltip"><p>URL encode a string.</p></span>
 	</span>
 	
 	
@@ -258,11 +290,85 @@
 	<h3 class="subsubtitle method-title">base62EncodingForNumber:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Encode a number into a string, using the base 62 alphabet (<code>0-9A-Za-z</code>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)base62EncodingForNumber:(long long)<em>number</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>number</em></dt>
+			<dd><p>Number to encode.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>String representing a base 62 encoding for the input.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/randomString" title="randomString"></a>
 	<h3 class="subsubtitle method-title">randomString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Produces a random 8 character string, using the base 62 alphabet (<code>0-9A-Za-z</code>).</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (NSString *)randomString</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Random string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -280,11 +386,75 @@
 	<h3 class="subsubtitle method-title">base64DecodedString</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a base 64 decoded string from the current instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)base64DecodedString</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Base 64 decoded string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/base64EncodedString" title="base64EncodedString"></a>
 	<h3 class="subsubtitle method-title">base64EncodedString</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Create a base 64 encoded string from the current instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)base64EncodedString</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Base 64 encoded string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -294,11 +464,95 @@
 	<h3 class="subsubtitle method-title">endsWithExtension:</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Test whether a string representing a file path ends with a given extension.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)endsWithExtension:(NSString *)<em>extension</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>extension</em></dt>
+			<dd><p>Extension to test.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if file ends with input <code>extension</code>, <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/endsWithExtensionInSet:" title="endsWithExtensionInSet:"></a>
 	<h3 class="subsubtitle method-title">endsWithExtensionInSet:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Test whether a string representing a file path ends with any of the extensions in the input set.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (BOOL)endsWithExtensionInSet:(NSSet *)<em>extensions</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>extensions</em></dt>
+			<dd><p>Set of extensions to test.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>YES</code> if file ends with one of the extensions in the input set, <code>NO</code> otherwise.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -308,11 +562,85 @@
 	<h3 class="subsubtitle method-title">filenameMimeType</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Infer file mime-type based on its extension.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)filenameMimeType</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>File mime-type.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/hmacSha1WithKey:" title="hmacSha1WithKey:"></a>
 	<h3 class="subsubtitle method-title">hmacSha1WithKey:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Return an HMAC-SHA1 hash for this instance and an input key.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSData *)hmacSha1WithKey:(NSString *)<em>key</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>key</em></dt>
+			<dd><p>Key to use when generating the hash.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p><code>NSData</code> instance containing the bytes of the HMAC-SHA1 hash for this instance with the input key.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -322,6 +650,38 @@
 	<h3 class="subsubtitle method-title">md5</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a MD5 hash of this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)md5</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>MD5 string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
@@ -329,11 +689,85 @@
 	<h3 class="subsubtitle method-title">sha1</h3>
 	
 	
+	
+	<div class="method-subsection brief-description">
+		<p>Return a SHA1 hash of this instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)sha1</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>SHA1 string.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
+	
+	
 </div>
 						
 						<div class="section-method">
 	<a name="//api/name/urlEncodeUsingEncoding:" title="urlEncodeUsingEncoding:"></a>
 	<h3 class="subsubtitle method-title">urlEncodeUsingEncoding:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>URL encode a string.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)urlEncodeUsingEncoding:(NSStringEncoding)<em>encoding</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>encoding</em></dt>
+			<dd><p>The encoding to use.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>URL encoded string</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSString+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
