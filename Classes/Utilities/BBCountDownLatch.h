@@ -62,6 +62,8 @@ typedef void (^BBCountDownLatchBlock)();
 @interface BBCountDownLatch : NSObject
 
 
+#pragma mark State information
+
 ///------------------------
 /// @name State information
 ///------------------------
@@ -88,6 +90,8 @@ typedef void (^BBCountDownLatchBlock)();
  */
 @property(assign, nonatomic, readonly) BOOL cancelled;
 
+
+#pragma mark Creating latches
 
 ///-----------------------
 /// @name Creating latches
@@ -123,6 +127,8 @@ typedef void (^BBCountDownLatchBlock)();
 + (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
                            andCompletionBlock:(BBCountDownLatchBlock)block;
 
+
+#pragma mark Managing state
 
 ///---------------------
 /// @name Managing state

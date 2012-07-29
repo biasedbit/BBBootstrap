@@ -44,6 +44,8 @@
 @interface BBCancellable : NSObject
 
 
+#pragma mark State information
+
 ///------------------------
 /// @name State information
 ///------------------------
@@ -66,6 +68,8 @@
 - (BOOL)isCancelled;
 
 
+#pragma mark Creation
+
 ///---------------
 /// @name Creation
 ///---------------
@@ -77,6 +81,8 @@
  */
 - (id)initWithName:(NSString*)name;
 
+
+#pragma mark State management
 
 ///-----------------------
 /// @name State management

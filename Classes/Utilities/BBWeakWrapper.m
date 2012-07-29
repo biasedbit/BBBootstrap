@@ -36,6 +36,26 @@
 @synthesize object = _object;
 
 
+#pragma mark NSObject
+
+- (BOOL)isEqual:(id)object
+{
+    if (object == nil) {
+        return NO;
+    }
+
+    if (object == self) {
+        return YES;
+    }
+
+    if (![object isKindOfClass:[self class]]) {
+        return NO;
+    }
+
+    return [self isEqualToWrapper:object];
+}
+
+
 #pragma mark Creation
 
 - (id)init
@@ -61,7 +81,7 @@
 }
 
 
-#pragma mark Public methods
+#pragma mark Comparing with other wrappers
 
 - (BOOL)isEmpty
 {
@@ -71,26 +91,6 @@
 - (BOOL)isEqualToWrapper:(BBWeakWrapper*)wrapper
 {
     return [wrapper hash] == [self hash];
-}
-
-
-#pragma mark NSObject
-
-- (BOOL)isEqual:(id)object
-{
-    if (object == nil) {
-        return NO;
-    }
-
-    if (object == self) {
-        return YES;
-    }
-
-    if (![object isKindOfClass:[self class]]) {
-        return NO;
-    }
-
-    return [self isEqualToWrapper:object];
 }
 
 @end

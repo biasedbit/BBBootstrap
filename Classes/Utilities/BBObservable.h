@@ -66,6 +66,8 @@
 @interface BBObservable : NSObject
 
 
+#pragma mark Managing observers
+
 /// ------------------------
 /// @name Managing observers
 /// ------------------------
@@ -102,6 +104,8 @@
  */
 - (NSUInteger)observerCount;
 
+
+#pragma mark Triggering notifications
 
 /// ------------------------------
 /// @name Triggering notifications

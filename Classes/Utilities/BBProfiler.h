@@ -27,6 +27,8 @@
 @interface BBProfiler : NSObject
 
 
+#pragma mark Profiling
+
 ///----------------
 /// @name Profiling
 ///----------------
@@ -51,6 +53,8 @@
  */
 + (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block;
 
+
+#pragma mark Unit conversion
 
 ///----------------------
 /// @name Unit conversion

@@ -29,6 +29,8 @@
 @interface BBWeakWrapper : NSObject
 
 
+#pragma mark Creation
+
 ///---------------
 /// @name Creation
 ///---------------
@@ -52,9 +54,11 @@
 + (id)wrapperForObject:(id)object;
 
 
-///--------------------------------------
-/// @name Querying for the wrapped object
-///--------------------------------------
+#pragma mark Querying
+
+///---------------
+/// @name Querying
+///---------------
 
 /**
  Object wrapped by this instance.
@@ -71,9 +75,11 @@
 - (BOOL)isEmpty;
 
 
-///----------------------------
-/// @name Test wrapper equality
-///----------------------------
+#pragma mark Comparing with other wrappers
+
+///------------------------------------
+/// @name Comparing with other wrappers
+///------------------------------------
 
 /**
  Compare this instance against another `BBWeakWrapper`.
