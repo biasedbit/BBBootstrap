@@ -1,6 +1,6 @@
 BBBootstrap
 -----------
-A set of Foundation and UIKit extensions that we all end up using somehow in every project, all packed together.
+A set of utility classes as well as Foundation and UIKit extensions that we all end up using somehow in every project, all packed together and wrapped in a pretty and well documented package.
 
 
 ## How to add BBBootstrap to your project
@@ -13,6 +13,8 @@ A set of Foundation and UIKit extensions that we all end up using somehow in eve
 
 
 Make sure you check out the docs on the `Docs/html` folder for a comprehensive listing and description on each of the classes in this project and how they can save you a ton of time.
+
+> Pardon the absence of documentation on this readme for the time being; just hit the html docs, they have everything you need.
 
 
 ## Contents
@@ -37,11 +39,11 @@ TODO
 
 #### BBQueue
 
-TODO
+No, it's not meant for barbecues.
 
 #### BBWeakWrapper
 
-No, it's not meant for barbecues.
+TODO
 
 
 ### Foundation extensions
