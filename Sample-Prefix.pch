@@ -38,7 +38,8 @@
 #define L10n(key)       NSLocalizedString(key, nil)
 
 // Use this one on a 'default' branch of a switch/case construct
-#define INVALID_SWITCH(fmt, ...) NSAssert(NO, @"Invalid switch: '%@' at %s", [NSString stringWithFormat:fmt, ##__VA_ARGS__], __PRETTY_FUNCTION__)
+#define INVALID_SWITCH(fmt, ...) NSAssert(NO, @"Invalid switch: '%@' at %s", \
+                                          [NSString stringWithFormat:fmt, ##__VA_ARGS__], __PRETTY_FUNCTION__)
 
 
 // Logging
