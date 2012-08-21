@@ -9,6 +9,11 @@
 #import "BBQueue.h"
 
 
+#pragma mark - Constants
+
+NSUInteger const kBBQueueMaxQueueSize = 10240;
+
+
 
 #pragma mark -
 
@@ -34,7 +39,7 @@
 
 - (id)initWithName:(NSString*)name andSlots:(NSUInteger)slots
 {
-    return [self initWithName:name slots:slots andMaxQueueSize:NSUIntegerMax];
+    return [self initWithName:name slots:slots andMaxQueueSize:kBBQueueMaxQueueSize];
 }
 
 - (id)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize

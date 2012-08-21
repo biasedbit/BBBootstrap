@@ -6,6 +6,12 @@
 //  Copyright (c) 2012 Graceful, LLC. All rights reserved.
 //
 
+#pragma mark - Constants
+
+extern NSUInteger const kBBQueueMaxQueueSize;
+
+
+
 #pragma mark - Protocols
 
 @protocol BBQueueOperation <NSObject>
