@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
-		<title>NSDate(BBExtensions) Category Reference</title>
+		<title>NSObject(BBExtensions) Category Reference</title>
 		<meta id="xcode-display" name="xcode-display" content="render"/>
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 737)" />
+		<meta name="generator" content="appledoc 2.0.6 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -17,7 +17,7 @@
 			</div>
 			
 			<div id="title" role="banner">
-				<h1 class="hideInXcode">NSDate(BBExtensions) Category Reference</h1>
+				<h1 class="hideInXcode">NSObject(BBExtensions) Category Reference</h1>
 			</div>
 			<ul id="headerButtons" role="toolbar">
 				<li id="toc_button">
@@ -38,20 +38,11 @@
 	
 	
 	
-	<option value="class_methods">Class Methods</option>
-	
-	<option value="//api/name/currentTimeMillis">&nbsp;&nbsp;&nbsp;&nbsp;+ currentTimeMillis</option>
-	
-	<option value="//api/name/currentTimeMillisAsString">&nbsp;&nbsp;&nbsp;&nbsp;+ currentTimeMillisAsString</option>
-	
-	<option value="//api/name/dateFromMillis:">&nbsp;&nbsp;&nbsp;&nbsp;+ dateFromMillis:</option>
-	
-	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/prettyDate">&nbsp;&nbsp;&nbsp;&nbsp;- prettyDate</option>
+	<option value="//api/name/logId">&nbsp;&nbsp;&nbsp;&nbsp;- logId</option>
 	
 	
 	
@@ -67,29 +58,21 @@
 
 <li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
 	
-</ul></li>
-
-
-
-
-
-
-
-<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#class_methods">Class Methods</a></span><ul>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentTimeMillis">currentTimeMillis</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/currentTimeMillisAsString">currentTimeMillisAsString</a></span></li>
-	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/dateFromMillis:">dateFromMillis:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#task_Debug">Debug</a></span></li>
 	
 </ul></li>
+
+
+
+
+
+
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/prettyDate">prettyDate</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/logId">logId</a></span></li>
 	
 </ul></li>
 
@@ -98,7 +81,7 @@
 		</nav>
 		<article>
 			<div id="contents" class="isShowingTOC" role="main">
-				<a title="NSDate(BBExtensions) Category Reference" name="top"></a>
+				<a title="NSObject(BBExtensions) Category Reference" name="top"></a>
 				<div class="main-navigation navigation-top">
 					<ul>
 	<li><a href="../index.html">Index</a></li>
@@ -107,7 +90,7 @@
 				</div>
 				<div id="header">
 					<div class="section-header">
-						<h1 class="title title-header">NSDate(BBExtensions) Category Reference</h1>
+						<h1 class="title title-header">NSObject(BBExtensions) Category Reference</h1>
 					</div>		
 				</div>
 				<div id="container">	
@@ -115,7 +98,7 @@
 					<div class="section section-specification"><table cellspacing="0"><tbody>
 						<tr>
 	<td class="specification-title">Declared in</td>
-	<td class="specification-value">NSDate+BBExtensions.h</td>
+	<td class="specification-value">NSObject+BBExtensions.h</td>
 </tr>
 						</tbody></table></div>
 					
@@ -129,35 +112,14 @@
 						<h2 class="subtitle subtitle-tasks">Tasks</h2>
 						
 						
+						<a title="Debug" name="task_Debug"></a>
 						
-						
-
+<h3 class="subsubtitle task-title">Debug</h3>
 						<ul class="task-list">
 							<li>
 	<span class="tooltip">
-		<code><a href="#//api/name/currentTimeMillis">+&nbsp;currentTimeMillis</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/currentTimeMillisAsString">+&nbsp;currentTimeMillisAsString</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/dateFromMillis:">+&nbsp;dateFromMillis:</a></code>
-		
-	</span>
-	
-	
-</li><li>
-	<span class="tooltip">
-		<code><a href="#//api/name/prettyDate">&ndash;&nbsp;prettyDate</a></code>
-		
+		<code><a href="#//api/name/logId">&ndash;&nbsp;logId</a></code>
+		<span class="tooltip"><p>Print out a human-friendly description for the instance.</p></span>
 	</span>
 	
 	
@@ -172,33 +134,6 @@
 					
 					
 					
-					<div class="section section-methods">
-						<a title="Class Methods" name="class_methods"></a>
-						<h2 class="subtitle subtitle-methods">Class Methods</h2>
-						
-						<div class="section-method">
-	<a name="//api/name/currentTimeMillis" title="currentTimeMillis"></a>
-	<h3 class="subsubtitle method-title">currentTimeMillis</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/currentTimeMillisAsString" title="currentTimeMillisAsString"></a>
-	<h3 class="subsubtitle method-title">currentTimeMillisAsString</h3>
-	
-	
-</div>
-						
-						<div class="section-method">
-	<a name="//api/name/dateFromMillis:" title="dateFromMillis:"></a>
-	<h3 class="subsubtitle method-title">dateFromMillis:</h3>
-	
-	
-</div>
-						
-					</div>
-					
 					
 					
 					<div class="section section-methods">
@@ -206,8 +141,46 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/prettyDate" title="prettyDate"></a>
-	<h3 class="subsubtitle method-title">prettyDate</h3>
+	<a name="//api/name/logId" title="logId"></a>
+	<h3 class="subsubtitle method-title">logId</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Print out a human-friendly description for the instance.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (NSString *)logId</code></div>
+	
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>Identifier for the instance, to be used mostly in logging.</p>
+	</div>
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>You should override this if your classes include more information that you&rsquo;d like to use as an identifier for logging.
+Default implementation is simply <code>NSStringFromClass([self class])</code>.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">NSObject+BBExtensions.h</code><br />
+	</div>				
 	
 	
 </div>
@@ -225,9 +198,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-07-28)</span><br />
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-09-27)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 737)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.6 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>

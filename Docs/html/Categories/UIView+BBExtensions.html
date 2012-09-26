@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.5 (build 737)" />
+		<meta name="generator" content="appledoc 2.0.6 (build 789)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -46,14 +46,22 @@
 	
 	<option value="//api/name/animate:withDuration:delay:options:animations:completion:">&nbsp;&nbsp;&nbsp;&nbsp;+ animate:withDuration:delay:options:animations:completion:</option>
 	
+	<option value="//api/name/center:horizontallyInRect:">&nbsp;&nbsp;&nbsp;&nbsp;+ center:horizontallyInRect:</option>
+	
 	<option value="//api/name/center:inRect:">&nbsp;&nbsp;&nbsp;&nbsp;+ center:inRect:</option>
+	
+	<option value="//api/name/center:verticallyInRect:">&nbsp;&nbsp;&nbsp;&nbsp;+ center:verticallyInRect:</option>
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/centerHorizontallyInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- centerHorizontallyInRect:</option>
+	
 	<option value="//api/name/centerInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- centerInRect:</option>
+	
+	<option value="//api/name/centerVerticallyInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- centerVerticallyInRect:</option>
 	
 	<option value="//api/name/move:">&nbsp;&nbsp;&nbsp;&nbsp;- move:</option>
 	
@@ -107,7 +115,11 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/center:horizontallyInRect:">center:horizontallyInRect:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/center:inRect:">center:inRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/center:verticallyInRect:">center:verticallyInRect:</a></span></li>
 	
 </ul></li>
 
@@ -115,7 +127,11 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/centerHorizontallyInRect:">centerHorizontallyInRect:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/centerInRect:">centerInRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/centerVerticallyInRect:">centerVerticallyInRect:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/move:">move:</a></span></li>
 	
@@ -216,8 +232,36 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/center:horizontallyInRect:">+&nbsp;center:horizontallyInRect:</a></code>
+		<span class="tooltip"><p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>x</code> axis in <code>outerRect</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/center:verticallyInRect:">+&nbsp;center:verticallyInRect:</a></code>
+		<span class="tooltip"><p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>y</code> axis in <code>outerRect</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/centerInRect:">&ndash;&nbsp;centerInRect:</a></code>
 		<span class="tooltip"><p>Center current view in <code>rect</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/centerHorizontallyInRect:">&ndash;&nbsp;centerHorizontallyInRect:</a></code>
+		<span class="tooltip"><p>Center current view&rsquo;s <code>x</code> coordinates in <code>rect</code>.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/centerVerticallyInRect:">&ndash;&nbsp;centerVerticallyInRect:</a></code>
+		<span class="tooltip"><p>Center current view&rsquo;s <code>y</code> coordinates in <code>rect</code>.</p></span>
 	</span>
 	
 	
@@ -436,6 +480,60 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/center:horizontallyInRect:" title="center:horizontallyInRect:"></a>
+	<h3 class="subsubtitle method-title">center:horizontallyInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>x</code> axis in <code>outerRect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> horizontallyInRect:(CGRect)<em>outerRect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle to center.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>outerRect</em></dt>
+			<dd><p>Outer rectangle. <code>rect</code>&rsquo;s <code>x</code> coordinates will be centered relatively to this rectangle.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <code>CGRect</code> containing the result of the operation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/center:inRect:" title="center:inRect:"></a>
 	<h3 class="subsubtitle method-title">center:inRect:</h3>
 	
@@ -489,6 +587,60 @@
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/center:verticallyInRect:" title="center:verticallyInRect:"></a>
+	<h3 class="subsubtitle method-title">center:verticallyInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>y</code> axis in <code>outerRect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> verticallyInRect:(CGRect)<em>outerRect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle to center.</p></dd>
+		</dl>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>outerRect</em></dt>
+			<dd><p>Outer rectangle. <code>rect</code>&rsquo;s <code>y</code> coordinates will be centered relatively to this rectangle.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	<div class="method-subsection return">
+		<h4 class="method-subtitle parameter-title">Return Value</h4>
+		<p>A <code>CGRect</code> containing the result of the operation.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
 					</div>
 					
 					
@@ -496,6 +648,55 @@
 					<div class="section section-methods">
 						<a title="Instance Methods" name="instance_methods"></a>
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/centerHorizontallyInRect:" title="centerHorizontallyInRect:"></a>
+	<h3 class="subsubtitle method-title">centerHorizontallyInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Center current view&rsquo;s <code>x</code> coordinates in <code>rect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)centerHorizontallyInRect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle relative to which the current view&rsquo;s <code>x</code> coordinates should be centered.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method <strong>will change</strong> the current view&rsquo;s frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
+</div>
 						
 						<div class="section-method">
 	<a name="//api/name/centerInRect:" title="centerInRect:"></a>
@@ -517,6 +718,55 @@
 		<dl class="argument-def parameter-def">
 			<dt><em>rect</em></dt>
 			<dd><p>Rectangle relative to which the current view&rsquo;s frame should be centered.</p></dd>
+		</dl>
+		
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection discussion-section">
+		<h4 class="method-subtitle">Discussion</h4>
+		<p>This method <strong>will change</strong> the current view&rsquo;s frame.</p>
+	</div>
+	
+	
+	
+	
+	
+	
+	
+	<div class="method-subsection declared-in-section">
+		<h4 class="method-subtitle">Declared In</h4>
+		<code class="declared-in-ref">UIView+BBExtensions.h</code><br />
+	</div>				
+	
+	
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/centerVerticallyInRect:" title="centerVerticallyInRect:"></a>
+	<h3 class="subsubtitle method-title">centerVerticallyInRect:</h3>
+	
+	
+	
+	<div class="method-subsection brief-description">
+		<p>Center current view&rsquo;s <code>y</code> coordinates in <code>rect</code>.</p>
+	</div>		
+	
+	
+	<div class="method-subsection method-declaration"><code>- (void)centerVerticallyInRect:(CGRect)<em>rect</em></code></div>
+	
+	
+	<div class="method-subsection arguments-section parameters">
+		<h4 class="method-subtitle parameter-title">Parameters</h4>
+		
+		<dl class="argument-def parameter-def">
+			<dt><em>rect</em></dt>
+			<dd><p>Rectangle relative to which the current view&rsquo;s <code>y</code> coordinates should be centered.</p></dd>
 		</dl>
 		
 	</div>
@@ -993,9 +1243,9 @@ snaps back into place. Try variations on these for optimum results.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-07-28)</span><br />
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-09-27)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 737)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.6 (build 789)</a>.</span></p>
 						
 					</div>
 				</div>
