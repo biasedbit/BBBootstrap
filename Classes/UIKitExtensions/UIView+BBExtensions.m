@@ -78,9 +78,39 @@
     return r;
 }
 
++ (CGRect)center:(CGRect)rect horizontallyInRect:(CGRect)outerRect
+{
+    CGRect r;
+    r.size = rect.size;
+    r.origin.x = floorf((outerRect.size.width - rect.size.width) / 2.0 + outerRect.origin.x);
+    r.origin.y = rect.origin.y;
+
+    return r;
+}
+
++ (CGRect)center:(CGRect)rect verticallyInRect:(CGRect)outerRect
+{
+    CGRect r;
+    r.size = rect.size;
+    r.origin.x = rect.origin.x;
+    r.origin.y = floorf((outerRect.size.height - rect.size.height) / 2.0 + outerRect.origin.y);
+
+    return r;
+}
+
 - (void)centerInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame inRect:rect];
+}
+
+- (void)centerHorizontallyInRect:(CGRect)rect
+{
+    self.frame = [UIView center:self.frame horizontallyInRect:rect];
+}
+
+- (void)centerVerticallyInRect:(CGRect)rect
+{
+    self.frame = [UIView center:self.frame verticallyInRect:rect];
 }
 
 - (CGRect)rectCenteredInRect:(CGRect)rect
