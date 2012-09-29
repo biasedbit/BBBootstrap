@@ -136,6 +136,16 @@
     self.frame = targetFrame;
 }
 
+- (void)moveToX:(CGFloat)x
+{
+    [self moveTo:CGPointMake(x, self.frame.origin.y)];
+}
+
+- (void)moveToY:(CGFloat)y
+{
+    [self moveTo:CGPointMake(self.frame.origin.x, y)];
+}
+
 - (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
        bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
 {

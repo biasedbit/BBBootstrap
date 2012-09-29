@@ -156,6 +156,10 @@
  */
 - (void)moveTo:(CGPoint)point;
 
+- (void)moveToX:(CGFloat)x;
+
+- (void)moveToY:(CGFloat)y;
+
 /**
  Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
 
