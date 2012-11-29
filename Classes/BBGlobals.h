@@ -55,3 +55,6 @@ extern NSString* BBPrettySize(double sizeInBytes);
  @return Human readable string, like 32.1MB/s
  */
 extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);
+
+
+extern void dispatch_after_seconds(int64_t seconds, dispatch_block_t block);

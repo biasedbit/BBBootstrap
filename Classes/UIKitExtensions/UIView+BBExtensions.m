@@ -98,19 +98,22 @@
     return r;
 }
 
-- (void)centerInRect:(CGRect)rect
+- (id)centerInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame inRect:rect];
+    return self;
 }
 
-- (void)centerHorizontallyInRect:(CGRect)rect
+- (id)centerHorizontallyInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame horizontallyInRect:rect];
+    return self;
 }
 
-- (void)centerVerticallyInRect:(CGRect)rect
+- (id)centerVerticallyInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame verticallyInRect:rect];
+    return self;
 }
 
 - (CGRect)rectCenteredInRect:(CGRect)rect
@@ -118,32 +121,38 @@
     return [UIView center:self.frame inRect:rect];
 }
 
-- (void)move:(CGSize)movement
+- (id)move:(CGSize)movement
 {
     CGRect targetFrame = self.frame;
     targetFrame.origin.x += movement.width;
     targetFrame.origin.y += movement.height;
 
     self.frame = targetFrame;
+
+    return self;
 }
 
-- (void)moveTo:(CGPoint)point
+- (id)moveTo:(CGPoint)point
 {
     CGRect targetFrame = self.frame;
     targetFrame.origin.x = point.x;
     targetFrame.origin.y = point.y;
 
     self.frame = targetFrame;
+
+    return self;
 }
 
-- (void)moveToX:(CGFloat)x
+- (id)moveToX:(CGFloat)x
 {
     [self moveTo:CGPointMake(x, self.frame.origin.y)];
+    return self;
 }
 
-- (void)moveToY:(CGFloat)y
+- (id)moveToY:(CGFloat)y
 {
     [self moveTo:CGPointMake(self.frame.origin.x, y)];
+    return self;
 }
 
 - (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration

@@ -105,7 +105,7 @@
  
  @param rect Rectangle relative to which the current view's frame should be centered.
  */
-- (void)centerInRect:(CGRect)rect;
+- (id)centerInRect:(CGRect)rect;
 
 /**
  Center current view's `x` coordinates in `rect`.
@@ -114,7 +114,7 @@
 
  @param rect Rectangle relative to which the current view's `x` coordinates should be centered.
  */
-- (void)centerHorizontallyInRect:(CGRect)rect;
+- (id)centerHorizontallyInRect:(CGRect)rect;
 
 /**
  Center current view's `y` coordinates in `rect`.
@@ -123,7 +123,7 @@
 
  @param rect Rectangle relative to which the current view's `y` coordinates should be centered.
  */
-- (void)centerVerticallyInRect:(CGRect)rect;
+- (id)centerVerticallyInRect:(CGRect)rect;
 
 
 /**
@@ -145,7 +145,7 @@
  
  @param movement Amount of movement in `x` and `y` coordinates.
  */
-- (void)move:(CGSize)movement;
+- (id)move:(CGSize)movement;
 
 /**
  Move the current view to a given point.
@@ -154,11 +154,11 @@
  
  @param point Target point.
  */
-- (void)moveTo:(CGPoint)point;
+- (id)moveTo:(CGPoint)point;
 
-- (void)moveToX:(CGFloat)x;
+- (id)moveToX:(CGFloat)x;
 
-- (void)moveToY:(CGFloat)y;
+- (id)moveToY:(CGFloat)y;
 
 /**
  Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
