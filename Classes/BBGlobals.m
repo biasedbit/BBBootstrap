@@ -40,9 +40,7 @@ NSString* BBAppVersion()
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        if (appVersion == nil) {
-            appVersion = kBBFallbackAppVersion;
-        }
+        if (appVersion == nil) appVersion = kBBFallbackAppVersion;
     });
 
     return appVersion;
@@ -59,9 +57,7 @@ NSString* BBGetUUID()
 
 NSString* BBPrettySize(double sizeInBytes)
 {
-    if (sizeInBytes < 0) {
-        return @"n/a";
-    }
+    if (sizeInBytes < 0) return @"n/a";
 
     NSString* unit;
     double sizeInUnits;
@@ -84,9 +80,7 @@ NSString* BBPrettySize(double sizeInBytes)
 
 NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond)
 {
-    if (transferRateInBytesPerSecond < 0) {
-        return @"n/a";
-    }
+    if (transferRateInBytesPerSecond < 0) return @"n/a";
 
     NSString* unit;
     double sizeInUnits;
