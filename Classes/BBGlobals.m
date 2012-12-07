@@ -111,3 +111,9 @@ void dispatch_after_seconds(int64_t seconds, dispatch_block_t block) {
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
+
+void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block) {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(milliseconds * NSEC_PER_MSEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
+

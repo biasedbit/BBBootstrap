@@ -58,3 +58,4 @@ extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);
 
 
 extern void dispatch_after_seconds(int64_t seconds, dispatch_block_t block);
+extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
