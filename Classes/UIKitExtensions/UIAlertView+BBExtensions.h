@@ -36,4 +36,11 @@
  */
 + (void)alertWithMessage:(NSString*)message andTitle:(NSString*)title;
 
++ (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
+                     completion:(void (^)())completion;
+
++ (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission;
+
++ (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation;
+
 @end

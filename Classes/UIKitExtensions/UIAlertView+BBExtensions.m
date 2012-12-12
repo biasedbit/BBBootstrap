@@ -33,6 +33,17 @@
 
 #pragma mark -
 
+@interface BBAlertView : UIAlertView <UIAlertViewDelegate>
+
+@property(copy, nonatomic) void (^completion)(NSInteger buttonIndex);
+
+@end
+
+
+
+
+#pragma mark -
+
 @implementation UIAlertView (BBExtensions)
 
 
@@ -46,4 +57,66 @@
      show];
 }
 
++ (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
+                     completion:(void (^)())completion
+{
+    BBAlertView* alertView = [[BBAlertView alloc]
+                              initWithTitle:title message:message delegate:nil
+                              cancelButtonTitle:buttonTitle otherButtonTitles:nil];
+    alertView.delegate = alertView;
+    alertView.completion = ^(NSInteger buttonIndex) {
+        completion();
+    };
+
+    return alertView;
+}
+
++ (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission
+{
+    BBAlertView* alertView = [[BBAlertView alloc]
+                              initWithTitle:title message:nil delegate:nil
+                              cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
+    alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+    alertView.delegate = alertView;
+
+    __weak id weakRef = alertView;
+    alertView.completion = ^(NSInteger buttonIndex) {
+        if (buttonIndex == 1) submission([weakRef textFieldAtIndex:0].text);
+    };
+
+    return alertView;
+}
+
++ (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation
+{
+    BBAlertView* alertView = [[BBAlertView alloc]
+                              initWithTitle:title message:nil delegate:nil
+                              cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
+    alertView.delegate = alertView;
+
+    alertView.completion = ^(NSInteger buttonIndex) {
+        if (buttonIndex == 1) confirmation();
+    };
+
+    return alertView;
+}
+
 @end
+
+
+
+#pragma mark -
+
+@implementation BBAlertView
+
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    if (_completion == nil) return;
+    _completion(buttonIndex);
+}
+
+@end
+
