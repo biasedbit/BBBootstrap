@@ -59,7 +59,7 @@
 }
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (void)addObserver:(id)observer
 {

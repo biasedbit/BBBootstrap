@@ -51,7 +51,7 @@
 }
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (NSString*)prettyDate
 {

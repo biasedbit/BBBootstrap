@@ -19,20 +19,17 @@
 //  Copyright (c) 2012 BiasedBit. All rights reserved.
 //
 
-#import "UIDevice+BBExtensions.h"
+#import "UIViewController+BBExtensions.h"
 
 
 
 #pragma mark -
 
-@implementation UIDevice (BBExtensions)
+@implementation UIViewController (BBExtensions)
 
-
-#pragma mark Interface
-
-- (BOOL)hasRetinaDisplay
+- (BOOL)isCurrentlyVisible
 {
-    return [UIScreen mainScreen].scale == 2.0;
+    return [self isViewLoaded] && (self.view.window != nil);
 }
 
 @end

@@ -215,4 +215,7 @@
 - (void)moveTo:(CGPoint)target withDuration:(NSTimeInterval)duration
         bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
 
+- (void)setWidth:(CGFloat)width;
+- (void)setHeight:(CGFloat)height;
+
 @end

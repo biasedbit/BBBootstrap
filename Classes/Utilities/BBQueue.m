@@ -81,7 +81,7 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 }
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (BOOL)enqueue:(id<BBQueueOperation>)queueOperation
 {

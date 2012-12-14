@@ -49,7 +49,7 @@ extern NSUInteger const kBBQueueMaxQueueSize;
 - (id)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize;
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (BOOL)enqueue:(id<BBQueueOperation>)queueOperation;
 - (BOOL)enqueue:(id<BBQueueOperation>)queueOperation prioritize:(BOOL)prioritize;

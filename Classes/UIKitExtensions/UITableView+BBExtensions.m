@@ -42,9 +42,27 @@
     [self insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
 }
 
+- (void)insertRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toInsert = [NSIndexPath indexPathForRow:row inSection:section];
+    [self insertRowAtIndexPath:toInsert withRowAnimation:animation];
+}
+
 - (void)deleteRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
     [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+}
+
+- (void)deleteRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toDelete = [NSIndexPath indexPathForRow:row inSection:section];
+    [self deleteRowAtIndexPath:toDelete withRowAnimation:animation];
+}
+
+- (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:section];
+    [self reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

@@ -31,7 +31,7 @@
 + (NSDate*)dateFromMillis:(int64_t)millis;
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (NSString*)prettyDate;
 
