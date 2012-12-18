@@ -37,6 +37,10 @@
  */
 - (BOOL)boolForKey:(id)key;
 
+- (unsigned char)unsignedCharForKey:(id)key;
+
+- (unsigned short)unsignedShortForKey:(id)key;
+
 /**
  Returns `key`'s value as a `NSInteger`, if it exists.
  
