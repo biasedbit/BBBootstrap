@@ -39,7 +39,7 @@
 
 - (void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
 }
 
 - (void)insertRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
@@ -48,9 +48,20 @@
     [self insertRowAtIndexPath:toInsert withRowAnimation:animation];
 }
 
+- (void)reloadRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+
+- (void)reloadRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toReload = [NSIndexPath indexPathForRow:row inSection:section];
+    [self reloadRowAtIndexPath:toReload withRowAnimation:animation];
+}
+
 - (void)deleteRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
 }
 
 - (void)deleteRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
