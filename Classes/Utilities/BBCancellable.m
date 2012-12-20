@@ -29,7 +29,7 @@
 {
     BOOL _cancelled;
 
-    __strong NSString* _name;
+    NSString* _name;
 }
 
 

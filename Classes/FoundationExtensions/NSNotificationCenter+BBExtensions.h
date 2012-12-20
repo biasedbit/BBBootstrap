@@ -26,4 +26,6 @@
 
 - (void)addObserver:(id)observer selector:(SEL)aSelector forNotifications:(NSArray*)notificationNames;
 
+- (void)removeObserver:(id)observer forNotifications:(NSArray*)notificationNames;
+
 @end

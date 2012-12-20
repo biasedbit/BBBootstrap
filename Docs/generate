@@ -23,6 +23,5 @@ appledoc \
   --company-id      com.biasedbit \
   --ignore          .m \
   --output          ${SCRIPT_DIR} \
-  --docsetutil-path ${DOCSETUTIL_PATH}\
   \
   ${SCRIPT_DIR}/../Classes

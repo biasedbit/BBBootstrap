@@ -34,4 +34,11 @@
     }
 }
 
+- (void)removeObserver:(id)observer forNotifications:(NSArray*)notificationNames
+{
+    for (NSString* notificationName in notificationNames) {
+        [self removeObserver:self name:notificationName object:nil];
+    }
+}
+
 @end

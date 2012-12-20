@@ -31,7 +31,7 @@
 {
     dispatch_queue_t _observableQueue;
 
-    __strong NSMutableSet* _observers;
+    NSMutableSet* _observers;
 }
 
 

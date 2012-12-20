@@ -14,6 +14,7 @@
 #import "NSString+BBExtensions.h"
 #import "NSUbiquitousKeyValueStore+BBExtensions.h"
 #import "NSUserDefaults+BBExtensions.h"
+#import "NSNotificationCenter+BBExtensions.h"
 
 
 // UIKit extensions
@@ -22,7 +23,8 @@
 #import "UIDevice+BBExtensions.h"
 #import "UITableView+BBExtensions.h"
 #import "UIView+BBExtensions.h"
-
+#import "UITextField+BBExtensions.h"
+#import "UIViewController+BBExtensions.h"
 
 // Utility classes
 
