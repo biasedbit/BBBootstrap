@@ -65,7 +65,7 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 
         NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.BBQueue-%@", _name];
         _queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
-        _running = [NSMutableArray arrayWithCapacity:_slots];
+        _running = [NSMutableDictionary dictionaryWithCapacity:_slots];
         _queued = [NSMutableArray arrayWithCapacity:_maxQueueSize];
     }
 
@@ -206,7 +206,9 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 - (void)notifyDelegateOfFinishedOperation:(id<BBQueueOperation>)operation
 {
     if ((_delegate != nil) && [_delegate respondsToSelector:@selector(queue:finishedOperation:)]) {
-        [_delegate queue:self finishedOperation:operation];
+        dispatch_async_on_main(^{
+            [_delegate queue:self finishedOperation:operation];
+        });
     }
 }
 
