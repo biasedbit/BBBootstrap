@@ -101,8 +101,24 @@ NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond)
     return [NSString stringWithFormat:@"%.1f%@/s", sizeInUnits, unit];
 }
 
-void dispatch_async_on_main(dispatch_block_t block) {
+void dispatch_async_main(dispatch_block_t block) {
     dispatch_async(dispatch_get_main_queue(), block);
+}
+
+extern void dispatch_async_high_priority(dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), block);
+}
+
+extern void dispatch_async_default_priority(dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+}
+
+void dispatch_async_low_priority(dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), block);
+}
+
+void dispatch_async_background_priority(dispatch_block_t block) {
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
 }
 
 void dispatch_after_seconds(NSTimeInterval seconds, dispatch_block_t block) {

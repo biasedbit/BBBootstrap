@@ -127,8 +127,7 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 {
     // Execute the synchronized block in other thread to keep the calling code from blocking while the queue is
     // launching the next task
-    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    dispatch_async(queue, ^{
+    dispatch_async_default_priority(^{
         [self notifyDelegateOfFinishedOperation:operation];
 
         dispatch_sync(_queue, ^{
@@ -206,7 +205,7 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 - (void)notifyDelegateOfFinishedOperation:(id<BBQueueOperation>)operation
 {
     if ((_delegate != nil) && [_delegate respondsToSelector:@selector(queue:finishedOperation:)]) {
-        dispatch_async_on_main(^{
+        dispatch_async_main(^{
             [_delegate queue:self finishedOperation:operation];
         });
     }

@@ -53,10 +53,20 @@
     return elapsedTimeNano;
 }
 
-+ (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block
++ (void)profileBlock:(void (^)())block withDescription:(NSString*)format, ...
 {
     uint64_t nanos = [self profileBlock:block];
+
+    va_list args;
+	va_start(args, format);
+    NSString* description = [[NSString alloc] initWithFormat:format arguments:args];
+	va_end(args);
+
     LogDebug(@"[PROFILER] Took %.2fms to execute section '%@'", [self nanosToMilliseconds:nanos], description);
+
+#if !__has_feature(objc_arc)
+    [description release];
+#endif
 }
 
 

@@ -48,10 +48,10 @@
  This is a utility method that combines `profileBlock:` and `nanosToMilliseconds:` and prints the output to the console
  using the `LogDebug()` macro.
 
- @param description Description of of block section, to be printed out to console.
  @param block Block of code to profile.
+ @param description Description of of block section, to be printed out to console.
  */
-+ (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block;
++ (void)profileBlock:(void (^)())block withDescription:(NSString*)format, ... NS_FORMAT_FUNCTION(2,3);
 
 
 #pragma mark Unit conversion

@@ -121,7 +121,7 @@
         _counter -= 1;
         if (_counter == 0) {
             LogTrace(@"[LATCH-%@] Triggered and released by '%@'.", _name, callerId);
-            dispatch_async(dispatch_get_main_queue(), _block);
+            dispatch_async_main(_block);
         } else {
             LogTrace(@"[LATCH-%@] Triggered by '%@'; current count: %d.", _name, callerId, _counter);
         }
