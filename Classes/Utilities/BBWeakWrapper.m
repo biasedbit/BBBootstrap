@@ -31,26 +31,13 @@
 }
 
 
-#pragma mark Property synthesizers
-
-@synthesize object = _object;
-
-
 #pragma mark NSObject
 
 - (BOOL)isEqual:(id)object
 {
-    if (object == nil) {
-        return NO;
-    }
-
-    if (object == self) {
-        return YES;
-    }
-
-    if (![object isKindOfClass:[self class]]) {
-        return NO;
-    }
+    if (object == nil) return NO;
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
 
     return [self isEqualToWrapper:object];
 }

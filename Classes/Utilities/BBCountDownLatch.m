@@ -32,14 +32,6 @@
 }
 
 
-#pragma mark Property synthesizers
-
-@synthesize name = _name;
-@synthesize queue = _queue;
-@synthesize counter = _counter;
-@synthesize cancelled = _cancelled;
-
-
 #pragma mark Destruction
 
 - (void)dealloc
@@ -86,9 +78,7 @@
 
 - (BOOL)cancel
 {
-    if (_cancelled) {
-        return NO;
-    }
+    if (_cancelled) return NO;
 
     _cancelled = YES;
 

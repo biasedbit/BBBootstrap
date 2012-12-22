@@ -33,11 +33,6 @@
 }
 
 
-#pragma mark Property synthesizers
-
-@synthesize name = _name;
-
-
 #pragma mark Creation
 
 - (id)init
