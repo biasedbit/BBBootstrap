@@ -49,7 +49,15 @@
 
 #pragma mark Public static methods
 
-+ (void)alertWithMessage:(NSString*)message andTitle:(NSString*)title
++ (void)showAlertWithTitle:(NSString*)title
+{
+    [[[UIAlertView alloc]
+      initWithTitle:title message:nil delegate:nil
+      cancelButtonTitle:L10n(@"Dismiss") otherButtonTitles:nil]
+     show];
+}
+
++ (void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)message
 {
     [[[UIAlertView alloc] 
       initWithTitle:title message:message delegate:nil 
@@ -97,6 +105,24 @@
     alertView.completion = ^(NSInteger buttonIndex) {
         if (buttonIndex == 1) confirmation();
     };
+
+    return alertView;
+}
+
+- (id)initWithTitle:(NSString*)title message:(NSString*)message
+  cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
+         completion:(void (^)(NSInteger buttonIndex))completion
+{
+    BBAlertView* alertView = [[BBAlertView alloc] init];
+
+    for (NSString* buttonTitle in otherButtonTitles) {
+        [alertView addButtonWithTitle:buttonTitle];
+    }
+    [alertView addButtonWithTitle:cancelButtonTitle];
+    [alertView setCancelButtonIndex:([alertView numberOfButtons] - 1)];
+
+    alertView.delegate = alertView;
+    alertView.completion = completion;
 
     return alertView;
 }

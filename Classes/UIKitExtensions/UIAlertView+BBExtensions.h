@@ -28,13 +28,15 @@
 /// @name Shortcuts
 ///----------------
 
++ (void)showAlertWithTitle:(NSString*)title;
+
 /**
  Display a `UIAlertView` with a single button ("Dismiss").
  
  @param message Message text.
  @param title Title text.
  */
-+ (void)alertWithMessage:(NSString*)message andTitle:(NSString*)title;
++ (void)showAlertWithTitle:(NSString*)message andMessage:(NSString*)message;
 
 + (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
                      completion:(void (^)())completion;
@@ -42,5 +44,9 @@
 + (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission;
 
 + (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation;
+
+- (id)initWithTitle:(NSString*)title message:(NSString*)message
+  cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
+         completion:(void (^)(NSInteger buttonIndex))completion;
 
 @end
