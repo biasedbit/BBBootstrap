@@ -114,6 +114,8 @@
          completion:(void (^)(NSInteger buttonIndex))completion
 {
     BBAlertView* alertView = [[BBAlertView alloc] init];
+    alertView.title = title;
+    alertView.message = message;
 
     for (NSString* buttonTitle in otherButtonTitles) {
         [alertView addButtonWithTitle:buttonTitle];
