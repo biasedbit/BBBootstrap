@@ -194,6 +194,16 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 }
 
 
+#pragma mark Comparison
+
++ (BOOL)string:(NSString*)string isEqualToString:(NSString*)otherString
+{
+    if ((string == nil) && (otherString == nil)) return YES;
+
+    return [string isEqualToString:otherString];
+}
+
+
 #pragma mark Misc
 
 + (NSString*)randomString

@@ -110,6 +110,22 @@
 - (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
 
 
+///-----------------
+/// @name Comparison
+///-----------------
+
+/**
+ Compares two strings, returning true if both are `nil` or if the result of sending `isEqualToString:` to `string` with
+ `otherString` as argument returns `YES`.
+ 
+ @param string the reference string
+ @param otherString the string to compare
+ 
+ @return `YES` if both strings are `nil` or identical, `NO` otherwise.
+ */
++ (BOOL)string:(NSString*)string isEqualToString:(NSString*)otherString;
+
+
 ///-----------
 /// @name Misc
 ///-----------
