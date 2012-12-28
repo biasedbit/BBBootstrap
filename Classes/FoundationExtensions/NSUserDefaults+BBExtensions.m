@@ -28,6 +28,20 @@
 @implementation NSUserDefaults (BBExtensions)
 
 
+#pragma mark Perform multiple changes and synchronize
+
++ (BOOL)performChangesOnDefaultStoreAndSynchronize:(void (^)(NSUserDefaults* defaults))changes
+{
+    return [[NSUserDefaults standardUserDefaults] performChangesAndSynchronize:changes];
+}
+
+- (BOOL)performChangesAndSynchronize:(void (^)(NSUserDefaults* defaults))changes
+{
+    changes(self);
+    return [self synchronize];
+}
+
+
 #pragma mark Shortcuts to store values
 
 - (void)setString:(NSString*)string forKey:(NSString*)key

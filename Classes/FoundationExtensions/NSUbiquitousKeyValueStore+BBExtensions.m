@@ -43,9 +43,7 @@
     change(self);
 
     // Now, synchronize....
-    if ([self synchronize]) {
-        return YES;
-    }
+    if ([self synchronize]) return YES;
 
     // If iCloud sync fails, we fallback to user defaults
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

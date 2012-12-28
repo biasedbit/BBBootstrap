@@ -24,6 +24,15 @@
 @interface NSUserDefaults (BBExtensions)
 
 
+///-----------------------------------------------
+/// @name Perform multiple changes and synchronize
+///-----------------------------------------------
+
++ (BOOL)performChangesOnDefaultStoreAndSynchronize:(void (^)(NSUserDefaults* defaults))changes;
+
+- (BOOL)performChangesAndSynchronize:(void (^)(NSUserDefaults* defaults))changes;
+
+
 ///--------------------------------
 /// @name Shortcuts to store values
 ///--------------------------------
