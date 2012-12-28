@@ -63,10 +63,6 @@
 	va_end(args);
 
     LogDebug(@"[PROFILER] Took %.2fms to execute section '%@'", [self nanosToMilliseconds:nanos], description);
-
-#if !__has_feature(objc_arc)
-    [description release];
-#endif
 }
 
 

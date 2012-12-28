@@ -187,14 +187,9 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 		}
 	}
 
-	NSString* string = [[NSString alloc]
-                        initWithBytesNoCopy:strResult length:(objPointer - strResult)
-                        encoding:NSASCIIStringEncoding freeWhenDone:YES];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
-
-	return string;
+	return [[NSString alloc]
+            initWithBytesNoCopy:strResult length:(objPointer - strResult)
+            encoding:NSASCIIStringEncoding freeWhenDone:YES];
 }
 
 

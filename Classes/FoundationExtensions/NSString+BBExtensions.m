@@ -46,9 +46,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 + (NSString*)base62EncodingForNumber:(long long)number
 {
-    if (number == 0) {
-        return @"0";
-    }
+    if (number == 0) return @"0";
 
     NSMutableString* result = [[NSMutableString alloc] init];
     while (number > 0) {
@@ -72,12 +70,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 - (NSString*)base64DecodedString
 {
     NSData* data = [NSData decodeBase64String:self];
-    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
-
-    return string;
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark Hashing
@@ -140,32 +133,20 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 - (NSString*)filenameMimeType
 {
     NSString* ext = [self pathExtension];
-    if (ext == nil) {
-        return @"application/octet-stream";
-    }
+    if (ext == nil) return @"application/octet-stream";
 
     NSString* mimeType = nil;
-#if __has_feature(objc_arc)
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                             (__bridge CFStringRef)ext, NULL);
-#else
-    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                                                            (CFStringRef)ext, NULL);
-#endif
-    if (!UTI) {
-        return nil;
-    }
+
+    if (!UTI) return nil;
 
     CFStringRef registeredType = UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
     if (!registeredType) {
         // check for edge case
         mimeType = @"application/octet-stream";
     } else {
-#if __has_feature(objc_arc)
         mimeType = (__bridge_transfer NSString*)registeredType;
-#else
-        mimeType = NSMakeCollectable(registeredType);
-#endif
     }
     CFRelease(UTI);
 
@@ -180,14 +161,10 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 - (BOOL)endsWithExtensionInSet:(NSSet*)extensions
 {
     NSString* ext = [self pathExtension];
-    if ((ext == nil) || ([ext length] == 0)) {
-        return NO;
-    }
+    if ((ext == nil) || ([ext length] == 0)) return NO;
 
     for (NSString* extension in extensions) {
-        if ([ext isEqualToString:extension]) {
-            return YES;
-        }
+        if ([ext isEqualToString:extension]) return YES;
     }
     
     return NO;
