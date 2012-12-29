@@ -32,7 +32,7 @@
 
 #pragma mark Public static methods
 
-+ (int64_t)currentTimeMillis
++ (long long)currentTimeMillis
 {
     struct timeval t;
     gettimeofday(&t, NULL);
@@ -45,7 +45,7 @@
     return [NSString stringWithFormat:@"%lld", [self currentTimeMillis]];
 }
 
-+ (NSDate*)dateFromMillis:(int64_t)millis
++ (NSDate*)dateFromMillis:(long long)millis
 {
     return [NSDate dateWithTimeIntervalSince1970:(millis / 1000)];
 }

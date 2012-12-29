@@ -21,18 +21,17 @@
 
 #pragma mark -
 
-@interface NSDate (BBExtensions)
+@interface UIImage (BBExtensions)
 
 
-#pragma mark Public static methods
+///-------------------------------------------
+/// @name Shortcuts to load stretchable images
+///-------------------------------------------
 
-+ (long long)currentTimeMillis;
-+ (NSString*)currentTimeMillisAsString;
-+ (NSDate*)dateFromMillis:(long long)millis;
-
-
-#pragma mark Interface
-
-- (NSString*)prettyDate;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName;
++ (UIImage*)stretchableImageWithHalfLeftCapWidthNamed:(NSString*)imageName;
++ (UIImage*)stretchableImageWithHalfTopCapHeightNamed:(NSString*)imageName;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withLeftCapWidth:(NSInteger)leftCapWidth;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withTopCapHeight:(NSInteger)topCapHeight;
 
 @end

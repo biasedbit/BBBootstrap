@@ -24,4 +24,9 @@
     [self setObject:object forKey:key];
 }
 
+- (void)setUnsignedInteger:(NSUInteger)value forKey:(id<NSCopying>)key
+{
+    [self setObject:[NSNumber numberWithUnsignedInteger:value] forKey:key];
+}
+
 @end

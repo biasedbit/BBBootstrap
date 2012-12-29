@@ -44,7 +44,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 #pragma mark Base encoding/decoding
 
-+ (NSString*)base62EncodingForNumber:(long long)number
++ (NSString*)base62EncodingForNumber:(unsigned long long)number
 {
     if (number == 0) return @"0";
 
@@ -186,7 +186,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 + (NSString*)randomString
 {
     u_int32_t rand = arc4random();
-    uint64_t now = [NSDate currentTimeMillis];
+    long long now = [NSDate currentTimeMillis];
 
     NSString* hashSource = [NSString stringWithFormat:@"%u:%lld", rand, now];
     NSString* hashed = [hashSource sha1];
@@ -197,12 +197,10 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     // over 8 characters, we trim down the hash length to 12 before converting it into a number (base 16 conversion).
     hashed = [hashed substringToIndex:12];
 
-    long long number = strtoll([hashed UTF8String], NULL, 16);
+    long long number = strtoull([hashed UTF8String], NULL, 16);
     NSString* randomString = [self base62EncodingForNumber:number];
 
-    if ([randomString length] > 8) {
-        return [randomString substringToIndex:8];
-    }
+    if ([randomString length] > 8) return [randomString substringToIndex:8];
 
     return randomString;
 }

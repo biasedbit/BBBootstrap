@@ -40,7 +40,7 @@
 
  @return Nanoseconds elapsed during the execution of `block`.
  */
-+ (uint64_t)profileBlock:(void (^)())block;
++ (unsigned long long)profileBlock:(void (^)())block;
 
 /**
  Profile a code section wrapped in `block` and print the duration to the console in milliseconds.
@@ -60,6 +60,6 @@
 /// @name Unit conversion
 ///----------------------
 
-+ (double)nanosToMilliseconds:(uint64_t)nanos;
++ (double)nanosToMilliseconds:(unsigned long long)nanos;
 
 @end

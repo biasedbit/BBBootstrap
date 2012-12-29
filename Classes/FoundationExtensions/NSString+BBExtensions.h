@@ -35,7 +35,7 @@
  
  @return String representing a base 62 encoding for the input.
  */
-+ (NSString*)base62EncodingForNumber:(long long)number;
++ (NSString*)base62EncodingForNumber:(unsigned long long)number;
 
 /**
  Create a base 64 encoded string from the current instance.

@@ -32,7 +32,7 @@
 
 #pragma mark Profiling
 
-+ (uint64_t)profileBlock:(void (^)())block
++ (unsigned long long)profileBlock:(void (^)())block
 {
     uint64_t startTime = 0;
     uint64_t endTime = 0;
@@ -68,7 +68,7 @@
 
 #pragma mark Unit conversion
 
-+ (double)nanosToMilliseconds:(uint64_t)nanos
++ (double)nanosToMilliseconds:(unsigned long long)nanos
 {
     return nanos / 1000000.0;
 }

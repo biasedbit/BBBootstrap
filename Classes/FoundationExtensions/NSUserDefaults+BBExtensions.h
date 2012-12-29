@@ -33,6 +33,13 @@
 - (BOOL)performChangesAndSynchronize:(void (^)(NSUserDefaults* defaults))changes;
 
 
+///-------------------------------
+/// @name Shortcuts to read values
+///-------------------------------
+
+- (NSUInteger)unsignedIntegerForKey:(NSString*)key;
+
+
 ///--------------------------------
 /// @name Shortcuts to store values
 ///--------------------------------

@@ -42,6 +42,14 @@
 }
 
 
+#pragma mark Shortcuts to read values
+
+- (NSUInteger)unsignedIntegerForKey:(NSString*)key
+{
+    return (NSUInteger) [self integerForKey:key];
+}
+
+
 #pragma mark Shortcuts to store values
 
 - (void)setString:(NSString*)string forKey:(NSString*)key
