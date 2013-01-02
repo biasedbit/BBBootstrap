@@ -47,7 +47,7 @@
 @implementation UIAlertView (BBExtensions)
 
 
-#pragma mark Public static methods
+#pragma mark Class interface
 
 + (void)showAlertWithTitle:(NSString*)title
 {

@@ -24,7 +24,7 @@
 @interface NSDate (BBExtensions)
 
 
-#pragma mark Public static methods
+#pragma mark Class interface
 
 + (long long)currentTimeMillis;
 + (NSString*)currentTimeMillisAsString;
