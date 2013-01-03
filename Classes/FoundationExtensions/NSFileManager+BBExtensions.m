@@ -33,7 +33,7 @@
 - (NSInteger)deleteAllFilesInFolder:(NSString*)pathToFolder
 {
     NSFileManager* manager = [NSFileManager defaultManager];
-    NSArray* files = [manager contentsOfDirectoryAtPath:pathToFolder error:NULL];
+    NSArray* files = [manager contentsOfDirectoryAtPath:pathToFolder error:nil];
 
     if (files == nil) return -1;
 
@@ -41,7 +41,7 @@
 
     for(NSString* file in files) {
         NSString* fullPathToFile = [pathToFolder stringByAppendingPathComponent:file];
-        if (![manager removeItemAtPath:fullPathToFile error:NULL]) failed++;
+        if (![manager removeItemAtPath:fullPathToFile error:nil]) failed++;
     }
 
     return failed;

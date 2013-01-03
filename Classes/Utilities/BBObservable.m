@@ -103,14 +103,12 @@
             if (observer == nil) {
                 LogTrace(@"[%@] Found dead observer, cleaning...", [self logId]);
                 [_observers removeObject:wrapper];
+            } else if (queue == NULL) {
+                block(observer);
             } else {
-                if (queue == NULL) {
+                dispatch_async(queue, ^{
                     block(observer);
-                } else {
-                    dispatch_async(queue, ^{
-                        block(observer);
-                    });
-                }
+                });
             }
         }
     });
