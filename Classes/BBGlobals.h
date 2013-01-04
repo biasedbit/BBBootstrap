@@ -56,7 +56,6 @@ extern NSString* BBPrettySize(double sizeInBytes);
  */
 extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);
 
-
 extern void dispatch_async_main(dispatch_block_t block);
 extern void dispatch_async_high_priority(dispatch_block_t block);
 extern void dispatch_async_default_priority(dispatch_block_t block);
@@ -64,3 +63,11 @@ extern void dispatch_async_low_priority(dispatch_block_t block);
 extern void dispatch_async_background_priority(dispatch_block_t block);
 extern void dispatch_after_seconds(NSTimeInterval seconds, dispatch_block_t block);
 extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
+extern void ensure_block_runs_on_main(dispatch_block_t block);
+
+#define BBBetween(val,min,max)  ({ \
+    __typeof__(val) __val = (val); \
+    __typeof__(min) __min = (min); \
+    __typeof__(max) __max = (max); \
+    __val < __min ? __min : (__val > __max ? __max : __val); \
+})
