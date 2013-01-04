@@ -21,6 +21,8 @@
 
 #import "UIAlertView+BBExtensions.h"
 
+#import <objc/runtime.h>
+
 
 
 #pragma mark - Macros
@@ -33,18 +35,20 @@
 
 #pragma mark -
 
-@interface BBAlertView : UIAlertView <UIAlertViewDelegate>
-
-@property(copy, nonatomic) void (^completion)(NSInteger buttonIndex);
-
-@end
-
-
-
-
-#pragma mark -
-
 @implementation UIAlertView (BBExtensions)
+
+static id kUIAlertView_BBExtensionsCompletionBlockKey;
+
+
+#pragma mark UIAlertViewDelegate
+
+- (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    void (^completion)(NSInteger buttonIndex);
+    completion = objc_getAssociatedObject(self, &kUIAlertView_BBExtensionsCompletionBlockKey);
+
+    completion(buttonIndex);
+}
 
 
 #pragma mark Class interface
@@ -68,43 +72,41 @@
 + (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
                      completion:(void (^)())completion
 {
-    BBAlertView* alertView = [[BBAlertView alloc]
+    UIAlertView* alertView = [[UIAlertView alloc]
                               initWithTitle:title message:message delegate:nil
                               cancelButtonTitle:buttonTitle otherButtonTitles:nil];
     alertView.delegate = alertView;
-    alertView.completion = ^(NSInteger buttonIndex) {
+    [alertView setCompletion:^(NSInteger buttonIndex) {
         completion();
-    };
+    }];
 
     return alertView;
 }
 
 + (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission
 {
-    BBAlertView* alertView = [[BBAlertView alloc]
+    UIAlertView* alertView = [[UIAlertView alloc]
                               initWithTitle:title message:nil delegate:nil
                               cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-    alertView.delegate = alertView;
 
     __weak id weakRef = alertView;
-    alertView.completion = ^(NSInteger buttonIndex) {
+    [alertView setCompletion:^(NSInteger buttonIndex) {
         if (buttonIndex == 1) submission([weakRef textFieldAtIndex:0].text);
-    };
+    }];
 
     return alertView;
 }
 
 + (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation
 {
-    BBAlertView* alertView = [[BBAlertView alloc]
+    UIAlertView* alertView = [[UIAlertView alloc]
                               initWithTitle:title message:nil delegate:nil
                               cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
-    alertView.delegate = alertView;
 
-    alertView.completion = ^(NSInteger buttonIndex) {
+    [alertView setCompletion:^(NSInteger buttonIndex) {
         if (buttonIndex == 1) confirmation();
-    };
+    }];
 
     return alertView;
 }
@@ -113,7 +115,7 @@
   cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
          completion:(void (^)(NSInteger buttonIndex))completion
 {
-    BBAlertView* alertView = [[BBAlertView alloc] init];
+    UIAlertView* alertView = [[UIAlertView alloc] init];
     alertView.title = title;
     alertView.message = message;
 
@@ -124,27 +126,21 @@
     [alertView setCancelButtonIndex:([alertView numberOfButtons] - 1)];
 
     alertView.delegate = alertView;
-    alertView.completion = completion;
+    [alertView setCompletion:completion];
 
     return alertView;
 }
 
-@end
 
+#pragma mark Interface
 
-
-#pragma mark -
-
-@implementation BBAlertView
-
-
-#pragma mark UIAlertViewDelegate
-
-- (void)alertView:(UIAlertView*)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (void)setCompletion:(void (^)(NSInteger buttonIndex))completion
 {
-    if (_completion == nil) return;
-    _completion(buttonIndex);
+    if (completion == nil) return;
+
+    self.delegate = self;
+    objc_setAssociatedObject(self, &kUIAlertView_BBExtensionsCompletionBlockKey,
+                             completion, OBJC_ASSOCIATION_COPY_NONATOMIC);
 }
 
 @end
-

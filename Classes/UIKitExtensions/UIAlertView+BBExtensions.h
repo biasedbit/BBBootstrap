@@ -21,7 +21,7 @@
 
 #pragma mark -
 
-@interface UIAlertView (BBExtensions)
+@interface UIAlertView (BBExtensions) <UIAlertViewDelegate>
 
 
 ///----------------
@@ -48,5 +48,7 @@
 - (id)initWithTitle:(NSString*)title message:(NSString*)message
   cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
          completion:(void (^)(NSInteger buttonIndex))completion;
+
+- (void)setCompletion:(void (^)(NSInteger buttonIndex))completion;
 
 @end
