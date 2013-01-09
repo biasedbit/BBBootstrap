@@ -24,6 +24,8 @@
 @interface NSUserDefaults (BBExtensions)
 
 
+#pragma mark Perform multiple changes and synchronize
+
 ///-----------------------------------------------
 /// @name Perform multiple changes and synchronize
 ///-----------------------------------------------
@@ -33,12 +35,16 @@
 - (BOOL)performChangesAndSynchronize:(void (^)(NSUserDefaults* defaults))changes;
 
 
+#pragma mark Shortcuts to read values
+
 ///-------------------------------
 /// @name Shortcuts to read values
 ///-------------------------------
 
 - (NSUInteger)unsignedIntegerForKey:(NSString*)key;
 
+
+#pragma mark Shortcuts to store values
 
 ///--------------------------------
 /// @name Shortcuts to store values
@@ -83,5 +89,15 @@
  @param key Key under which the value will be stored.
  */
 - (void)setLongLong:(long long)value forKey:(NSString*)key;
+
+
+#pragma mark Subscript operators
+
+///--------------------------
+/// @name Subscript operators
+///--------------------------
+
+- (id)objectForKeyedSubscript:(NSString*)key;
+- (void)setObject:(id)object forKeyedSubscript:(NSString*)key;
 
 @end

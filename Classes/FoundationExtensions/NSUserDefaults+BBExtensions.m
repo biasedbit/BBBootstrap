@@ -77,4 +77,17 @@
     [self setObject:[NSNumber numberWithLongLong:value] forKey:key];
 }
 
+
+#pragma mark Subscript operators
+
+- (id)objectForKeyedSubscript:(NSString*)key
+{
+    return [self objectForKey:key];
+}
+
+- (void)setObject:(id)object forKeyedSubscript:(NSString*)key
+{
+    [self setObject:object forKey:key];
+}
+
 @end

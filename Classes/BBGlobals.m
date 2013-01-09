@@ -137,12 +137,3 @@ void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block)
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(milliseconds * NSEC_PER_MSEC));
     dispatch_after(popTime, dispatch_get_main_queue(), block);
 }
-
-void ensure_block_runs_on_main(dispatch_block_t block)
-{
-    if (dispatch_get_current_queue() != dispatch_get_main_queue()) {
-        dispatch_async_main(block);
-    } else {
-        block();
-    }
-}

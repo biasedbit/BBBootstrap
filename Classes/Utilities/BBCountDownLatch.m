@@ -28,6 +28,9 @@
 @implementation BBCountDownLatch
 {
     BBCountDownLatchBlock _block;
+
+    // Whether the queue should be released when the latch finishes; for internally created queues.
+    // No effect if OS_OBJECT_USE_OBJC is enabled (default on iOS 6+ and OSX 10.8+)
     BOOL _releaseQueueWhenDone;
 }
 
@@ -36,10 +39,12 @@
 
 - (void)dealloc
 {
+#if !OS_OBJECT_USE_OBJC
     if (_releaseQueueWhenDone && (_queue != NULL)) {
         // If we were created with autoCleanup...
         dispatch_release(_queue);
     }
+#endif
 }
 
 

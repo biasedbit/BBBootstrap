@@ -63,7 +63,6 @@ extern void dispatch_async_low_priority(dispatch_block_t block);
 extern void dispatch_async_background_priority(dispatch_block_t block);
 extern void dispatch_after_seconds(NSTimeInterval seconds, dispatch_block_t block);
 extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
-extern void ensure_block_runs_on_main(dispatch_block_t block);
 
 #define BBBetween(val,min,max)  ({ \
     __typeof__(val) __val = (val); \

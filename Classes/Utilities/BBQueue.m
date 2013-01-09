@@ -75,10 +75,12 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 
 #pragma mark Destruction
 
+#if !OS_OBJECT_USE_OBJC
 - (void)dealloc
 {
     dispatch_release(_queue);
 }
+#endif
 
 
 #pragma mark Interface
