@@ -36,9 +36,7 @@
 
 NSString* BBAppVersion()
 {
-    static NSString* appVersion = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    BBCreateSingletonBlock(NSString*, appVersion, ^{
         appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (appVersion == nil) appVersion = kBBFallbackAppVersion;
     });

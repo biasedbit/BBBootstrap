@@ -70,3 +70,17 @@ extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
     __typeof__(max) __max = (max); \
     __val < __min ? __min : (__val > __max ? __max : __val); \
 })
+
+#define BBCreateSingleton(type, name, value) \
+    static type name; \
+    if ((name) == nil) { \
+        static dispatch_once_t name ## _token; \
+        dispatch_once(&name##_token, ^{ name = (value); }); \
+    }
+
+#define BBCreateSingletonBlock(type, name, block) \
+    static type name; \
+    if ((name) == nil) { \
+        static dispatch_once_t name ## _token; \
+        dispatch_once(&name##_token, block); \
+    }
