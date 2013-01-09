@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #include "BBGlobals.h"
@@ -36,7 +36,9 @@
 
 NSString* BBAppVersion()
 {
-    BBCreateSingletonBlock(NSString*, appVersion, ^{
+    static NSString* appVersion = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
         appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
         if (appVersion == nil) appVersion = kBBFallbackAppVersion;
     });

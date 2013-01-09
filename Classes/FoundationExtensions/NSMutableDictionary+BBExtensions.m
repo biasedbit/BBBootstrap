@@ -3,7 +3,7 @@
 //  RemotelyTouch
 //
 //  Created by Bruno de Carvalho on 12/24/12.
-//  Copyright (c) 2012 Graceful, LLC. All rights reserved.
+//  Copyright (c) 2013 Graceful, LLC. All rights reserved.
 //
 
 #import "NSMutableDictionary+BBExtensions.h"
