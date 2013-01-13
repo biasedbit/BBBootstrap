@@ -21,6 +21,8 @@
 
 #import "BBCountDownLatch.h"
 
+#import "BBGlobals.h"
+
 
 
 #pragma mark -
