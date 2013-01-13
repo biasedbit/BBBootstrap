@@ -50,16 +50,15 @@
 
 // Logging
 
-// Comment LOG_TRACE out to avoid trace statements
-#define LOG_TRACE
+// Comment LOG_DEBUG out to avoid trace statements
+#define LOG_DEBUG
 
-#ifdef LOG_TRACE
-    #define LogTrace(fmt, ...)  NSLog((@"(TRACE) " fmt), ##__VA_ARGS__);
+#ifdef LOG_DEBUG
+    #define LogDebug(fmt, ...)  NSLog((@"(DEBUG) " fmt), ##__VA_ARGS__);
 #else
-    #define LogTrace(...)
+    #define LogDebug(...)
 #endif
 
-#define LogDebug(fmt, ...)  NSLog((@"(DEBUG) " fmt), ##__VA_ARGS__);
 #define LogInfo(fmt, ...)   NSLog((@"(INFO) " fmt), ##__VA_ARGS__);
 #define LogError(fmt, ...)  NSLog((@"(ERROR) " fmt), ##__VA_ARGS__);
 

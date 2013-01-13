@@ -103,7 +103,7 @@
 
             // Cleanup dead observers
             if (observer == nil) {
-                LogTrace(@"[%@] Found dead observer, cleaning...", [self logId]);
+                LogDebug(@"[%@] Found dead observer, cleaning...", [self logId]);
                 [_observers removeObject:wrapper];
             } else if (queue == NULL) {
                 block(observer);
