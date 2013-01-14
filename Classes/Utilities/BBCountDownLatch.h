@@ -124,8 +124,8 @@ typedef void (^BBCountDownLatchBlock)();
  
  @see initWithName:queue:counter:andCompletionBlock:
  */
-+ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
-                           andCompletionBlock:(BBCountDownLatchBlock)block;
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter
+                           completion:(BBCountDownLatchBlock)block;
 
 
 #pragma mark Managing state

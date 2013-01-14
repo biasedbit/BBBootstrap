@@ -67,8 +67,8 @@
     return self;
 }
 
-+ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
-                                     andCompletionBlock:(BBCountDownLatchBlock)block
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter
+                                     completion:(BBCountDownLatchBlock)block
 {
     NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.CDLQueue-%@", name];
     dispatch_queue_t queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
