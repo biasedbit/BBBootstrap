@@ -50,37 +50,7 @@
 /// @name Shortcuts to store values
 ///--------------------------------
 
-/**
- Store an `NSString` instance under a given key.
- 
- @param string String to store.
- @param key Key under which the string will be stored.
- */
-- (void)setString:(NSString*)string forKey:(NSString*)key;
-
-/**
- Store an `NSData` instance under a given key.
-
- @param data Data to store.
- @param key Key under which the data will be stored.
- */
-- (void)setData:(NSData*)data forKey:(NSString*)key;
-
-/**
- Store an `NSArray` instance under a given key.
-
- @param array Array to store.
- @param key Key under which the array will be stored.
- */
-- (void)setArray:(NSArray*)array forKey:(NSString*)key;
-
-/**
- Store an `NSDictionary` instance under a given key.
-
- @param dictionary Dictionary to store.
- @param key Key under which the dictionary will be stored.
- */
-- (void)setDictionary:(NSDictionary*)dictionary forKey:(NSString*)key;
+- (void)setUnsignedInteger:(NSUInteger)value forKey:(NSString*)key;
 
 /**
  Store an `long long` under a given key.

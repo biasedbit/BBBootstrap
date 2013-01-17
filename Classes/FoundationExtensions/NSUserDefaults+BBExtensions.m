@@ -52,29 +52,14 @@
 
 #pragma mark Shortcuts to store values
 
-- (void)setString:(NSString*)string forKey:(NSString*)key
+- (void)setUnsignedInteger:(NSUInteger)value forKey:(NSString*)key
 {
-    [self setObject:string forKey:key];
-}
-
-- (void)setData:(NSData*)data forKey:(NSString*)key
-{
-    [self setObject:data forKey:key];
-}
-
-- (void)setArray:(NSArray*)array forKey:(NSString*)key
-{
-    [self setObject:array forKey:key];
-}
-
-- (void)setDictionary:(NSDictionary*)dictionary forKey:(NSString*)key
-{
-    [self setObject:dictionary forKey:key];
+    self[key] = [NSNumber numberWithUnsignedInteger:value];
 }
 
 - (void)setLongLong:(long long)value forKey:(NSString*)key
 {
-    [self setObject:[NSNumber numberWithLongLong:value] forKey:key];
+    self[key] = [NSNumber numberWithLongLong:value];
 }
 
 
