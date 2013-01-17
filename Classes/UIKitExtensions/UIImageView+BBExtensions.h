@@ -19,27 +19,13 @@
 //  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
-#import "NSMutableDictionary+BBExtensions.h"
-
-
-
 #pragma mark -
 
-@implementation NSMutableDictionary (BBExtensions)
+@interface UIImageView (BBExtensions)
 
 
-#pragma mark Shortcuts
+#pragma mark Creation
 
-- (void)setObjectIfNotNil:(id)object forKey:(id<NSCopying>)key
-{
-    if (object == nil) return;
-
-    [self setObject:object forKey:key];
-}
-
-- (void)setUnsignedInteger:(NSUInteger)value forKey:(id<NSCopying>)key
-{
-    [self setObject:[NSNumber numberWithUnsignedInteger:value] forKey:key];
-}
+- (id)initWithImageNamed:(NSString*)imageName;
 
 @end
