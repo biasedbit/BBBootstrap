@@ -146,7 +146,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
         // check for edge case
         mimeType = @"application/octet-stream";
     } else {
-        mimeType = (__bridge_transfer NSString*)registeredType;
+        mimeType = CFBridgingRelease(registeredType);
     }
     CFRelease(UTI);
 
@@ -155,18 +155,21 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 - (BOOL)endsWithExtension:(NSString*)extension
 {
-    return [self endsWithExtensionInSet:[NSSet setWithObject:extension]];
-}
-
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions
-{
     NSString* ext = [self pathExtension];
     if ((ext == nil) || ([ext length] == 0)) return NO;
 
-    for (NSString* extension in extensions) {
-        if ([ext isEqualToString:extension]) return YES;
+    return [ext isEqualToString:extension];
+}
+
+- (BOOL)endsWithAnyExtension:(NSString*)extensions, ...
+{
+    va_list args;
+    va_start(args, extensions);
+    for (NSString* extension = extensions; extension != nil; extension = va_arg(args, NSString*)) {
+        if ([self endsWithExtension:extension]) return YES;
     }
-    
+    va_end(args);
+
     return NO;
 }
 

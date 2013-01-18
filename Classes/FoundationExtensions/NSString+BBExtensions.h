@@ -101,13 +101,13 @@
 - (BOOL)endsWithExtension:(NSString*)extension;
 
 /**
- Test whether a string representing a file path ends with any of the extensions in the input set.
+ Test whether a string representing a file path ends with any of the extensions given.
  
- @param extensions Set of extensions to test.
+ @param extensions List of extensions, `nil`-terminated.
 
- @return `YES` if file ends with one of the extensions in the input set, `NO` otherwise.
+ @return `YES` if file ends with one of the extensions, `NO` otherwise.
  */
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
+- (BOOL)endsWithAnyExtension:(NSString*)extensions, ... NS_REQUIRES_NIL_TERMINATION;
 
 
 ///-----------------
