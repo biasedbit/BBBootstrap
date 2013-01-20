@@ -42,4 +42,9 @@
     [self setObject:[NSNumber numberWithUnsignedInteger:value] forKey:key];
 }
 
+- (void)setBool:(BOOL)value forKey:(id<NSCopying>)key
+{
+    [self setObject:[NSNumber numberWithBool:value] forKey:key];
+}
+
 @end
