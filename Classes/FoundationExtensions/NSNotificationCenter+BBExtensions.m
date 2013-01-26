@@ -37,7 +37,7 @@
 - (void)removeObserver:(id)observer forNotifications:(NSArray*)notificationNames
 {
     for (NSString* notificationName in notificationNames) {
-        [self removeObserver:self name:notificationName object:nil];
+        [self removeObserver:observer name:notificationName object:nil];
     }
 }
 
