@@ -27,7 +27,9 @@
 #pragma mark Shortcuts
 
 - (void)setObjectIfNotNil:(id)object forKey:(id<NSCopying>)key;
+- (void)setUnsignedShort:(unsigned short)value forKey:(id<NSCopying>)key;
 - (void)setUnsignedInteger:(NSUInteger)value forKey:(id<NSCopying>)key;
+- (void)setUnsignedLongLong:(unsigned long long)value forKey:(id<NSCopying>)key;
 - (void)setBool:(BOOL)value forKey:(id<NSCopying>)key;
 
 @end

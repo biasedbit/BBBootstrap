@@ -40,4 +40,15 @@
  */
 - (NSInteger)deleteAllFilesInFolder:(NSString*)pathToFolder;
 
+
+#pragma mark Disk space queries
+
+- (unsigned long long)freeDiskSpace:(NSError**)error;
+- (unsigned long long)totalDiskSpace:(NSError**)error;
+
+
+#pragma mark File system attribute querying shortcuts
+
+- (id)fileSystemPropertyWithName:(NSString*)name error:(NSError**)error;
+
 @end

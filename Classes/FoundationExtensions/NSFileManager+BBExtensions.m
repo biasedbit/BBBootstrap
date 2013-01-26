@@ -32,8 +32,7 @@
 
 - (NSInteger)deleteAllFilesInFolder:(NSString*)pathToFolder
 {
-    NSFileManager* manager = [NSFileManager defaultManager];
-    NSArray* files = [manager contentsOfDirectoryAtPath:pathToFolder error:nil];
+    NSArray* files = [self contentsOfDirectoryAtPath:pathToFolder error:nil];
 
     if (files == nil) return -1;
 
@@ -41,10 +40,43 @@
 
     for(NSString* file in files) {
         NSString* fullPathToFile = [pathToFolder stringByAppendingPathComponent:file];
-        if (![manager removeItemAtPath:fullPathToFile error:nil]) failed++;
+        if (![self removeItemAtPath:fullPathToFile error:nil]) failed++;
     }
 
     return failed;
+}
+
+
+#pragma mark Disk space queries
+
+- (unsigned long long)freeDiskSpace:(NSError**)error
+{
+    NSNumber* freeFileSystemSizeInBytes = [self fileSystemPropertyWithName:NSFileSystemFreeSize error:error];
+    if ((*error != nil) || (freeFileSystemSizeInBytes == nil)) return 0;
+
+    return [freeFileSystemSizeInBytes unsignedLongLongValue];
+}
+
+- (unsigned long long)totalDiskSpace:(NSError**)error
+{
+    NSNumber* fileSystemSizeInBytes = [self fileSystemPropertyWithName:NSFileSystemSize error:error];
+    if ((*error != nil) || (fileSystemSizeInBytes == nil)) return 0;
+
+    return [fileSystemSizeInBytes unsignedLongLongValue];
+}
+
+
+#pragma mark File system attribute querying shortcuts
+
+- (id)fileSystemPropertyWithName:(NSString*)property error:(NSError**)error
+{
+    NSArray* paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString* lastPath = [paths lastObject];
+    NSDictionary* dictionary = [self attributesOfFileSystemForPath:lastPath error:error];
+
+    if ((*error != nil) || (dictionary == nil)) return nil;
+
+    return dictionary[property];
 }
 
 @end

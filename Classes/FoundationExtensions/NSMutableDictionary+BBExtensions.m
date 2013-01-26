@@ -34,17 +34,27 @@
 {
     if (object == nil) return;
 
-    [self setObject:object forKey:key];
+    self[key] = object;
+}
+
+- (void)setUnsignedShort:(unsigned short)value forKey:(id<NSCopying>)key;
+{
+    self[key] = [NSNumber numberWithUnsignedShort:value];
 }
 
 - (void)setUnsignedInteger:(NSUInteger)value forKey:(id<NSCopying>)key
 {
-    [self setObject:[NSNumber numberWithUnsignedInteger:value] forKey:key];
+    self[key] = [NSNumber numberWithUnsignedInteger:value];
+}
+
+- (void)setUnsignedLongLong:(unsigned long long)value forKey:(id<NSCopying>)key
+{
+    self[key] = [NSNumber numberWithUnsignedLongLong:value];
 }
 
 - (void)setBool:(BOOL)value forKey:(id<NSCopying>)key
 {
-    [self setObject:[NSNumber numberWithBool:value] forKey:key];
+    self[key] = [NSNumber numberWithBool:value];
 }
 
 @end
