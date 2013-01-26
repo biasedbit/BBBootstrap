@@ -166,7 +166,8 @@
  @see moveTo:withDuration:bounce:andBounceDuration:
  */
 - (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
-                bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+                bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+            completion:(void (^)(BOOL finished))completion;
 
 /**
  Move the current view to the target `y`, optionally performing a small bounce animation at the end.
@@ -174,7 +175,8 @@
  @see moveTo:withDuration:bounce:andBounceDuration:
  */
 - (void)moveVerticallyTo:(CGFloat)targetY withDuration:(NSTimeInterval)duration
-                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+              completion:(void (^)(BOOL finished))completion;
 
 /**
  Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
@@ -182,7 +184,8 @@
  @see moveTo:withDuration:bounce:andBounceDuration:
  */
 - (void)moveHorizontally:(CGFloat)horizontalMovement withDuration:(NSTimeInterval)duration
-                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+                  bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+              completion:(void (^)(BOOL finished))completion;
 
 /**
  Move the current view to the target `x` coordinate, optionally performing a small bounce animation at the end.
@@ -190,7 +193,8 @@
  @see moveTo:withDuration:bounce:andBounceDuration:
  */
 - (void)moveHorizontallyTo:(CGFloat)targetX withDuration:(NSTimeInterval)duration
-                    bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+                    bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+                completion:(void (^)(BOOL finished))completion;
 
 /**
  Move the current view, optionally performing a small bounce animation at the end.
@@ -198,7 +202,8 @@
  @see moveTo:withDuration:bounce:andBounceDuration:
  */
 - (void)move:(CGSize)movement withDuration:(NSTimeInterval)duration
-      bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+      bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+  completion:(void (^)(BOOL finished))completion;
 
 /**
  Moves the current view to target point, optionally performing a small bounce animation at the end.
@@ -213,7 +218,8 @@
  @param bounceDuration Bounce animation duration.
  */
 - (void)moveTo:(CGPoint)target withDuration:(NSTimeInterval)duration
-        bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration;
+        bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+    completion:(void (^)(BOOL finished))completion;
 
 - (void)setSize:(CGSize)size;
 - (void)setWidth:(CGFloat)width;

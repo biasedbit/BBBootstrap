@@ -157,55 +157,71 @@
 
 - (void)moveVertically:(CGFloat)verticalMovement withDuration:(NSTimeInterval)duration
        bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+            completion:(void (^)(BOOL finished))completion
 {
     CGSize targetMovement = CGSizeMake(0, verticalMovement);
     CGSize targetBounce = CGSizeMake(0, bounce);
 
-    [self move:targetMovement withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+    [self move:targetMovement withDuration:duration
+        bounce:targetBounce andBounceDuration:bounceDuration
+    completion:completion];
 }
 
 - (void)moveVerticallyTo:(CGFloat)targetY withDuration:(NSTimeInterval)duration
                   bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+              completion:(void (^)(BOOL finished))completion
 {
     CGPoint target = self.frame.origin;
     target.y = targetY;
 
     CGSize targetBounce = CGSizeMake(0, bounce);
 
-    [self moveTo:target withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+    [self moveTo:target withDuration:duration
+          bounce:targetBounce andBounceDuration:bounceDuration
+      completion:completion];
 }
 
 - (void)moveHorizontally:(CGFloat)horizontalMovement withDuration:(NSTimeInterval)duration
                   bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+              completion:(void (^)(BOOL finished))completion
 {
     CGSize targetMovement = CGSizeMake(horizontalMovement, 0);
     CGSize targetBounce = CGSizeMake(bounce, 0);
 
-    [self move:targetMovement withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+    [self move:targetMovement withDuration:duration
+        bounce:targetBounce andBounceDuration:bounceDuration
+    completion:completion];
 }
 
 - (void)moveHorizontallyTo:(CGFloat)targetX withDuration:(NSTimeInterval)duration
                     bounce:(CGFloat)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+                completion:(void (^)(BOOL finished))completion
 {
     CGPoint target = self.frame.origin;
     target.x = targetX;
 
     CGSize targetBounce = CGSizeMake(bounce, 0);
 
-    [self moveTo:target withDuration:duration bounce:targetBounce andBounceDuration:bounceDuration];
+    [self moveTo:target withDuration:duration
+          bounce:targetBounce andBounceDuration:bounceDuration
+      completion:completion];
 }
 
 - (void)move:(CGSize)movement withDuration:(NSTimeInterval)duration
       bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+  completion:(void (^)(BOOL finished))completion
 {
     CGPoint currentOrigin = self.frame.origin;
     CGPoint target = CGPointMake(currentOrigin.x + movement.width, currentOrigin.y + movement.height);
 
-    [self moveTo:target withDuration:duration bounce:bounce andBounceDuration:bounceDuration];
+    [self moveTo:target withDuration:duration
+          bounce:bounce andBounceDuration:bounceDuration
+      completion:completion];
 }
 
 - (void)moveTo:(CGPoint)target withDuration:(NSTimeInterval)duration
         bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
+    completion:(void (^)(BOOL finished))completion
 {
     CGRect targetFrame = self.frame;
     targetFrame.origin = target;
@@ -218,11 +234,13 @@
     } completion:^(BOOL finished) {
         if (!finished) {
             self.frame = targetFrame;
+            if (completion != nil) completion(NO);
+            return;
         }
 
         [UIView animateWithDuration:bounceDuration delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             self.frame = targetFrame;
-        } completion:nil];
+        } completion:completion];
     }];
 }
 
