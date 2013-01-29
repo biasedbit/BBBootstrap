@@ -72,16 +72,16 @@ extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
 })
 
 // These two work great unless the expression or block have commas somewhere in the code. Macro "limitation"...
-#define BBCreateSingleton(type, name, expression) \
-    static type name; \
-    if ((name) == nil) { \
+#define BBSingleton(class, name, expression) \
+    static class* name = nil; \
+    if (name == nil) { \
         static dispatch_once_t name##_token; \
-        dispatch_once(&name##_token, ^{ name = (expression); }); \
+        dispatch_once(&name##_token, ^{ name = expression; }); \
     }
 
-#define BBCreateSingletonBlock(type, name, block) \
-    static type name; \
-    if ((name) == nil) { \
+#define BBSingletonBlock(class, name, block) \
+    static class* name = nil; \
+    if (name == nil) { \
         static dispatch_once_t name##_token; \
         dispatch_once(&name##_token, block); \
     }
