@@ -19,6 +19,13 @@
 //  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
+#pragma mark - Constants
+
+extern NSUInteger const UIViewAutoresizingFlexibleMargins;
+extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
+
+
+
 #pragma mark -
 
 @interface UIView (BBExtensions)

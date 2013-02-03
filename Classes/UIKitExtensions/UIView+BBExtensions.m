@@ -23,6 +23,16 @@
 
 
 
+#pragma mark - Constants
+
+NSUInteger const UIViewAutoresizingFlexibleMargins = UIViewAutoresizingFlexibleLeftMargin |
+                                                        UIViewAutoresizingFlexibleTopMargin |
+                                                        UIViewAutoresizingFlexibleRightMargin |
+                                                        UIViewAutoresizingFlexibleBottomMargin;
+NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexibleWidth |
+                                                        UIViewAutoresizingFlexibleHeight;
+
+
 #pragma mark -
 
 @implementation UIView (BBExtensions)
