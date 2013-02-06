@@ -145,9 +145,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
 - (id)moveTo:(CGPoint)point
 {
     CGRect targetFrame = self.frame;
-    targetFrame.origin.x = point.x;
-    targetFrame.origin.y = point.y;
-
+    targetFrame.origin = point;
     self.frame = targetFrame;
 
     return self;
