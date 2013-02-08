@@ -55,6 +55,9 @@
 
 + (void)profileBlock:(void (^)())block withDescription:(NSString*)format, ...
 {
+#ifndef DEBUG
+    block();
+#else
     uint64_t nanos = [self profileBlock:block];
 
     va_list args;
@@ -63,6 +66,7 @@
 	va_end(args);
 
     LogDebug(@"[PROFILER] Took %.2fms to execute section '%@'", [self nanosToMilliseconds:nanos], description);
+#endif
 }
 
 
