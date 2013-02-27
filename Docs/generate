@@ -1,8 +1,6 @@
 #!/bin/sh
 SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 
-DOCSETUTIL_PATH="$(xcode-select -print-path)/usr/bin/docsetutil"
-
 rm -rf ${SCRIPT_DIR}/html
 rm -rf ${SCRIPT_DIR}/docset
 rm -rf ${SCRIPT_DIR}/publish
@@ -23,6 +21,5 @@ appledoc \
   --company-id      com.biasedbit \
   --ignore          .m \
   --output          ${SCRIPT_DIR} \
-  --docsetutil-path ${DOCSETUTIL_PATH}\
   \
   ${SCRIPT_DIR}/../Classes
