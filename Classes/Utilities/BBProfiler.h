@@ -1,5 +1,5 @@
 ///
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark -
@@ -40,7 +40,7 @@
 
  @return Nanoseconds elapsed during the execution of `block`.
  */
-+ (uint64_t)profileBlock:(void (^)())block;
++ (unsigned long long)profileBlock:(void (^)())block;
 
 /**
  Profile a code section wrapped in `block` and print the duration to the console in milliseconds.
@@ -48,10 +48,10 @@
  This is a utility method that combines `profileBlock:` and `nanosToMilliseconds:` and prints the output to the console
  using the `LogDebug()` macro.
 
- @param description Description of of block section, to be printed out to console.
  @param block Block of code to profile.
+ @param description Description of of block section, to be printed out to console.
  */
-+ (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block;
++ (void)profileBlock:(void (^)())block withDescription:(NSString*)format, ... NS_FORMAT_FUNCTION(2,3);
 
 
 #pragma mark Unit conversion
@@ -60,6 +60,6 @@
 /// @name Unit conversion
 ///----------------------
 
-+ (double)nanosToMilliseconds:(uint64_t)nanos;
++ (double)nanosToMilliseconds:(unsigned long long)nanos;
 
 @end

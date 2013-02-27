@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark -
@@ -35,7 +35,7 @@
  
  @return String representing a base 62 encoding for the input.
  */
-+ (NSString*)base62EncodingForNumber:(long long)number;
++ (NSString*)base62EncodingForNumber:(unsigned long long)number;
 
 /**
  Create a base 64 encoded string from the current instance.
@@ -101,13 +101,29 @@
 - (BOOL)endsWithExtension:(NSString*)extension;
 
 /**
- Test whether a string representing a file path ends with any of the extensions in the input set.
+ Test whether a string representing a file path ends with any of the extensions given.
  
- @param extensions Set of extensions to test.
+ @param extensions List of extensions, `nil`-terminated.
 
- @return `YES` if file ends with one of the extensions in the input set, `NO` otherwise.
+ @return `YES` if file ends with one of the extensions, `NO` otherwise.
  */
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions;
+- (BOOL)endsWithAnyExtension:(NSString*)extensions, ... NS_REQUIRES_NIL_TERMINATION;
+
+
+///-----------------
+/// @name Comparison
+///-----------------
+
+/**
+ Compares two strings, returning true if both are `nil` or if the result of sending `isEqualToString:` to `string` with
+ `otherString` as argument returns `YES`.
+ 
+ @param string the reference string
+ @param otherString the string to compare
+ 
+ @return `YES` if both strings are `nil` or identical, `NO` otherwise.
+ */
++ (BOOL)string:(NSString*)string isEqualToString:(NSString*)otherString;
 
 
 ///-----------

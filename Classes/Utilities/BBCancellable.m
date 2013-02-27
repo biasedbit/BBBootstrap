@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "BBCancellable.h"
@@ -29,13 +29,8 @@
 {
     BOOL _cancelled;
 
-    __strong NSString* _name;
+    NSString* _name;
 }
-
-
-#pragma mark Property synthesizers
-
-@synthesize name = _name;
 
 
 #pragma mark Creation
@@ -56,7 +51,7 @@
 }
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (BOOL)cancel
 {

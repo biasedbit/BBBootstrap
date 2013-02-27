@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "UITableView+BBExtensions.h"
@@ -39,12 +39,41 @@
 
 - (void)insertRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+
+- (void)insertRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toInsert = [NSIndexPath indexPathForRow:row inSection:section];
+    [self insertRowAtIndexPath:toInsert withRowAnimation:animation];
+}
+
+- (void)reloadRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+
+- (void)reloadRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toReload = [NSIndexPath indexPathForRow:row inSection:section];
+    [self reloadRowAtIndexPath:toReload withRowAnimation:animation];
 }
 
 - (void)deleteRowAtIndexPath:(NSIndexPath*)indexPath withRowAnimation:(UITableViewRowAnimation)animation
 {
-    [self deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    [self deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
+}
+
+- (void)deleteRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexPath* toDelete = [NSIndexPath indexPathForRow:row inSection:section];
+    [self deleteRowAtIndexPath:toDelete withRowAnimation:animation];
+}
+
+- (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:section];
+    [self reloadSections:indexSet withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
 @end

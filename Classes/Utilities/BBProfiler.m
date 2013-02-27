@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "BBProfiler.h"
@@ -32,7 +32,7 @@
 
 #pragma mark Profiling
 
-+ (uint64_t)profileBlock:(void (^)())block
++ (unsigned long long)profileBlock:(void (^)())block
 {
     uint64_t startTime = 0;
     uint64_t endTime = 0;
@@ -53,16 +53,26 @@
     return elapsedTimeNano;
 }
 
-+ (void)profileSectionWithDescription:(NSString*)description inMillisecondsWithBlock:(void (^)())block
++ (void)profileBlock:(void (^)())block withDescription:(NSString*)format, ...
 {
+#ifndef DEBUG
+    block();
+#else
     uint64_t nanos = [self profileBlock:block];
+
+    va_list args;
+	va_start(args, format);
+    NSString* description = [[NSString alloc] initWithFormat:format arguments:args];
+	va_end(args);
+
     LogDebug(@"[PROFILER] Took %.2fms to execute section '%@'", [self nanosToMilliseconds:nanos], description);
+#endif
 }
 
 
 #pragma mark Unit conversion
 
-+ (double)nanosToMilliseconds:(uint64_t)nanos
++ (double)nanosToMilliseconds:(unsigned long long)nanos
 {
     return nanos / 1000000.0;
 }

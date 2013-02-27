@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "NSUserDefaults+BBExtensions.h"
@@ -28,31 +28,51 @@
 @implementation NSUserDefaults (BBExtensions)
 
 
+#pragma mark Perform multiple changes and synchronize
+
++ (BOOL)performChangesOnDefaultStoreAndSynchronize:(void (^)(NSUserDefaults* defaults))changes
+{
+    return [[NSUserDefaults standardUserDefaults] performChangesAndSynchronize:changes];
+}
+
+- (BOOL)performChangesAndSynchronize:(void (^)(NSUserDefaults* defaults))changes
+{
+    changes(self);
+    return [self synchronize];
+}
+
+
+#pragma mark Shortcuts to read values
+
+- (NSUInteger)unsignedIntegerForKey:(NSString*)key
+{
+    return (NSUInteger) [self integerForKey:key];
+}
+
+
 #pragma mark Shortcuts to store values
 
-- (void)setString:(NSString*)string forKey:(NSString*)key
+- (void)setUnsignedInteger:(NSUInteger)value forKey:(NSString*)key
 {
-    [self setObject:string forKey:key];
-}
-
-- (void)setData:(NSData*)data forKey:(NSString*)key
-{
-    [self setObject:data forKey:key];
-}
-
-- (void)setArray:(NSArray*)array forKey:(NSString*)key
-{
-    [self setObject:array forKey:key];
-}
-
-- (void)setDictionary:(NSDictionary*)dictionary forKey:(NSString*)key
-{
-    [self setObject:dictionary forKey:key];
+    self[key] = [NSNumber numberWithUnsignedInteger:value];
 }
 
 - (void)setLongLong:(long long)value forKey:(NSString*)key
 {
-    [self setObject:[NSNumber numberWithLongLong:value] forKey:key];
+    self[key] = [NSNumber numberWithLongLong:value];
+}
+
+
+#pragma mark Subscript operators
+
+- (id)objectForKeyedSubscript:(NSString*)key
+{
+    return [self objectForKey:key];
+}
+
+- (void)setObject:(id)object forKeyedSubscript:(NSString*)key
+{
+    [self setObject:object forKey:key];
 }
 
 @end

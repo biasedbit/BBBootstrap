@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "BBObservable.h"
@@ -31,7 +31,7 @@
 {
     dispatch_queue_t _observableQueue;
 
-    __strong NSMutableSet* _observers;
+    NSMutableSet* _observers;
 }
 
 
@@ -53,13 +53,15 @@
 
 #pragma mark Destruction
 
+#if !OS_OBJECT_USE_OBJC
 - (void)dealloc
 {
     dispatch_release(_observableQueue);
 }
+#endif
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (void)addObserver:(id)observer
 {
@@ -101,16 +103,14 @@
 
             // Cleanup dead observers
             if (observer == nil) {
-                LogTrace(@"[%@] Found dead observer, cleaning...", [self logId]);
+                LogDebug(@"[%@] Found dead observer, cleaning...", [self logId]);
                 [_observers removeObject:wrapper];
+            } else if (queue == NULL) {
+                block(observer);
             } else {
-                if (queue == NULL) {
+                dispatch_async(queue, ^{
                     block(observer);
-                } else {
-                    dispatch_async(queue, ^{
-                        block(observer);
-                    });
-                }
+                });
             }
         }
     });

@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #include "BBGlobals.h"
@@ -40,9 +40,7 @@ NSString* BBAppVersion()
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         appVersion = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-        if (appVersion == nil) {
-            appVersion = kBBFallbackAppVersion;
-        }
+        if (appVersion == nil) appVersion = kBBFallbackAppVersion;
     });
 
     return appVersion;
@@ -59,9 +57,7 @@ NSString* BBGetUUID()
 
 NSString* BBPrettySize(double sizeInBytes)
 {
-    if (sizeInBytes < 0) {
-        return @"n/a";
-    }
+    if (sizeInBytes < 0) return @"n/a";
 
     NSString* unit;
     double sizeInUnits;
@@ -84,9 +80,7 @@ NSString* BBPrettySize(double sizeInBytes)
 
 NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond)
 {
-    if (transferRateInBytesPerSecond < 0) {
-        return @"n/a";
-    }
+    if (transferRateInBytesPerSecond < 0) return @"n/a";
 
     NSString* unit;
     double sizeInUnits;
@@ -105,4 +99,41 @@ NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond)
     }
 
     return [NSString stringWithFormat:@"%.1f%@/s", sizeInUnits, unit];
+}
+
+void dispatch_async_main(dispatch_block_t block)
+{
+    dispatch_async(dispatch_get_main_queue(), block);
+}
+
+void dispatch_async_high_priority(dispatch_block_t block)
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), block);
+}
+
+void dispatch_async_default_priority(dispatch_block_t block)
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+}
+
+void dispatch_async_low_priority(dispatch_block_t block)
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), block);
+}
+
+void dispatch_async_background_priority(dispatch_block_t block)
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), block);
+}
+
+void dispatch_after_seconds(NSTimeInterval seconds, dispatch_block_t block)
+{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(seconds * 1000 * NSEC_PER_MSEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
+}
+
+void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block)
+{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(milliseconds * NSEC_PER_MSEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), block);
 }

@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark - Utility functions
@@ -55,3 +55,33 @@ extern NSString* BBPrettySize(double sizeInBytes);
  @return Human readable string, like 32.1MB/s
  */
 extern NSString* BBPrettyTransferRate(double transferRateInBytesPerSecond);
+
+extern void dispatch_async_main(dispatch_block_t block);
+extern void dispatch_async_high_priority(dispatch_block_t block);
+extern void dispatch_async_default_priority(dispatch_block_t block);
+extern void dispatch_async_low_priority(dispatch_block_t block);
+extern void dispatch_async_background_priority(dispatch_block_t block);
+extern void dispatch_after_seconds(NSTimeInterval seconds, dispatch_block_t block);
+extern void dispatch_after_millis(int64_t milliseconds, dispatch_block_t block);
+
+#define BBBetween(val, min, max)  ({ \
+    __typeof__(val) __val = (val); \
+    __typeof__(min) __min = (min); \
+    __typeof__(max) __max = (max); \
+    __val < __min ? __min : (__val > __max ? __max : __val); \
+})
+
+// These two work great unless the expression or block have commas somewhere in the code. Macro "limitation"...
+#define BBSingleton(class, name, expression) \
+    static class* name = nil; \
+    if (name == nil) { \
+        static dispatch_once_t name##_token; \
+        dispatch_once(&name##_token, ^{ name = expression; }); \
+    }
+
+#define BBSingletonBlock(class, name, block) \
+    static class* name = nil; \
+    if (name == nil) { \
+        static dispatch_once_t name##_token; \
+        dispatch_once(&name##_token, block); \
+    }

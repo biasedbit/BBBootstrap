@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "NSData+BBExtensions.h"
@@ -64,9 +64,7 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 + (NSData*)decodeBase64String:(NSString*)string
 {
     const char* objPointer = [string cStringUsingEncoding:NSASCIIStringEncoding];
-    if (objPointer == NULL) {
-        return nil;
-    }
+    if (objPointer == NULL) return nil;
 
     size_t intLength = strlen(objPointer);
     NSInteger intCurrent;
@@ -189,14 +187,9 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 		}
 	}
 
-	NSString* string = [[NSString alloc]
-                        initWithBytesNoCopy:strResult length:(objPointer - strResult)
-                        encoding:NSASCIIStringEncoding freeWhenDone:YES];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
-
-	return string;
+	return [[NSString alloc]
+            initWithBytesNoCopy:strResult length:(objPointer - strResult)
+            encoding:NSASCIIStringEncoding freeWhenDone:YES];
 }
 
 
@@ -206,7 +199,7 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 {
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
     CC_SHA1([self bytes], (CC_LONG)[self length], digest);
-    NSMutableString* hash = [NSMutableString string];
+    NSMutableString* hash = [NSMutableString stringWithCapacity:CC_SHA1_DIGEST_LENGTH];
 
     for (int i = 0; i < CC_SHA1_DIGEST_LENGTH; i++) {
         [hash appendFormat:@"%02X", digest[i]];
@@ -219,7 +212,7 @@ static const short kNSData_BBExtensionsBase64DecodingTable[256] = {
 {
     unsigned char digest[CC_MD5_DIGEST_LENGTH];
     CC_MD5([self bytes], (CC_LONG)[self length], digest);
-    NSMutableString* hash = [NSMutableString string];
+    NSMutableString* hash = [NSMutableString stringWithCapacity:CC_MD5_DIGEST_LENGTH];
 
     for (int i = 0; i < CC_MD5_DIGEST_LENGTH; i++) {
         [hash appendFormat:@"%02X", digest[i]];

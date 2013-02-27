@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,21 +16,10 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "UIDevice+BBExtensions.h"
-
-#include <sys/types.h>
-#include <sys/sysctl.h>
-
-
-
-#pragma mark - Constants
-
-NSString* const kBBiPhone3GS = @"iPhone2,1";
-NSString* const kBBiPhone4 = @"iPhone2,2";
-NSString* const kBBiPhone4S = @"iPhone2,3";
 
 
 
@@ -39,27 +28,7 @@ NSString* const kBBiPhone4S = @"iPhone2,3";
 @implementation UIDevice (BBExtensions)
 
 
-#pragma mark Public methods
-
-- (NSString*)platform
-{
-    /*
-     Platforms
-     iPhone1,1 -> iPhone 1G
-     iPhone1,2 -> iPhone 3G
-     iPod1,1 -> iPod touch 1G
-     iPod2,1 -> iPod touch 2G
-     */
-
-    size_t size;
-    sysctlbyname("hw.machine", NULL, &size, NULL, 0);
-    char* machine = malloc(size);
-    sysctlbyname("hw.machine", machine, &size, NULL, 0);
-    NSString* platform = [NSString stringWithCString:machine encoding:NSUTF8StringEncoding];
-    free(machine);
-
-    return platform;
-}
+#pragma mark Interface
 
 - (BOOL)hasRetinaDisplay
 {

@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "NSDictionary+BBExtensions.h"
@@ -33,19 +33,31 @@
 - (BOOL)boolForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return NO;
 
     return [number boolValue];
+}
+
+- (unsigned char)unsignedCharForKey:(id)key
+{
+    id number = [self objectForKey:key];
+    if (number == nil) return 0;
+
+    return [number unsignedCharValue];
+}
+
+- (unsigned short)unsignedShortForKey:(id)key
+{
+    id number = [self objectForKey:key];
+    if (number == nil) return 0;
+
+    return [number unsignedShortValue];
 }
 
 - (NSInteger)integerForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number integerValue];
 }
@@ -53,9 +65,7 @@
 - (NSUInteger)unsignedIntegerForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number unsignedIntegerValue];
 }
@@ -63,9 +73,7 @@
 - (long)longForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return NO;
 
     return [number longValue];
 }
@@ -73,9 +81,7 @@
 - (unsigned long)unsignedLongForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number unsignedLongValue];
 }
@@ -83,9 +89,7 @@
 - (long long)longLongForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number longLongValue];
 }
@@ -93,9 +97,7 @@
 - (unsigned long long)unsignedLongLongForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number unsignedLongLongValue];
 }
@@ -103,9 +105,7 @@
 - (float)floatForKey:(id)key
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number floatValue];
 }
@@ -113,9 +113,7 @@
 - (double)doubleForKey:(id)key;
 {
     id number = [self objectForKey:key];
-    if (number == nil) {
-        return NO;
-    }
+    if (number == nil) return 0;
 
     return [number doubleValue];
 }

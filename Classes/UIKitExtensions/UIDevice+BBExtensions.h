@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,17 +16,8 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
-
-#pragma mark - Constants
-
-/** iPhone3GS device identifier */
-extern NSString* const kBBiPhone3GS;
-/** iPhone4 device identifier */
-extern NSString* const kBBiPhone4;
-/** iPhone4S device identifier */
-extern NSString* const kBBiPhone4S;
 
 
 
@@ -37,18 +28,6 @@ extern NSString* const kBBiPhone4S;
 ///--------------------------
 /// @name Device capabilities
 ///--------------------------
-
-/**
- Query the device for its platform identifier.
- 
- Platform identifiers should be compared against these constants:
- - `kBBiPhone3GS`
- - `kBBiPhone4`
- - `kBBiPhone4S`
-
- @return String identifying this platform.
- */
-- (NSString*)platform;
 
 /**
  Test if the device has a retina display.

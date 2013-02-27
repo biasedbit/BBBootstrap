@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.6 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -75,11 +75,19 @@
 	
 	<option value="//api/name/moveTo:withDuration:bounce:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveTo:withDuration:bounce:andBounceDuration:</option>
 	
+	<option value="//api/name/moveToX:">&nbsp;&nbsp;&nbsp;&nbsp;- moveToX:</option>
+	
+	<option value="//api/name/moveToY:">&nbsp;&nbsp;&nbsp;&nbsp;- moveToY:</option>
+	
 	<option value="//api/name/moveVertically:withDuration:bounce:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveVertically:withDuration:bounce:andBounceDuration:</option>
 	
 	<option value="//api/name/moveVerticallyTo:withDuration:bounce:andBounceDuration:">&nbsp;&nbsp;&nbsp;&nbsp;- moveVerticallyTo:withDuration:bounce:andBounceDuration:</option>
 	
 	<option value="//api/name/rectCenteredInRect:">&nbsp;&nbsp;&nbsp;&nbsp;- rectCenteredInRect:</option>
+	
+	<option value="//api/name/setHeight:">&nbsp;&nbsp;&nbsp;&nbsp;- setHeight:</option>
+	
+	<option value="//api/name/setWidth:">&nbsp;&nbsp;&nbsp;&nbsp;- setWidth:</option>
 	
 	
 	
@@ -145,11 +153,19 @@
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveTo:withDuration:bounce:andBounceDuration:">moveTo:withDuration:bounce:andBounceDuration:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveToX:">moveToX:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveToY:">moveToY:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveVertically:withDuration:bounce:andBounceDuration:">moveVertically:withDuration:bounce:andBounceDuration:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/moveVerticallyTo:withDuration:bounce:andBounceDuration:">moveVerticallyTo:withDuration:bounce:andBounceDuration:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/rectCenteredInRect:">rectCenteredInRect:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setHeight:">setHeight:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/setWidth:">setWidth:</a></span></li>
 	
 </ul></li>
 
@@ -288,6 +304,20 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/moveToX:">&ndash;&nbsp;moveToX:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/moveToY:">&ndash;&nbsp;moveToY:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/moveVertically:withDuration:bounce:andBounceDuration:">&ndash;&nbsp;moveVertically:withDuration:bounce:andBounceDuration:</a></code>
 		<span class="tooltip"><p>Move the current view on the <code>x</code> axis, optionally performing a small bounce animation at the end.</p></span>
 	</span>
@@ -328,6 +358,20 @@
 	</span>
 	
 	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setWidth:">&ndash;&nbsp;setWidth:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/setHeight:">&ndash;&nbsp;setHeight:</a></code>
+		
+	</span>
+	
+	
 </li>
 						</ul>
 						
@@ -353,9 +397,11 @@
 		<p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> animations:(void ( ^ ) ( ))<em>animations</em></code></div>
-	
+
+    
 	
 	
 	
@@ -396,9 +442,11 @@
 		<p>Shortcut for <a href="#//api/name/animate:withDuration:delay:options:animations:completion:">animate:withDuration:delay:options:animations:completion:</a></p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> animations:(void ( ^ ) ( ))<em>animations</em> completion:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
-	
+
+    
 	
 	
 	
@@ -440,9 +488,11 @@
 <code>animations</code> block if <code>animated</code> is set to <code>YES</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (void)animate:(BOOL)<em>animated</em> withDuration:(NSTimeInterval)<em>duration</em> delay:(NSTimeInterval)<em>delay</em> options:(UIViewAnimationOptions)<em>options</em> animations:(void ( ^ ) ( ))<em>animations</em> completion:(void ( ^ ) ( BOOL ))<em>completion</em></code></div>
-	
+
+    
 	
 	
 	
@@ -489,9 +539,11 @@
 		<p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>x</code> axis in <code>outerRect</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> horizontallyInRect:(CGRect)<em>outerRect</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -543,9 +595,11 @@
 		<p>Calculate the rectangle resulting of centering <code>rect</code> in <code>outerRect</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> inRect:(CGRect)<em>outerRect</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -597,9 +651,11 @@
 		<p>Calculate the rectangle resulting of centering <code>rect</code>&rsquo;s <code>y</code> axis in <code>outerRect</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>+ (CGRect)center:(CGRect)<em>rect</em> verticallyInRect:(CGRect)<em>outerRect</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -659,9 +715,11 @@
 		<p>Center current view&rsquo;s <code>x</code> coordinates in <code>rect</code>.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)centerHorizontallyInRect:(CGRect)<em>rect</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)centerHorizontallyInRect:(CGRect)<em>rect</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -708,9 +766,11 @@
 		<p>Center current view in <code>rect</code>.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)centerInRect:(CGRect)<em>rect</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)centerInRect:(CGRect)<em>rect</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -757,9 +817,11 @@
 		<p>Center current view&rsquo;s <code>y</code> coordinates in <code>rect</code>.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)centerVerticallyInRect:(CGRect)<em>rect</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)centerVerticallyInRect:(CGRect)<em>rect</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -806,9 +868,11 @@
 		<p>Move the current view a given instance.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)move:(CGSize)<em>movement</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)move:(CGSize)<em>movement</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -856,9 +920,11 @@ use negative values to move the view up/left or positive values to move it down/
 		<p>Move the current view, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)move:(CGSize)<em>movement</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGSize)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	
 	
@@ -899,9 +965,11 @@ use negative values to move the view up/left or positive values to move it down/
 		<p>Move the current view on the <code>x</code> axis, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveHorizontally:(CGFloat)<em>horizontalMovement</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	
 	
@@ -942,9 +1010,11 @@ use negative values to move the view up/left or positive values to move it down/
 		<p>Move the current view to the target <code>x</code> coordinate, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveHorizontallyTo:(CGFloat)<em>targetX</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	
 	
@@ -985,9 +1055,11 @@ use negative values to move the view up/left or positive values to move it down/
 		<p>Move the current view to a given point.</p>
 	</div>		
 	
-	
-	<div class="method-subsection method-declaration"><code>- (void)moveTo:(CGPoint)<em>point</em></code></div>
-	
+    
+
+	<div class="method-subsection method-declaration"><code>- (id)moveTo:(CGPoint)<em>point</em></code></div>
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1034,9 +1106,11 @@ use negative values to move the view up/left or positive values to move it down/
 		<p>Moves the current view to target point, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveTo:(CGPoint)<em>target</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGSize)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1091,6 +1165,28 @@ snaps back into place. Try variations on these for optimum results.</p>
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/moveToX:" title="moveToX:"></a>
+	<h3 class="subsubtitle method-title">moveToX:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)moveToX:(CGFloat)<em>x</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/moveToY:" title="moveToY:"></a>
+	<h3 class="subsubtitle method-title">moveToY:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (id)moveToY:(CGFloat)<em>y</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/moveVertically:withDuration:bounce:andBounceDuration:" title="moveVertically:withDuration:bounce:andBounceDuration:"></a>
 	<h3 class="subsubtitle method-title">moveVertically:withDuration:bounce:andBounceDuration:</h3>
 	
@@ -1100,9 +1196,11 @@ snaps back into place. Try variations on these for optimum results.</p>
 		<p>Move the current view on the <code>x</code> axis, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveVertically:(CGFloat)<em>verticalMovement</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1143,9 +1241,11 @@ snaps back into place. Try variations on these for optimum results.</p>
 		<p>Move the current view to the target <code>y</code>, optionally performing a small bounce animation at the end.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)moveVerticallyTo:(CGFloat)<em>targetY</em> withDuration:(NSTimeInterval)<em>duration</em> bounce:(CGFloat)<em>bounce</em> andBounceDuration:(NSTimeInterval)<em>bounceDuration</em></code></div>
-	
+
+    
 	
 	
 	
@@ -1186,9 +1286,11 @@ snaps back into place. Try variations on these for optimum results.</p>
 		<p>Calculate the result of centering the current view&rsquo;s frame in a given rectangle.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (CGRect)rectCenteredInRect:(CGRect)<em>rect</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -1230,6 +1332,28 @@ snaps back into place. Try variations on these for optimum results.</p>
 	
 </div>
 						
+						<div class="section-method">
+	<a name="//api/name/setHeight:" title="setHeight:"></a>
+	<h3 class="subsubtitle method-title">setHeight:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)setHeight:(CGFloat)<em>height</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/setWidth:" title="setWidth:"></a>
+	<h3 class="subsubtitle method-title">setWidth:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)setWidth:(CGFloat)<em>width</em></code></div>
+
+    
+</div>
+						
 					</div>
 					
 					
@@ -1243,9 +1367,9 @@ snaps back into place. Try variations on these for optimum results.</p>
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-09-27)</span><br />
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-12-20)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.6 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -1333,6 +1457,14 @@ snaps back into place. Try variations on these for optimum results.</p>
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

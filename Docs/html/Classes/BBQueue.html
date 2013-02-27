@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.6 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -27,6 +27,8 @@
 					<select id="jumpTo">
 	<option value="top">Jump To&#133;</option>
 	
+	<option value="overview">Overview</option>
+	
 	
 	
 	
@@ -36,21 +38,26 @@
 	
 	
 	
+	<option value="properties">Properties</option>
+	
+	<option value="//api/name/delegate">&nbsp;&nbsp;&nbsp;&nbsp;delegate</option>
+	
+	
 	
 	
 	
 	
 	<option value="instance_methods">Instance Methods</option>
 	
-	<option value="//api/name/enqueue:">&nbsp;&nbsp;&nbsp;&nbsp;- enqueue:</option>
+	<option value="//api/name/enqueueOperationWithId:andParams:">&nbsp;&nbsp;&nbsp;&nbsp;- enqueueOperationWithId:andParams:</option>
 	
-	<option value="//api/name/enqueue:prioritize:">&nbsp;&nbsp;&nbsp;&nbsp;- enqueue:prioritize:</option>
+	<option value="//api/name/enqueueOperationWithId:andParams:prioritize:">&nbsp;&nbsp;&nbsp;&nbsp;- enqueueOperationWithId:andParams:prioritize:</option>
 	
 	<option value="//api/name/initWithName:andSlots:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:andSlots:</option>
 	
 	<option value="//api/name/initWithName:slots:andMaxQueueSize:">&nbsp;&nbsp;&nbsp;&nbsp;- initWithName:slots:andMaxQueueSize:</option>
 	
-	<option value="//api/name/queueOperationFinished:">&nbsp;&nbsp;&nbsp;&nbsp;- queueOperationFinished:</option>
+	<option value="//api/name/operationFinished:">&nbsp;&nbsp;&nbsp;&nbsp;- operationFinished:</option>
 	
 	
 	
@@ -61,6 +68,8 @@
 		<nav id="tocContainer" class="isShowingTOC">
 			<ul id="toc" role="tree">
 				
+<li role="treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#overview">Overview</a></span></li>
+
 
 
 
@@ -72,21 +81,27 @@
 
 
 
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#properties">Properties</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/delegate">delegate</a></span></li>
+	
+</ul></li>
+
 
 
 
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enqueue:">enqueue:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enqueueOperationWithId:andParams:">enqueueOperationWithId:andParams:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enqueue:prioritize:">enqueue:prioritize:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/enqueueOperationWithId:andParams:prioritize:">enqueueOperationWithId:andParams:prioritize:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:andSlots:">initWithName:andSlots:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/initWithName:slots:andMaxQueueSize:">initWithName:slots:andMaxQueueSize:</a></span></li>
 	
-	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/queueOperationFinished:">queueOperationFinished:</a></span></li>
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/operationFinished:">operationFinished:</a></span></li>
 	
 </ul></li>
 
@@ -122,6 +137,41 @@
 					
 					
 					
+					<div class="section section-overview">
+						<a title="Overview" name="overview"></a>
+						<h2 class="subtitle subtitle-overview">Overview</h2>
+						<p>Component similar to a dispatch queue with support for detection of duplicate tasks and configuration of how many
+tasks can run in parallel. If only one task is allowed to run at a time, it is just about the same as a serial dispatch
+queue except it detects duplicate task submissions.</p>
+
+<p>The main (and only) advantage this component offers over a <code>NSOperationQueue</code> is duplicate task submission detection.</p>
+
+<h2>Detecting duplicates</h2>
+
+<p>Suppose you&rsquo;re going through a list of records that contain references to url that represents their image. You want to
+download those images to populate a <code>UITableView</code>. If some of those images are duplicates, you&rsquo;ll end up downloading
+unnecessary images.</p>
+
+<p>If your consider the image url a unique identifier for a download operation, submitting operations via
+<a href="#//api/name/enqueueOperationWithId:andParams:"><code>enqueueOperationWithId:andParams:</code></a> passing the url as <code>id</code>, you&rsquo;ll have the guarantee that no duplicate requests for
+the same url will be performed.</p>
+
+<h2>Usage notes</h2>
+
+<p>A <code>BBQueue</code> on its own contains only the main logic behind management of the queue. You must provide a <a href="#//api/name/delegate">delegate</a> and
+that <a href="#//api/name/delegate">delegate</a> must return a non-nil value when its <code>createOperationWithId:andParams:forQueue:</code> method is called.</p>
+
+<p>Returning <code>nil</code> will result in nothing actually being done &mdash; which may eventually be a desirable action, e.g. if
+you detected that you&rsquo;ve already have the image cached locally.</p>
+
+<p>When an operation finishes, you <strong>must</strong> call <a href="#//api/name/operationFinished:"><code>operationFinished:</code></a> and pass the operation. If you fail to do this, the
+queue will never be aware that the operation has finished and, consequently, won&rsquo;t execute other queued operations.</p>
+
+<p>This class is <strong>not</strong> intended to be subclassed.</p>
+					</div>
+					
+					
+					
 					
 					
 					<div class="section section-tasks">
@@ -134,6 +184,13 @@
 
 						<ul class="task-list">
 							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/delegate">&nbsp;&nbsp;delegate</a></code>
+		
+	</span>
+	<span class="task-item-suffix">property</span>
+	
+</li><li>
 	<span class="tooltip">
 		<code><a href="#//api/name/initWithName:andSlots:">&ndash;&nbsp;initWithName:andSlots:</a></code>
 		
@@ -149,21 +206,21 @@
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/enqueue:">&ndash;&nbsp;enqueue:</a></code>
+		<code><a href="#//api/name/enqueueOperationWithId:andParams:">&ndash;&nbsp;enqueueOperationWithId:andParams:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/enqueue:prioritize:">&ndash;&nbsp;enqueue:prioritize:</a></code>
+		<code><a href="#//api/name/enqueueOperationWithId:andParams:prioritize:">&ndash;&nbsp;enqueueOperationWithId:andParams:prioritize:</a></code>
 		
 	</span>
 	
 	
 </li><li>
 	<span class="tooltip">
-		<code><a href="#//api/name/queueOperationFinished:">&ndash;&nbsp;queueOperationFinished:</a></code>
+		<code><a href="#//api/name/operationFinished:">&ndash;&nbsp;operationFinished:</a></code>
 		
 	</span>
 	
@@ -177,6 +234,23 @@
 					
 					
 					
+					<div class="section section-methods">
+						<a title="Properties" name="properties"></a>
+						<h2 class="subtitle subtitle-methods">Properties</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/delegate" title="delegate"></a>
+	<h3 class="subsubtitle method-title">delegate</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>@property (weak, nonatomic) id&lt;BBQueueDelegate&gt; delegate</code></div>
+
+    
+</div>
+						
+					</div>
+					
 					
 					
 					
@@ -186,17 +260,25 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
-	<a name="//api/name/enqueue:" title="enqueue:"></a>
-	<h3 class="subsubtitle method-title">enqueue:</h3>
+	<a name="//api/name/enqueueOperationWithId:andParams:" title="enqueueOperationWithId:andParams:"></a>
+	<h3 class="subsubtitle method-title">enqueueOperationWithId:andParams:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;BBQueueOperation&gt;)enqueueOperationWithId:(NSString *)<em>identifier</em> andParams:(NSDictionary *)<em>params</em></code></div>
+
+    
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/enqueue:prioritize:" title="enqueue:prioritize:"></a>
-	<h3 class="subsubtitle method-title">enqueue:prioritize:</h3>
+	<a name="//api/name/enqueueOperationWithId:andParams:prioritize:" title="enqueueOperationWithId:andParams:prioritize:"></a>
+	<h3 class="subsubtitle method-title">enqueueOperationWithId:andParams:prioritize:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (id&lt;BBQueueOperation&gt;)enqueueOperationWithId:(NSString *)<em>identifier</em> andParams:(NSDictionary *)<em>params</em> prioritize:(BOOL)<em>prioritize</em></code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -204,6 +286,10 @@
 	<h3 class="subsubtitle method-title">initWithName:andSlots:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> andSlots:(NSUInteger)<em>slots</em></code></div>
+
+    
 </div>
 						
 						<div class="section-method">
@@ -211,13 +297,21 @@
 	<h3 class="subsubtitle method-title">initWithName:slots:andMaxQueueSize:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (id)initWithName:(NSString *)<em>name</em> slots:(NSUInteger)<em>slots</em> andMaxQueueSize:(NSUInteger)<em>maxQueueSize</em></code></div>
+
+    
 </div>
 						
 						<div class="section-method">
-	<a name="//api/name/queueOperationFinished:" title="queueOperationFinished:"></a>
-	<h3 class="subsubtitle method-title">queueOperationFinished:</h3>
+	<a name="//api/name/operationFinished:" title="operationFinished:"></a>
+	<h3 class="subsubtitle method-title">operationFinished:</h3>
 	
 	
+
+	<div class="method-subsection method-declaration"><code>- (void)operationFinished:(id&lt;BBQueueOperation&gt;)<em>operation</em></code></div>
+
+    
 </div>
 						
 					</div>
@@ -233,9 +327,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-09-27)</span><br />
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-12-20)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.6 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -323,6 +417,14 @@
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

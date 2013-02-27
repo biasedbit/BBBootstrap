@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "NSString+BBExtensions.h"
@@ -44,11 +44,9 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 #pragma mark Base encoding/decoding
 
-+ (NSString*)base62EncodingForNumber:(long long)number
++ (NSString*)base62EncodingForNumber:(unsigned long long)number
 {
-    if (number == 0) {
-        return @"0";
-    }
+    if (number == 0) return @"0";
 
     NSMutableString* result = [[NSMutableString alloc] init];
     while (number > 0) {
@@ -72,12 +70,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 - (NSString*)base64DecodedString
 {
     NSData* data = [NSData decodeBase64String:self];
-    NSString* string = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-#if !__has_feature(objc_arc)
-    [string autorelease];
-#endif
-
-    return string;
+    return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark Hashing
@@ -140,32 +133,20 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 - (NSString*)filenameMimeType
 {
     NSString* ext = [self pathExtension];
-    if (ext == nil) {
-        return @"application/octet-stream";
-    }
+    if (ext == nil) return @"application/octet-stream";
 
     NSString* mimeType = nil;
-#if __has_feature(objc_arc)
     CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
                                                             (__bridge CFStringRef)ext, NULL);
-#else
-    CFStringRef UTI = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension,
-                                                            (CFStringRef)ext, NULL);
-#endif
-    if (!UTI) {
-        return nil;
-    }
+
+    if (!UTI) return nil;
 
     CFStringRef registeredType = UTTypeCopyPreferredTagWithClass(UTI, kUTTagClassMIMEType);
     if (!registeredType) {
         // check for edge case
         mimeType = @"application/octet-stream";
     } else {
-#if __has_feature(objc_arc)
-        mimeType = (__bridge_transfer NSString*)registeredType;
-#else
-        mimeType = NSMakeCollectable(registeredType);
-#endif
+        mimeType = CFBridgingRelease(registeredType);
     }
     CFRelease(UTI);
 
@@ -174,23 +155,32 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 
 - (BOOL)endsWithExtension:(NSString*)extension
 {
-    return [self endsWithExtensionInSet:[NSSet setWithObject:extension]];
+    NSString* ext = [self pathExtension];
+    if ((ext == nil) || ([ext length] == 0)) return NO;
+
+    return [ext isEqualToString:extension];
 }
 
-- (BOOL)endsWithExtensionInSet:(NSSet*)extensions
+- (BOOL)endsWithAnyExtension:(NSString*)extensions, ...
 {
-    NSString* ext = [self pathExtension];
-    if ((ext == nil) || ([ext length] == 0)) {
-        return NO;
+    va_list args;
+    va_start(args, extensions);
+    for (NSString* extension = extensions; extension != nil; extension = va_arg(args, NSString*)) {
+        if ([self endsWithExtension:extension]) return YES;
     }
+    va_end(args);
 
-    for (NSString* extension in extensions) {
-        if ([ext isEqualToString:extension]) {
-            return YES;
-        }
-    }
-    
     return NO;
+}
+
+
+#pragma mark Comparison
+
++ (BOOL)string:(NSString*)string isEqualToString:(NSString*)otherString
+{
+    if ((string == nil) && (otherString == nil)) return YES;
+
+    return [string isEqualToString:otherString];
 }
 
 
@@ -199,7 +189,7 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
 + (NSString*)randomString
 {
     u_int32_t rand = arc4random();
-    uint64_t now = [NSDate currentTimeMillis];
+    long long now = [NSDate currentTimeMillis];
 
     NSString* hashSource = [NSString stringWithFormat:@"%u:%lld", rand, now];
     NSString* hashed = [hashSource sha1];
@@ -210,12 +200,10 @@ const char kNSString_BBExtensionsBase62Alphabet[62] = "0123456789ABCDEFGHIJKLMNO
     // over 8 characters, we trim down the hash length to 12 before converting it into a number (base 16 conversion).
     hashed = [hashed substringToIndex:12];
 
-    long long number = strtoll([hashed UTF8String], NULL, 16);
+    long long number = strtoull([hashed UTF8String], NULL, 16);
     NSString* randomString = [self base62EncodingForNumber:number];
 
-    if ([randomString length] > 8) {
-        return [randomString substringToIndex:8];
-    }
+    if ([randomString length] > 8) return [randomString substringToIndex:8];
 
     return randomString;
 }

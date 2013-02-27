@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "NSUbiquitousKeyValueStore+BBExtensions.h"
@@ -43,9 +43,7 @@
     change(self);
 
     // Now, synchronize....
-    if ([self synchronize]) {
-        return YES;
-    }
+    if ([self synchronize]) return YES;
 
     // If iCloud sync fails, we fallback to user defaults
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];

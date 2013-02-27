@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "BBWeakWrapper.h"
@@ -31,26 +31,13 @@
 }
 
 
-#pragma mark Property synthesizers
-
-@synthesize object = _object;
-
-
 #pragma mark NSObject
 
 - (BOOL)isEqual:(id)object
 {
-    if (object == nil) {
-        return NO;
-    }
-
-    if (object == self) {
-        return YES;
-    }
-
-    if (![object isKindOfClass:[self class]]) {
-        return NO;
-    }
+    if (object == nil) return NO;
+    if (object == self) return YES;
+    if (![object isKindOfClass:[self class]]) return NO;
 
     return [self isEqualToWrapper:object];
 }

@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark - Custom types
@@ -124,8 +124,8 @@ typedef void (^BBCountDownLatchBlock)();
  
  @see initWithName:queue:counter:andCompletionBlock:
  */
-+ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
-                           andCompletionBlock:(BBCountDownLatchBlock)block;
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter
+                           completion:(BBCountDownLatchBlock)block;
 
 
 #pragma mark Managing state

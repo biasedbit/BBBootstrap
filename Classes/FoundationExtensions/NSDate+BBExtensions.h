@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark -
@@ -24,14 +24,14 @@
 @interface NSDate (BBExtensions)
 
 
-#pragma mark Public static methods
+#pragma mark Class interface
 
-+ (int64_t)currentTimeMillis;
++ (long long)currentTimeMillis;
 + (NSString*)currentTimeMillisAsString;
-+ (NSDate*)dateFromMillis:(int64_t)millis;
++ (NSDate*)dateFromMillis:(long long)millis;
 
 
-#pragma mark Public methods
+#pragma mark Interface
 
 - (NSString*)prettyDate;
 

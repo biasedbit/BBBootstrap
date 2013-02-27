@@ -7,7 +7,7 @@
 		<meta name="viewport" content="width=550" />
 		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
 		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
-		<meta name="generator" content="appledoc 2.0.6 (build 789)" />
+		<meta name="generator" content="appledoc 2.1 (build 840)" />
 	</head>
 	<body>
 		<header id="top_header">
@@ -42,9 +42,19 @@
 	
 	<option value="instance_methods">Instance Methods</option>
 	
+	<option value="//api/name/deleteRow:inSection:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteRow:inSection:withRowAnimation:</option>
+	
 	<option value="//api/name/deleteRowAtIndexPath:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- deleteRowAtIndexPath:withRowAnimation:</option>
 	
+	<option value="//api/name/insertRow:inSection:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- insertRow:inSection:withRowAnimation:</option>
+	
 	<option value="//api/name/insertRowAtIndexPath:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- insertRowAtIndexPath:withRowAnimation:</option>
+	
+	<option value="//api/name/reloadRow:inSection:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- reloadRow:inSection:withRowAnimation:</option>
+	
+	<option value="//api/name/reloadRowAtIndexPath:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- reloadRowAtIndexPath:withRowAnimation:</option>
+	
+	<option value="//api/name/reloadSection:withRowAnimation:">&nbsp;&nbsp;&nbsp;&nbsp;- reloadSection:withRowAnimation:</option>
 	
 	<option value="//api/name/updateWithBlock:">&nbsp;&nbsp;&nbsp;&nbsp;- updateWithBlock:</option>
 	
@@ -76,9 +86,19 @@
 
 <li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteRow:inSection:withRowAnimation:">deleteRow:inSection:withRowAnimation:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/deleteRowAtIndexPath:withRowAnimation:">deleteRowAtIndexPath:withRowAnimation:</a></span></li>
 	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/insertRow:inSection:withRowAnimation:">insertRow:inSection:withRowAnimation:</a></span></li>
+	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/insertRowAtIndexPath:withRowAnimation:">insertRowAtIndexPath:withRowAnimation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reloadRow:inSection:withRowAnimation:">reloadRow:inSection:withRowAnimation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reloadRowAtIndexPath:withRowAnimation:">reloadRowAtIndexPath:withRowAnimation:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/reloadSection:withRowAnimation:">reloadSection:withRowAnimation:</a></span></li>
 	
 	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/updateWithBlock:">updateWithBlock:</a></span></li>
 	
@@ -140,8 +160,43 @@
 	
 </li><li>
 	<span class="tooltip">
+		<code><a href="#//api/name/insertRow:inSection:withRowAnimation:">&ndash;&nbsp;insertRow:inSection:withRowAnimation:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reloadRowAtIndexPath:withRowAnimation:">&ndash;&nbsp;reloadRowAtIndexPath:withRowAnimation:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reloadRow:inSection:withRowAnimation:">&ndash;&nbsp;reloadRow:inSection:withRowAnimation:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
 		<code><a href="#//api/name/deleteRowAtIndexPath:withRowAnimation:">&ndash;&nbsp;deleteRowAtIndexPath:withRowAnimation:</a></code>
 		<span class="tooltip"><p>Shortcut to remove a single row from a given index path.</p></span>
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/deleteRow:inSection:withRowAnimation:">&ndash;&nbsp;deleteRow:inSection:withRowAnimation:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/reloadSection:withRowAnimation:">&ndash;&nbsp;reloadSection:withRowAnimation:</a></code>
+		
 	</span>
 	
 	
@@ -163,6 +218,17 @@
 						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
 						
 						<div class="section-method">
+	<a name="//api/name/deleteRow:inSection:withRowAnimation:" title="deleteRow:inSection:withRowAnimation:"></a>
+	<h3 class="subsubtitle method-title">deleteRow:inSection:withRowAnimation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)deleteRow:(NSUInteger)<em>row</em> inSection:(NSUInteger)<em>section</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/deleteRowAtIndexPath:withRowAnimation:" title="deleteRowAtIndexPath:withRowAnimation:"></a>
 	<h3 class="subsubtitle method-title">deleteRowAtIndexPath:withRowAnimation:</h3>
 	
@@ -172,9 +238,11 @@
 		<p>Shortcut to remove a single row from a given index path.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)deleteRowAtIndexPath:(NSIndexPath *)<em>indexPath</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -212,6 +280,17 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/insertRow:inSection:withRowAnimation:" title="insertRow:inSection:withRowAnimation:"></a>
+	<h3 class="subsubtitle method-title">insertRow:inSection:withRowAnimation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)insertRow:(NSUInteger)<em>row</em> inSection:(NSUInteger)<em>section</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/insertRowAtIndexPath:withRowAnimation:" title="insertRowAtIndexPath:withRowAnimation:"></a>
 	<h3 class="subsubtitle method-title">insertRowAtIndexPath:withRowAnimation:</h3>
 	
@@ -221,9 +300,11 @@
 		<p>Shortcut to insert a single row at a given index path.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)insertRowAtIndexPath:(NSIndexPath *)<em>indexPath</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -261,6 +342,39 @@
 </div>
 						
 						<div class="section-method">
+	<a name="//api/name/reloadRow:inSection:withRowAnimation:" title="reloadRow:inSection:withRowAnimation:"></a>
+	<h3 class="subsubtitle method-title">reloadRow:inSection:withRowAnimation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)reloadRow:(NSUInteger)<em>row</em> inSection:(NSUInteger)<em>section</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reloadRowAtIndexPath:withRowAnimation:" title="reloadRowAtIndexPath:withRowAnimation:"></a>
+	<h3 class="subsubtitle method-title">reloadRowAtIndexPath:withRowAnimation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)reloadRowAtIndexPath:(NSIndexPath *)<em>indexPath</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/reloadSection:withRowAnimation:" title="reloadSection:withRowAnimation:"></a>
+	<h3 class="subsubtitle method-title">reloadSection:withRowAnimation:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)reloadSection:(NSUInteger)<em>section</em> withRowAnimation:(UITableViewRowAnimation)<em>animation</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
 	<a name="//api/name/updateWithBlock:" title="updateWithBlock:"></a>
 	<h3 class="subsubtitle method-title">updateWithBlock:</h3>
 	
@@ -270,9 +384,11 @@
 		<p>Perform a block of updates between calls to <code>beginUpdates</code> and <code>endUpdates</code>.</p>
 	</div>		
 	
-	
+    
+
 	<div class="method-subsection method-declaration"><code>- (void)updateWithBlock:(void ( ^ ) ( ))<em>block</em></code></div>
-	
+
+    
 	
 	<div class="method-subsection arguments-section parameters">
 		<h4 class="method-subtitle parameter-title">Parameters</h4>
@@ -317,9 +433,9 @@
 				<div id="footer">
 					<hr />
 					<div class="footer-copyright">
-						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-09-27)</span><br />
+						<p><span class="copyright">&copy; 2012 BiasedBit. All rights reserved. (Last updated: 2012-12-20)</span><br />
 						
-						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.6 (build 789)</a>.</span></p>
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.1 (build 840)</a>.</span></p>
 						
 					</div>
 				</div>
@@ -407,6 +523,14 @@
 			}
 			
 			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
 		</script>
 	</body>
 </html>

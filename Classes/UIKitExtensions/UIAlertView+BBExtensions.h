@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,17 +16,19 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #pragma mark -
 
-@interface UIAlertView (BBExtensions)
+@interface UIAlertView (BBExtensions) <UIAlertViewDelegate>
 
 
 ///----------------
 /// @name Shortcuts
 ///----------------
+
++ (void)showAlertWithTitle:(NSString*)title;
 
 /**
  Display a `UIAlertView` with a single button ("Dismiss").
@@ -34,6 +36,19 @@
  @param message Message text.
  @param title Title text.
  */
-+ (void)alertWithMessage:(NSString*)message andTitle:(NSString*)title;
++ (void)showAlertWithTitle:(NSString*)message andMessage:(NSString*)message;
+
++ (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
+                     completion:(void (^)())completion;
+
++ (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission;
+
++ (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation;
+
+- (id)initWithTitle:(NSString*)title message:(NSString*)message
+  cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
+         completion:(void (^)(NSInteger buttonIndex))completion;
+
+- (void)setCompletion:(void (^)(NSInteger buttonIndex))completion;
 
 @end

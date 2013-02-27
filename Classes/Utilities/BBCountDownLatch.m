@@ -1,5 +1,5 @@
 //
-// Copyright 2012 BiasedBit
+// Copyright 2013 BiasedBit
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -16,10 +16,12 @@
 
 //
 //  Created by Bruno de Carvalho (@biasedbit, http://biasedbit.com)
-//  Copyright (c) 2012 BiasedBit. All rights reserved.
+//  Copyright (c) 2013 BiasedBit. All rights reserved.
 //
 
 #import "BBCountDownLatch.h"
+
+#import "BBGlobals.h"
 
 
 
@@ -28,26 +30,23 @@
 @implementation BBCountDownLatch
 {
     BBCountDownLatchBlock _block;
+
+    // Whether the queue should be released when the latch finishes; for internally created queues.
+    // No effect if OS_OBJECT_USE_OBJC is enabled (default on iOS 6+ and OSX 10.8+)
     BOOL _releaseQueueWhenDone;
 }
-
-
-#pragma mark Property synthesizers
-
-@synthesize name = _name;
-@synthesize queue = _queue;
-@synthesize counter = _counter;
-@synthesize cancelled = _cancelled;
 
 
 #pragma mark Destruction
 
 - (void)dealloc
 {
+#if !OS_OBJECT_USE_OBJC
     if (_releaseQueueWhenDone && (_queue != NULL)) {
         // If we were created with autoCleanup...
         dispatch_release(_queue);
     }
+#endif
 }
 
 
@@ -68,8 +67,8 @@
     return self;
 }
 
-+ (BBCountDownLatch*)autoCleanupLatchWithName:(NSString*)name counter:(NSUInteger)counter
-                                     andCompletionBlock:(BBCountDownLatchBlock)block
++ (BBCountDownLatch*)latchWithName:(NSString*)name counter:(NSUInteger)counter
+                                     completion:(BBCountDownLatchBlock)block
 {
     NSString* queueName = [NSString stringWithFormat:@"com.biasedbit.CDLQueue-%@", name];
     dispatch_queue_t queue = dispatch_queue_create([queueName UTF8String], DISPATCH_QUEUE_SERIAL);
@@ -86,9 +85,7 @@
 
 - (BOOL)cancel
 {
-    if (_cancelled) {
-        return NO;
-    }
+    if (_cancelled) return NO;
 
     _cancelled = YES;
 
@@ -120,10 +117,10 @@
 
         _counter -= 1;
         if (_counter == 0) {
-            LogTrace(@"[LATCH-%@] Triggered and released by '%@'.", _name, callerId);
-            dispatch_async(dispatch_get_main_queue(), _block);
+            LogDebug(@"[LATCH-%@] Triggered and released by '%@'.", _name, callerId);
+            dispatch_async_main(_block);
         } else {
-            LogTrace(@"[LATCH-%@] Triggered by '%@'; current count: %d.", _name, callerId, _counter);
+            LogDebug(@"[LATCH-%@] Triggered by '%@'; current count: %d.", _name, callerId, _counter);
         }
         output = YES;
     });

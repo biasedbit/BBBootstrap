@@ -18,6 +18,14 @@ Pod::Spec.new do |s|
   s.osx.frameworks = "AppKit"
 
   s.prefix_header_contents = <<-PREFIXHEADER
+#import <Availability.h>
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import <UIKit/UIKit.h>
+#else
+    #import <AppKit/AppKit.h>
+#endif
+
 
 // Global utility functions
 
@@ -40,17 +48,19 @@ Pod::Spec.new do |s|
 
 // UIKit extensions
 
-#import "UIActionSheet+BBExtensions.h"
-#import "UIAlertView+BBExtensions.h"
-#import "UIColor+BBExtensions.h"
-#import "UIDevice+BBExtensions.h"
-#import "UIImage+BBExtensions.h"
-#import "UIImageView+BBExtensions.h"
-#import "UITableView+BBExtensions.h"
-#import "UITextField+BBExtensions.h"
-#import "UIView+BBExtensions.h"
-#import "UITextField+BBExtensions.h"
-#import "UIViewController+BBExtensions.h"
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #import "UIActionSheet+BBExtensions.h"
+    #import "UIAlertView+BBExtensions.h"
+    #import "UIColor+BBExtensions.h"
+    #import "UIDevice+BBExtensions.h"
+    #import "UIImage+BBExtensions.h"
+    #import "UIImageView+BBExtensions.h"
+    #import "UITableView+BBExtensions.h"
+    #import "UITextField+BBExtensions.h"
+    #import "UIView+BBExtensions.h"
+    #import "UITextField+BBExtensions.h"
+    #import "UIViewController+BBExtensions.h"
+#endif
 
 
 // Utility classes
@@ -62,8 +72,11 @@ Pod::Spec.new do |s|
 
 // Useful helpers
 
-#define RGB(r,g,b)      [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
-#define RGBA(r,g,b,a)   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#if __IPHONE_OS_VERSION_MIN_REQUIRED
+    #define RGB(r,g,b)      [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:1.0f]
+    #define RGBA(r,g,b,a)   [UIColor colorWithRed:r/255.0f green:g/255.0f blue:b/255.0f alpha:a]
+#endif
+
 #define L10n(key)       NSLocalizedString(key, nil)
 
 // Use this one on a 'default' branch of a switch/case construct
@@ -73,16 +86,15 @@ Pod::Spec.new do |s|
 
 // Logging
 
-// Comment LOG_TRACE out to avoid trace statements
-#define LOG_TRACE
+// Comment LOG_DEBUG out to avoid trace statements
+#define LOG_DEBUG
 
-#ifdef LOG_TRACE
-    #define LogTrace(fmt, ...)  NSLog((@"(TRACE) " fmt), ##__VA_ARGS__);
+#ifdef LOG_DEBUG
+    #define LogDebug(fmt, ...)  NSLog((@"(DEBUG) " fmt), ##__VA_ARGS__);
 #else
-    #define LogTrace(...)
+    #define LogDebug(...)
 #endif
 
-#define LogDebug(fmt, ...)  NSLog((@"(DEBUG) " fmt), ##__VA_ARGS__);
 #define LogInfo(fmt, ...)   NSLog((@"(INFO) " fmt), ##__VA_ARGS__);
 #define LogError(fmt, ...)  NSLog((@"(ERROR) " fmt), ##__VA_ARGS__);
 
@@ -114,5 +126,6 @@ Pod::Spec.new do |s|
     #define DINT(i)
     #define DSTR(s)
 #endif
+
 PREFIXHEADER
 end
