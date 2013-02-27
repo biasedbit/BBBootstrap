@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name     = "BBHTTP"
+  s.name     = "BBBootstrap"
   s.version  = "1.0.0"
   s.summary  = "A comprehensive bundle of time-savers, for iOS and OSX development."
   s.homepage = "https://github.com/brunodecarvalho/BBBootstrap"
