@@ -1,96 +1,41 @@
 BBBootstrap
------------
-A set of utility classes as well as Foundation and UIKit extensions that we all end up using somehow in every project, all packed together and wrapped in a pretty and well documented package.
+===========
+A comprehensive bundle full of time-savers, for iOS and OSX development.
 
 
 ## How to add BBBootstrap to your project
 
-1. Add the submodule: `$ git submodule add git@github.com:brunodecarvalho/BBBootstrap.git leProject/External/BBBootstrap`
+### As a git submodule
+
+1. Add the submodule:
+
+    ```sh
+    $ git submodule add git@github.com:brunodecarvalho/BBBootstrap.git leProject/External/BBBootstrap
+    ```
+
 2. Add the files under `Classes` to your Xcode project.
 3. Copy and paste the contents of `Sample-Prefix.pch` to your prefix file
-4. ???
-5. Profit.
 
 
-Make sure you check out the docs on the `Docs/html` folder for a comprehensive listing and description on each of the classes in this project and how they can save you a ton of time.
+### As a CocoaPod
 
-> Pardon the absence of documentation on this readme for the time being; just hit the html docs, they have everything you need.
+Just add this line on your `Podfile`:
+
+```ruby
+pod "BBBootstrap", :git => "https://github.com/brunodecarvalho/BBBootstrap.git"
+```
 
 
 ## Contents
 
 This package contains:
 
-- **Utility classes:** built to help you deal with every day concurrency (and other) patterns;
-- **Foundation extensions:** handy helpers to foundation classes that'll save duplicated code across projects;
 - **UIKit extensions:** time-savers that deal with common usage patterns and will save you plenty of lines of code;
+- **Foundation extensions:** handy helpers to foundation classes that'll save duplicated code across projects;
+- **Utility classes:** built to help you deal with every day concurrency (and other) patterns;
 - **Prefix macros:** because `ifdef`'ing on `DEBUG` sometimes just isn't enough.
-
-
-## Utility classes
-
-### BBCancellable
-
-TODO
-
-### BBCountDownLatch
-
-TODO
-
-### BBObservable
-
-TODO
-
-### BBProfiler
-
-TODO
-
-### BBQueue
-
-No, it's not meant for barbecues.
-
-### BBWeakWrapper
-
-TODO
-
-
-## Foundation extensions
-
-### NSData
-
-TBD
-
-### NSDate
-
-TBD
-
-### NSDictionary
-
-TBD
-
-### NSString
-
-TBD
-
-
-## UIKit extensions
-
-### UIAlertView
-
-TBD
-
-### UITableView
-
-TBD
-
-### UIView
-
-TBD
-
-
-### Prefix macros
 
 
 ## License
 
-This software is licensed under the Apache Software License 2.0
+Apache License, Version 2.0
