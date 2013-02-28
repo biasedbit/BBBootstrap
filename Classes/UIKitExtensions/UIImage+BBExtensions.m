@@ -40,7 +40,7 @@
     return [image stretchableImageWithLeftCapWidth:halfWidth topCapHeight:halfHeight];
 }
 
-+ (UIImage*)stretchableImageWithHalfLeftCapWidthNamed:(NSString*)imageName
++ (UIImage*)horizontallyStretchableImageNamed:(NSString*)imageName
 {
     UIImage* image = [UIImage imageNamed:imageName];
 
@@ -49,7 +49,7 @@
     return [image stretchableImageWithLeftCapWidth:halfWidth topCapHeight:0];
 }
 
-+ (UIImage*)stretchableImageWithHalfTopCapHeightNamed:(NSString*)imageName
++ (UIImage*)verticallyStretchableImageNamed:(NSString*)imageName
 {
     UIImage* image = [UIImage imageNamed:imageName];
 

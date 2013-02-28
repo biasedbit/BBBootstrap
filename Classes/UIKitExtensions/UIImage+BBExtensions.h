@@ -29,8 +29,8 @@
 ///-------------------------------------------
 
 + (UIImage*)stretchableImageNamed:(NSString*)imageName;
-+ (UIImage*)stretchableImageWithHalfLeftCapWidthNamed:(NSString*)imageName;
-+ (UIImage*)stretchableImageWithHalfTopCapHeightNamed:(NSString*)imageName;
++ (UIImage*)horizontallyStretchableImageNamed:(NSString*)imageName;
++ (UIImage*)verticallyStretchableImageNamed:(NSString*)imageName;
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withLeftCapWidth:(NSInteger)leftCapWidth;
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withTopCapHeight:(NSInteger)topCapHeight;
 
