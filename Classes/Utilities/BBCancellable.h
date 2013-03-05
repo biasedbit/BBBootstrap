@@ -22,11 +22,13 @@
 #pragma mark -
 
 /**
- Superclass for something that can be cancelled.
+ Representation of something that can be cancelled.
  
  Especially useful for long running asynchronous operations that have post-completion routines which need to be
  aborted at any time.
  
+ The code to perform the cancellation can either be provided by the `<cancelBlock>` property or by overriding the
+ `<cancel>` method.
 
  ## Subclassing notes
 
@@ -61,11 +63,16 @@
 @property(strong, nonatomic, readonly) NSString* name;
 
 /**
- Check whether an instance has been cancelled.
-
- @return `YES` if instance is in cancelled state, `NO` otherwise.
+ Flag that indicates if an instance has been cancelled.
  */
-- (BOOL)isCancelled;
+@property(assign, nonatomic, readonly, getter = wasCancelled) BOOL cancelled;
+
+/**
+ Block to execute when the cancellable is cancelled.
+ 
+ Executed at most once.
+ */
+@property(copy, nonatomic) void (^cancelBlock)();
 
 
 #pragma mark Creation
@@ -79,7 +86,9 @@
  
  @param name Name of the cancellable, for identification purposes.
  */
-- (id)initWithName:(NSString*)name;
+- (instancetype)initWithName:(NSString*)name;
++ (instancetype)cancellableWithBlock:(void (^)())block;
++ (instancetype)cancellableNamed:(NSString*)name withBlock:(void (^)())block;
 
 
 #pragma mark State management

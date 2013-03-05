@@ -35,19 +35,33 @@
 
 #pragma mark Creation
 
-- (id)init
+- (instancetype)init
 {
     return [self initWithName:@"anonymous"];
 }
 
-- (id)initWithName:(NSString*)name
+- (instancetype)initWithName:(NSString*)name
 {
     self = [super init];
-    if (self != nil) {
-        _name = name;
-    }
+    if (self != nil) _name = name;
 
     return self;
+}
+
++ (instancetype)cancellableWithBlock:(void (^)())block
+{
+    BBCancellable* cancellable = [[BBCancellable alloc] init];
+    cancellable.cancelBlock = block;
+
+    return cancellable;
+}
+
++ (instancetype)cancellableNamed:(NSString*)name withBlock:(void (^)())block
+{
+    BBCancellable* cancellable = [[BBCancellable alloc] initWithName:name];
+    cancellable.cancelBlock = block;
+
+    return cancellable;
 }
 
 
@@ -55,13 +69,15 @@
 
 - (BOOL)cancel
 {
-    BOOL previous = _cancelled;
+    if (_cancelled) return NO;
     _cancelled = YES;
 
-    return previous != _cancelled;
+    if (_cancelBlock != nil) _cancelBlock();
+
+    return YES;
 }
 
-- (BOOL)isCancelled
+- (BOOL)wasCancelled
 {
     return _cancelled;
 }

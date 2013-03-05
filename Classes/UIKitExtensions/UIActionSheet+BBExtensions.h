@@ -22,4 +22,10 @@
 #pragma mark -
 
 @interface UIActionSheet (BBExtensions) <UIActionSheetDelegate>
+
+
+#pragma mark Interface
+
+- (void)setCompletion:(void (^)(NSInteger buttonIndex))completion;
+
 @end
