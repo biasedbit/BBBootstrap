@@ -108,19 +108,19 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     return r;
 }
 
-- (id)centerInRect:(CGRect)rect
+- (instancetype)centerInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame inRect:rect];
     return self;
 }
 
-- (id)centerHorizontallyInRect:(CGRect)rect
+- (instancetype)centerHorizontallyInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame horizontallyInRect:rect];
     return self;
 }
 
-- (id)centerVerticallyInRect:(CGRect)rect
+- (instancetype)centerVerticallyInRect:(CGRect)rect
 {
     self.frame = [UIView center:self.frame verticallyInRect:rect];
     return self;
@@ -131,7 +131,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     return [UIView center:self.frame inRect:rect];
 }
 
-- (id)move:(CGSize)movement
+- (instancetype)move:(CGSize)movement
 {
     CGRect targetFrame = self.frame;
     targetFrame.origin.x += movement.width;
@@ -142,7 +142,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     return self;
 }
 
-- (id)moveTo:(CGPoint)point
+- (instancetype)moveTo:(CGPoint)point
 {
     CGRect targetFrame = self.frame;
     targetFrame.origin = point;
@@ -151,13 +151,13 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     return self;
 }
 
-- (id)moveToX:(CGFloat)x
+- (instancetype)moveToX:(CGFloat)x
 {
     [self moveTo:CGPointMake(x, self.frame.origin.y)];
     return self;
 }
 
-- (id)moveToY:(CGFloat)y
+- (instancetype)moveToY:(CGFloat)y
 {
     [self moveTo:CGPointMake(self.frame.origin.x, y)];
     return self;
@@ -252,6 +252,50 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     }];
 }
 
+
+#pragma mark Quick frame changes
+
+- (CGPoint)origin
+{
+    return self.frame.origin;
+}
+
+- (void)setOrigin:(CGPoint)origin
+{
+    CGRect frame = self.frame;
+    frame.origin = origin;
+    self.frame = frame;
+}
+
+- (CGFloat)x
+{
+    return self.frame.origin.x;
+}
+
+- (void)setX:(CGFloat)x
+{
+    CGRect frame = self.frame;
+    frame.origin.x = x;
+    self.frame = frame;
+}
+
+- (CGFloat)y
+{
+    return self.frame.origin.y;
+}
+
+- (void)setY:(CGFloat)y
+{
+    CGRect frame = self.frame;
+    frame.origin.y = y;
+    self.frame = frame;
+}
+
+- (CGSize)size
+{
+    return self.frame.size;
+}
+
 - (void)setSize:(CGSize)size
 {
     CGRect frame = self.frame;
@@ -259,11 +303,21 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
     self.frame = frame;
 }
 
+- (CGFloat)width
+{
+    return self.frame.size.width;
+}
+
 - (void)setWidth:(CGFloat)width
 {
     CGRect frame = self.frame;
     frame.size.width = width;
     self.frame = frame;
+}
+
+- (CGFloat)height
+{
+    return self.frame.size.height;
 }
 
 - (void)setHeight:(CGFloat)height

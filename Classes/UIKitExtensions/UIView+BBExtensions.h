@@ -112,7 +112,7 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
  
  @param rect Rectangle relative to which the current view's frame should be centered.
  */
-- (id)centerInRect:(CGRect)rect;
+- (instancetype)centerInRect:(CGRect)rect;
 
 /**
  Center current view's `x` coordinates in `rect`.
@@ -121,7 +121,7 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
 
  @param rect Rectangle relative to which the current view's `x` coordinates should be centered.
  */
-- (id)centerHorizontallyInRect:(CGRect)rect;
+- (instancetype)centerHorizontallyInRect:(CGRect)rect;
 
 /**
  Center current view's `y` coordinates in `rect`.
@@ -130,7 +130,7 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
 
  @param rect Rectangle relative to which the current view's `y` coordinates should be centered.
  */
-- (id)centerVerticallyInRect:(CGRect)rect;
+- (instancetype)centerVerticallyInRect:(CGRect)rect;
 
 
 /**
@@ -152,7 +152,7 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
  
  @param movement Amount of movement in `x` and `y` coordinates.
  */
-- (id)move:(CGSize)movement;
+- (instancetype)move:(CGSize)movement;
 
 /**
  Move the current view to a given point.
@@ -161,11 +161,11 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
  
  @param point Target point.
  */
-- (id)moveTo:(CGPoint)point;
+- (instancetype)moveTo:(CGPoint)point;
 
-- (id)moveToX:(CGFloat)x;
+- (instancetype)moveToX:(CGFloat)x;
 
-- (id)moveToY:(CGFloat)y;
+- (instancetype)moveToY:(CGFloat)y;
 
 /**
  Move the current view on the `x` axis, optionally performing a small bounce animation at the end.
@@ -228,8 +228,14 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
         bounce:(CGSize)bounce andBounceDuration:(NSTimeInterval)bounceDuration
     completion:(void (^)(BOOL finished))completion;
 
-- (void)setSize:(CGSize)size;
-- (void)setWidth:(CGFloat)width;
-- (void)setHeight:(CGFloat)height;
+
+#pragma mark Quick frame changes
+
+@property(assign, nonatomic) CGPoint origin;
+@property(assign, nonatomic) CGFloat x;
+@property(assign, nonatomic) CGFloat y;
+@property(assign, nonatomic) CGSize size;
+@property(assign, nonatomic) CGFloat width;
+@property(assign, nonatomic) CGFloat height;
 
 @end
