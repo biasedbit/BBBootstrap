@@ -30,10 +30,10 @@
 
 #pragma mark Shortcuts
 
-- (void)updateWithBlock:(void (^)())block;
+- (void)updateWithBlock:(void (^)(UITableView* tableView))block
 {
     [self beginUpdates];
-    block();
+    block(self);
     [self endUpdates];
 }
 

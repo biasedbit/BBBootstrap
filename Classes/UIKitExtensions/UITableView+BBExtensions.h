@@ -33,7 +33,7 @@
  
  @param block Block of code that should contain the updates to perform on the `UITableView`
  */
-- (void)updateWithBlock:(void (^)())block;
+- (void)updateWithBlock:(void (^)(UITableView* tableView))block;
 
 /**
  Shortcut to insert a single row at a given index path.
