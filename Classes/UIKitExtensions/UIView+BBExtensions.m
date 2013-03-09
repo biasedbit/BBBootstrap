@@ -42,11 +42,8 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
 
 + (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration animations:(void (^)())animations
 {
-    if (animated) {
-        [UIView animateWithDuration:duration animations:animations];
-    } else {
-        animations();
-    }
+    if (animated) [UIView animateWithDuration:duration animations:animations];
+    else animations();
 }
 
 + (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration
@@ -56,9 +53,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
         [UIView animateWithDuration:duration animations:animations completion:completion];
     } else {
         animations();
-        if (completion != nil) {
-            completion(YES);
-        }
+        if (completion != nil) completion(YES);
     }
 }
 
@@ -69,9 +64,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
         [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
     } else {
         animations();
-        if (completion != nil) {
-            completion(YES);
-        }
+        if (completion != nil) completion(YES);
     }
 }
 
