@@ -70,6 +70,14 @@ extern NSUInteger const UIViewAutoresizingFlexibleDimensions;
 + (void)animate:(BOOL)animated withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
         options:(UIViewAnimationOptions)options animations:(void (^)())animations completion:(void (^)(BOOL))completion;
 
++ (void)twoStepAnimation:(BOOL)animated withDuration:(NSTimeInterval)duration
+               firstHalf:(void (^)())firstHalf secondHalf:(void (^)())secondHalf;
+
++ (void)twoStepAnimation:(BOOL)animated withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
+                 options:(UIViewAnimationOptions)options
+               firstHalf:(void (^)())firstHalf secondHalf:(void (^)())secondHalf
+              completion:(void (^)(BOOL))completion;
+
 
 ///-------------------------------------------
 /// @name Positioning, location and dimensions

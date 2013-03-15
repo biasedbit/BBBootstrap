@@ -70,6 +70,12 @@
     [self deleteRowAtIndexPath:toDelete withRowAnimation:animation];
 }
 
+- (void)deleteSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
+{
+    NSIndexSet* sections = [NSIndexSet indexSetWithIndex:section];
+    [self deleteSections:sections withRowAnimation:animation];
+}
+
 - (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation
 {
     NSIndexSet* indexSet = [NSIndexSet indexSetWithIndex:section];

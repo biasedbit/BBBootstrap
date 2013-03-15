@@ -59,6 +59,8 @@
 
 - (void)deleteRow:(NSUInteger)row inSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation;
 
+- (void)deleteSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation;
+
 - (void)reloadSection:(NSUInteger)section withRowAnimation:(UITableViewRowAnimation)animation;
 
 @end

@@ -53,7 +53,7 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
         [UIView animateWithDuration:duration animations:animations completion:completion];
     } else {
         animations();
-        if (completion != nil) completion(YES);
+        if (completion != nil) completion(NO);
     }
 }
 
@@ -64,7 +64,40 @@ NSUInteger const UIViewAutoresizingFlexibleDimensions = UIViewAutoresizingFlexib
         [UIView animateWithDuration:duration delay:delay options:options animations:animations completion:completion];
     } else {
         animations();
-        if (completion != nil) completion(YES);
+        if (completion != nil) completion(NO);
+    }
+}
+
++ (void)twoStepAnimation:(BOOL)animated withDuration:(NSTimeInterval)duration
+               firstHalf:(void (^)())firstHalf secondHalf:(void (^)())secondHalf
+{
+    return [self twoStepAnimation:animated withDuration:duration
+                        firstHalf:firstHalf secondHalf:secondHalf completion:nil];
+}
+
++ (void)twoStepAnimation:(BOOL)animated withDuration:(NSTimeInterval)duration
+               firstHalf:(void (^)())firstHalf secondHalf:(void (^)())secondHalf
+              completion:(void (^)(BOOL))completion
+{
+    [self twoStepAnimation:animated withDuration:duration delay:0 options:0
+                 firstHalf:firstHalf secondHalf:secondHalf completion:completion];
+}
+
++ (void)twoStepAnimation:(BOOL)animated withDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay
+                 options:(UIViewAnimationOptions)options
+               firstHalf:(void (^)())firstHalf secondHalf:(void (^)())secondHalf
+              completion:(void (^)(BOOL))completion
+{
+    if (!animated) {
+        if (firstHalf != nil) firstHalf();
+        if (secondHalf != nil) secondHalf();
+        if (completion != nil) completion(NO);
+    } else {
+        NSTimeInterval half = (duration / 2.0);
+        [UIView animateWithDuration:half delay:delay options:options animations:firstHalf completion:^(BOOL finished) {
+            [UIView animate:finished withDuration:half delay:0 options:options
+                 animations:secondHalf completion:completion];
+        }];
     }
 }
 

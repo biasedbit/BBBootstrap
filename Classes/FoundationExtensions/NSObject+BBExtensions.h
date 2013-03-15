@@ -24,6 +24,15 @@
 @interface NSObject (BBExtensions)
 
 
+#pragma mark KVO
+
+- (void)addObserver:(NSObject*)observer forKeyPaths:(NSArray*)keyPaths
+            options:(NSKeyValueObservingOptions)options context:(void*)context;
+- (void)removeObserver:(NSObject*)observer forKeyPaths:(NSArray*)keyPaths context:(void*)context;
+
+
+#pragma mark Debug
+
 ///------------
 /// @name Debug
 ///------------

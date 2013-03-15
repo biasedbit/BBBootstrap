@@ -28,6 +28,30 @@
 @implementation NSObject (BBExtensions)
 
 
+#pragma mark KVO
+
+- (void)addObserver:(NSObject*)observer forKeyPaths:(NSArray*)keyPaths
+            options:(NSKeyValueObservingOptions)options context:(void*)context
+{
+    NSParameterAssert(keyPaths != nil);
+    NSParameterAssert([keyPaths count] > 0);
+
+    for (NSString* keyPath in keyPaths) {
+        [self addObserver:observer forKeyPath:keyPath options:options context:context];
+    }
+}
+
+- (void)removeObserver:(NSObject*)observer forKeyPaths:(NSArray*)keyPaths context:(void*)context
+{
+    NSParameterAssert(keyPaths != nil);
+    NSParameterAssert([keyPaths count] > 0);
+
+    for (NSString* keyPath in keyPaths) {
+        [self removeObserver:observer forKeyPath:keyPath context:context];
+    }
+}
+
+
 #pragma mark Debug
 
 - (NSString*)logId
