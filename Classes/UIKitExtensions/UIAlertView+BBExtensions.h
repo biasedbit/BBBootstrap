@@ -38,16 +38,16 @@
  */
 + (void)showAlertWithTitle:(NSString*)message andMessage:(NSString*)message;
 
-+ (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
++ (instancetype)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
                      completion:(void (^)())completion;
 
-+ (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission;
++ (instancetype)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission;
 
-+ (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation;
++ (instancetype)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation;
 
-- (id)initWithTitle:(NSString*)title message:(NSString*)message
-  cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
-         completion:(void (^)(NSInteger buttonIndex))completion;
+- (instancetype)initWithTitle:(NSString*)title message:(NSString*)message
+            cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
+                   completion:(void (^)(NSInteger buttonIndex))completion;
 
 - (void)setCompletion:(void (^)(NSInteger buttonIndex))completion;
 

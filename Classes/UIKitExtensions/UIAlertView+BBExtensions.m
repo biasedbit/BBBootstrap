@@ -47,7 +47,7 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
     void (^completion)(NSInteger buttonIndex);
     completion = objc_getAssociatedObject(self, &kUIAlertView_BBExtensionsCompletionBlockKey);
 
-    completion(buttonIndex);
+    if (completion != nil) completion(buttonIndex);
 }
 
 
@@ -55,7 +55,7 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
 
 + (void)showAlertWithTitle:(NSString*)title
 {
-    [[[UIAlertView alloc]
+    [[[[self class] alloc]
       initWithTitle:title message:nil delegate:nil
       cancelButtonTitle:L10n(@"Dismiss") otherButtonTitles:nil]
      show];
@@ -63,16 +63,16 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
 
 + (void)showAlertWithTitle:(NSString*)title andMessage:(NSString*)message
 {
-    [[[UIAlertView alloc] 
+    [[[[self class] alloc]
       initWithTitle:title message:message delegate:nil 
       cancelButtonTitle:L10n(@"Dismiss") otherButtonTitles:nil]
      show];
 }
 
-+ (UIAlertView*)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
++ (instancetype)noticeWithTitle:(NSString*)title message:(NSString*)message buttonTitle:(NSString*)buttonTitle
                      completion:(void (^)())completion
 {
-    UIAlertView* alertView = [[UIAlertView alloc]
+    UIAlertView* alertView = [[[self class] alloc]
                               initWithTitle:title message:message delegate:nil
                               cancelButtonTitle:buttonTitle otherButtonTitles:nil];
     alertView.delegate = alertView;
@@ -83,9 +83,9 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
     return alertView;
 }
 
-+ (UIAlertView*)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission
++ (instancetype)inputWithTitle:(NSString*)title submission:(void (^)(NSString* text))submission
 {
-    UIAlertView* alertView = [[UIAlertView alloc]
+    UIAlertView* alertView = [[[self class] alloc]
                               initWithTitle:title message:nil delegate:nil
                               cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
@@ -98,9 +98,9 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
     return alertView;
 }
 
-+ (UIAlertView*)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation
++ (instancetype)confirmationWithTitle:(NSString*)title confirmation:(void (^)())confirmation
 {
-    UIAlertView* alertView = [[UIAlertView alloc]
+    UIAlertView* alertView = [[[self class] alloc]
                               initWithTitle:title message:nil delegate:nil
                               cancelButtonTitle:L10n(@"Cancel") otherButtonTitles:L10n(@"OK"), nil];
 
@@ -111,24 +111,26 @@ static id kUIAlertView_BBExtensionsCompletionBlockKey;
     return alertView;
 }
 
-- (id)initWithTitle:(NSString*)title message:(NSString*)message
-  cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
-         completion:(void (^)(NSInteger buttonIndex))completion
+- (instancetype)initWithTitle:(NSString*)title message:(NSString*)message
+            cancelButtonTitle:(NSString*)cancelButtonTitle otherButtonTitles:(NSArray*)otherButtonTitles
+                   completion:(void (^)(NSInteger buttonIndex))completion
 {
-    UIAlertView* alertView = [[UIAlertView alloc] init];
-    alertView.title = title;
-    alertView.message = message;
+    self = [super init];
+    if (self != nil) {
+        self.title = title;
+        self.message = message;
 
-    for (NSString* buttonTitle in otherButtonTitles) {
-        [alertView addButtonWithTitle:buttonTitle];
+        for (NSString* buttonTitle in otherButtonTitles) {
+            [self addButtonWithTitle:buttonTitle];
+        }
+        [self addButtonWithTitle:cancelButtonTitle];
+        [self setCancelButtonIndex:([self numberOfButtons] - 1)];
+
+        self.delegate = self;
+        [self setCompletion:completion];
     }
-    [alertView addButtonWithTitle:cancelButtonTitle];
-    [alertView setCancelButtonIndex:([alertView numberOfButtons] - 1)];
 
-    alertView.delegate = alertView;
-    [alertView setCompletion:completion];
-
-    return alertView;
+    return self;
 }
 
 
