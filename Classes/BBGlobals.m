@@ -46,6 +46,17 @@ NSString* BBAppVersion()
     return appVersion;
 }
 
+float BBSystemVersion()
+{
+    static CGFloat systemVersion;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    });
+
+    return systemVersion;
+}
+
 NSString* BBGetUUID()
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);

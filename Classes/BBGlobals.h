@@ -31,6 +31,9 @@
  */
 extern NSString* BBAppVersion(void);
 
+
+extern float BBSystemVersion(void);
+
 /**
  Creates a unique string.
 
