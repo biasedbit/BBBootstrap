@@ -31,7 +31,10 @@
 + (UIImage*)stretchableImageNamed:(NSString*)imageName;
 + (UIImage*)horizontallyStretchableImageNamed:(NSString*)imageName;
 + (UIImage*)verticallyStretchableImageNamed:(NSString*)imageName;
-+ (UIImage*)stretchableImageNamed:(NSString*)imageName withLeftCapWidth:(NSInteger)leftCapWidth;
-+ (UIImage*)stretchableImageNamed:(NSString*)imageName withTopCapHeight:(NSInteger)topCapHeight;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withCommonCapInset:(CGFloat)capInset;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withLeftCap:(NSInteger)leftCap;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withRightCap:(NSInteger)rightCap;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withTopCap:(NSInteger)topCap;
++ (UIImage*)stretchableImageNamed:(NSString*)imageName withBottomCap:(NSInteger)bottomCap;
 
 @end
