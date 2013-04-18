@@ -110,7 +110,7 @@ typedef void (^BBCountDownLatchBlock)();
  
  @return A newly initialized `BBCountDownLatch`
  */
-- (id)initWithName:(NSString*)name queue:(dispatch_queue_t)queue counter:(NSUInteger)counter
+- (instancetype)initWithName:(NSString*)name queue:(dispatch_queue_t)queue counter:(NSUInteger)counter
           andCompletionBlock:(BBCountDownLatchBlock)block;
 
 /**

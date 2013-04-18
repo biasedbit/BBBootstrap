@@ -37,7 +37,7 @@
 
 #pragma mark Creation
 
-- (id)init
+- (instancetype)init
 {
     self = [super init];
     if (self != nil) {

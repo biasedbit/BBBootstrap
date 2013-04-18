@@ -45,13 +45,13 @@
 
 #pragma mark Creation
 
-- (id)init
+- (instancetype)init
 {
     NSAssert(NO, @"Call -initWithObject:");
     return nil;
 }
 
-- (id)initWithObject:(id)object
+- (instancetype)initWithObject:(id)object
 {
     NSAssert(object != nil, @"Cannot create a weak reference to a nil object");
     self = [super init];

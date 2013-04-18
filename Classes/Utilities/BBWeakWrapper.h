@@ -42,7 +42,7 @@
 
  @return A newly initialized `BBWeakWrapper`.
  */
-- (id)initWithObject:(id)object;
+- (instancetype)initWithObject:(id)object;
 
 /**
  Create a new instance keeping a weak reference for the input `object`.
@@ -51,7 +51,7 @@
 
  @return A newly initialized `BBWeakWrapper`.
  */
-+ (id)wrapperForObject:(id)object;
++ (instancetype)wrapperForObject:(id)object;
 
 
 #pragma mark Querying

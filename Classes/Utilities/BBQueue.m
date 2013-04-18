@@ -44,18 +44,18 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
 
 #pragma mark Creation
 
-- (id)init
+- (instancetype)init
 {
     NSAssert(NO, @"Call -initWithName:andSlots:");
     return nil;
 }
 
-- (id)initWithName:(NSString*)name andSlots:(NSUInteger)slots
+- (instancetype)initWithName:(NSString*)name andSlots:(NSUInteger)slots
 {
     return [self initWithName:name slots:slots andMaxQueueSize:kBBQueueMaxQueueSize];
 }
 
-- (id)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize
+- (instancetype)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize
 {
     self = [super init];
     if (self != nil) {

@@ -26,6 +26,6 @@
 
 #pragma mark Creation
 
-- (id)initWithImageNamed:(NSString*)imageName;
+- (instancetype)initWithImageNamed:(NSString*)imageName;
 
 @end

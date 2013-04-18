@@ -30,7 +30,7 @@
 
 #pragma mark Creation
 
-- (id)initWithImageNamed:(NSString*)imageName
+- (instancetype)initWithImageNamed:(NSString*)imageName
 {
     return [self initWithImage:[UIImage imageNamed:imageName]];
 }

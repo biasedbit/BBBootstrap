@@ -101,8 +101,8 @@ extern NSUInteger const kBBQueueMaxQueueSize;
 
 #pragma mark Creation
 
-- (id)initWithName:(NSString*)name andSlots:(NSUInteger)slots;
-- (id)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize;
+- (instancetype)initWithName:(NSString*)name andSlots:(NSUInteger)slots;
+- (instancetype)initWithName:(NSString*)name slots:(NSUInteger)slots andMaxQueueSize:(NSUInteger)maxQueueSize;
 
 
 #pragma mark Interface
