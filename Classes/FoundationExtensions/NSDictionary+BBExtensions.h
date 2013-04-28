@@ -113,4 +113,7 @@
  */
 - (double)doubleForKey:(id)key;
 
+- (CGFloat)CGFloatForKey:(id)key;
+- (CGRect)CGRectForKey:(id)key;
+
 @end

@@ -118,4 +118,17 @@
     return [number doubleValue];
 }
 
+- (CGFloat)CGFloatForKey:(id)key
+{
+    return [self floatForKey:key];
+}
+
+- (CGRect)CGRectForKey:(id)key
+{
+    id value = [self objectForKey:key];
+    if (value == nil) return CGRectZero;
+
+    return [value CGRectValue];
+}
+
 @end
