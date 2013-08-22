@@ -78,7 +78,7 @@ typedef void (^BBCountDownLatchBlock)();
 @property(strong, nonatomic, readonly) NSString* name;
 
 /** GCD queue used by the instance */
-@property(assign, nonatomic, readonly) dispatch_queue_t queue;
+@property(strong, nonatomic, readonly) dispatch_queue_t queue;
 
 /** Number of count downs required to trigger the completion block */
 @property(assign, nonatomic, readonly) NSUInteger counter;
