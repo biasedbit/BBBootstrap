@@ -33,6 +33,7 @@
 + (UIImage*)stretchableImageNamed:(NSString*)imageName
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger leftCap = (NSInteger) roundf(image.size.width / 2);
     NSInteger rightCap = image.size.width - leftCap;
@@ -50,6 +51,7 @@
 + (UIImage*)horizontallyStretchableImageNamed:(NSString*)imageName
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger leftCap = (NSInteger) roundf(image.size.width / 2);
     NSInteger rightCap = image.size.width - leftCap;
@@ -62,6 +64,7 @@
 + (UIImage*)verticallyStretchableImageNamed:(NSString*)imageName
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger topCap = (NSInteger) roundf(image.size.height / 2);
     NSInteger bottomCap = image.size.height - topCap;
@@ -73,20 +76,18 @@
 
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withCommonCapInset:(CGFloat)capInset
 {
-    if (BBSystemVersion() >= 6.0) {
-        UIImage* image = [UIImage imageNamed:imageName];
-        UIEdgeInsets insets = UIEdgeInsetsMake(capInset, capInset, capInset, capInset);
+    UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
-        return [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
-    } else {
-        // Fallback to a less horrible version
-        return [self stretchableImageNamed:imageName];
-    }
+    UIEdgeInsets insets = UIEdgeInsetsMake(capInset, capInset, capInset, capInset);
+
+    return [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
 }
 
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withLeftCap:(NSInteger)leftCap
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger rightCap = image.size.width - leftCap;
     NSInteger topCap = (NSInteger) roundf(image.size.height / 2);
@@ -101,6 +102,7 @@
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withRightCap:(NSInteger)rightCap
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger leftCap = image.size.width - rightCap;
     NSInteger topCap = (NSInteger) roundf(image.size.height / 2);
@@ -115,6 +117,7 @@
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withTopCap:(NSInteger)topCap
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger leftCap = (NSInteger) roundf(image.size.width / 2);
     NSInteger rightCap = image.size.width - leftCap;
@@ -129,6 +132,7 @@
 + (UIImage*)stretchableImageNamed:(NSString*)imageName withBottomCap:(NSInteger)bottomCap
 {
     UIImage* image = [UIImage imageNamed:imageName];
+    if (image == nil) return nil;
 
     NSInteger leftCap = (NSInteger) roundf(image.size.width / 2);
     NSInteger rightCap = image.size.width - leftCap;
