@@ -57,6 +57,11 @@ float BBSystemVersion()
     return systemVersion;
 }
 
+NSUInteger BBSystemMajorVersion()
+{
+    return (NSUInteger)BBSystemVersion();
+}
+
 NSString* BBGetUUID()
 {
     CFUUIDRef theUUID = CFUUIDCreate(NULL);
