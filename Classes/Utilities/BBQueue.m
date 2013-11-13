@@ -118,7 +118,7 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
         if (canBeginExecutingImmediately) { // 3a.
             [self executeOperation:operation];
         } else {
-            [self addToQueue:operation prioritize:YES];
+            [self addToQueue:operation prioritize:prioritize];
         }
     });
 
