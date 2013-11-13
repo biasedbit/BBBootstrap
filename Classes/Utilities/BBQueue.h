@@ -110,6 +110,7 @@ extern NSUInteger const kBBQueueMaxQueueSize;
 - (id<BBQueueOperation>)enqueueOperationWithId:(NSString*)identifier andParams:(NSDictionary*)params;
 - (id<BBQueueOperation>)enqueueOperationWithId:(NSString*)identifier andParams:(NSDictionary*)params
                                     prioritize:(BOOL)prioritize;
+- (NSUInteger)cancelOperationsWithIds:(NSArray*)identifiers;
 - (void)operationFinished:(id<BBQueueOperation>)operation;
 
 @end

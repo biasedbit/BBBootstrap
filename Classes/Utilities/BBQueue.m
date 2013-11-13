@@ -125,6 +125,35 @@ NSUInteger const kBBQueueMaxQueueSize = 10240;
     return operation;
 }
 
+- (NSUInteger)cancelOperationsWithIds:(NSArray*)identifiers
+{
+    __block NSUInteger cancelled = 0;
+    dispatch_sync(_queue, ^{
+        // In case we find matching operations, all we need to do is cancel them. We can let them linger in the queue
+        // since the queue will automatically skip cancelled operations.
+        for (NSString* identifier in identifiers) {
+            // Cancel any matching running operations.
+            id<BBQueueOperation> toCancel = _running[identifier];
+            if (toCancel != nil) {
+                cancelled += [toCancel cancelQueueOperation] ? 1 : 0;
+                // Skip to next id since ID's are unique within the queue. If it was running there can't be a queued
+                // operation with the same ID.
+                continue;
+            }
+
+            // There was no running operation with this id, try the queued operations.
+            for (id<BBQueueOperation> queued in _queued) {
+                if ([[queued operationId] isEqualToString:identifier]) {
+                    cancelled += [queued cancelQueueOperation] ? 1 : 0;
+                    break; // Go back to external identifier loop.
+                }
+            }
+        }
+    });
+
+    return cancelled;
+}
+
 - (void)operationFinished:(id<BBQueueOperation>)operation
 {
     // Execute the synchronized block in other thread to keep the calling code from blocking while the queue is
